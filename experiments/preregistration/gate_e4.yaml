@@ -1,0 +1,65 @@
+# Pre-Registered Verification Gate Criteria: Gate E4 (PROMPT E4)
+# Registered: 2026-07-24
+
+gate_e4:
+  version: "1.0.0"
+  registered_date: "2026-07-24"
+  experiment: "e4_design_change_battery"
+
+  frozen_parameters:
+    k_falsify: 3.0
+    decay_lambda: 0.01
+    promotion_threshold: 0.50
+    theory_generator: "systematic candidate enumeration"
+
+  experimental_arms:
+    E4a: "Fix A only (strength_hat prediction on unconditioned pairs)"
+    E4b: "Fix B only (scoped tuples (c, e, x) with E[Beta] prediction)"
+    E4: "Combined (scoped tuples (c, e, x) with strength_hat prediction)"
+
+  criteria:
+    pass_conditions_simultaneous:
+      - scenario: "S1"
+        metric: "brier_regret"
+        operator: "<="
+        target_val: 0.0050
+        target_baseline: "FlatBayesian"
+      - scenario: "S4"
+        metric: "scoped_brier_regret"
+        operator: "<="
+        target_val: 0.0100
+        target_baseline: "ContextualBayesian"
+      - scenario: "S4"
+        metric: "precision"
+        operator: "=="
+        target_val: 1.00
+      - scenario: "S4"
+        metric: "recall"
+        operator: "=="
+        target_val: 1.00
+      - scenario: "S2"
+        metric: "decoy_claims"
+        operator: "=="
+        target_val: 0.00
+      - scenario: "S2"
+        metric: "precision"
+        operator: "=="
+        target_val: 1.00
+      - scenario: "S1"
+        metric: "recall"
+        operator: ">="
+        target_val: 0.45
+
+  three_branch_interpretation_table:
+    PASS:
+      consequence: "Separating probability estimation (Fix A) and keying beliefs by scope (Fix B) resolves S1 calibration regret and S4 scoped reasoning without decoy or recall regression."
+      next_milestone: "Phase 2 scope abstraction and multi-symbol generalization."
+    PARTIAL_FIX_A:
+      consequence: "Fix A eliminates S1 calibration regret, but Fix B is insufficient for S4 scoped reasoning."
+      action: "Register scope representation extension for Phase 2."
+    PARTIAL_FIX_B:
+      consequence: "Fix B resolves S4 scoped reasoning, but Fix A probability estimation requires prior smoothing."
+      action: "Register probability estimator prior smoothing experiment."
+    NULL:
+      consequence: "Neither Fix A nor Fix B resolves target metrics."
+      action: "Maintain SD-008 OPEN and disproven hypotheses."

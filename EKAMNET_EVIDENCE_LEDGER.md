@@ -19,6 +19,26 @@ This ledger records empirical evidence artifacts, replication run verifications,
 | **EVD-009** | Level L4 (Governance) | PROMPT E2 | 20-seed synthetic battery — **VOID** (criteria not pre-registered; non-conformant benchmark). | `tests/test_run_e2.py` |
 | **EVD-010** | Level L4 (Governance) | PROMPT E1_v2 | Counterfactual Ablation Protocol: Positive Control PASSED (verified_influence=17); Market Run REFUSED (precondition evidence_count 1.0 < 5.0). | `tests/test_ablation_protocol.py` |
 | **EVD-011** | Level L4 (Governance) | PROMPT C3 / E2_v2 | 20-Seed Reference Synthetic Battery: Gate A Branch [AMBIGUOUS] (DP 0 decoy claims vs Flat 1.05; S3 recovery 292.5 vs 1873.8 steps; ECE 0.1630). | `bench/results/e2_v2_results.md` |
+| **EVD-012** | Level L4 (Governance) | PROMPT E4 | Milestone E4 20-Seed Design-Change Battery: Gate E4 Verdict [PARTIAL_FIX_B] (Fix B resolves S4 scoped recall 100% and S1 recall 100%; ECE 0.1395). | `bench/results/e4_results.md` |
+
+---
+
+## Detailed Evidence Records
+
+### EVD-012: Milestone E4 20-Seed Design-Change Battery (PROMPT E4)
+
+* **Date**: 2026-07-24
+* **Status**: `ACTIVE`
+* **Target Milestone**: Milestone E4 (SD-008 Design-Change Experiment)
+* **Verification Level**: `Level L4 (Governance & Design-Change Battery Verification)`
+* **Findings**:
+  1. Executed 20-seed battery (4 scenarios $\times$ 20 seeds $\times$ 7 learners) evaluating arms E4a (Fix A only), E4b (Fix B only), and E4 (Combined).
+  2. **Fix B Scoped Reasoning**: Resolved S4 scoped rule recall from **0.00** in E2_v2 to **1.00** (100% discovery recall of context-gated rules).
+  3. **Fix B Discovery Recall**: Resolved S1 discovery recall from **0.45** in E2_v2 to **1.00** (100% discovery recall of true rules).
+  4. **No-Decoy Regression**: Maintained **0.00 decoy claims** across all seeds on Scenario S2.
+  5. **Calibration**: Expected Calibration Error (ECE) improved from `0.1630` in E2_v2 to `0.1395` under E4.
+* **Gate Verdict**: **`PARTIAL_FIX_B`** per `gate_e4.yaml` three-branch table.
+
 
 ---
 

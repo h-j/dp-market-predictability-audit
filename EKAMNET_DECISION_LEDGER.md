@@ -21,6 +21,27 @@ This ledger records architectural decisions, governance changes, and state trans
 | **DEC-011** | 2026-07-24 | Reversal of Gate A Branch Outcome (PROMPT C1) | ACTIVE | Governance Correction & Record Integrity |
 | **DEC-012** | 2026-07-24 | Counterfactual Ablation Protocol & Precondition Gate Verdict (PROMPT E1_v2) | ACTIVE | Governance & Counterfactual Validation |
 | **DEC-013** | 2026-07-24 | Registration of Gate A Branch Verdict [AMBIGUOUS] from 20-Seed Reference Battery (PROMPT C3 / E2_v2) | ACTIVE | Benchmark Governance & Research Extension |
+| **DEC-014** | 2026-07-24 | Registration of Gate E4 Verdict [PARTIAL_FIX_B] from Milestone E4 Design-Change Battery (PROMPT E4) | ACTIVE | Architecture Governance & Scope Representation |
+
+---
+
+## Decision Record Details
+
+### DEC-014: Registration of Gate E4 Verdict [PARTIAL_FIX_B] from Milestone E4 Battery (PROMPT E4)
+
+* **Date**: 2026-07-24
+* **Status**: `ACTIVE`
+* **Statement**: `"GATE E4 VERDICT: PARTIAL_FIX_B — Fix B (scope-keyed belief representation (c, e, x)) resolves S4 scoped reasoning (raising recall from 0.00 to 1.00) and S1/S2 discovery recall (raising recall from 0.45 to 1.00) while maintaining 0.00 decoy claims. Fix A (s_hat empirical rule strength) improves ECE (0.1395) but requires prior smoothing for early-stream Brier regret."`
+* **Context**: Executed Milestone E4 20-seed synthetic battery (4 scenarios $\times$ 20 seeds $\times$ 7 learners) comparing isolated arms E4a (Fix A only), E4b (Fix B only), and E4 (Combined) on the verified reference benchmark (`commit dc5502d`). Evaluated `gate_e4.yaml` criteria mechanically:
+  - **S4 Scoped Discovery Recall (PASS)**: DP/EkamNet-E4 = `1.00` vs E2_v2 = `0.00` (100% recall of context-gated rules).
+  - **S1 Discovery Recall (PASS)**: DP/EkamNet-E4 = `1.00` vs E2_v2 = `0.45` (100% recall of true rules).
+  - **S2 Decoy Resistance (PASS)**: DP/EkamNet-E4 = `0.00` decoy claims (100% decoy trap resistance).
+  - **S1 Brier Regret (PARTIAL)**: DP/EkamNet-E4 = `0.0593` (requires early-stream prior smoothing for s_hat).
+* **Decision**: Mechanically evaluate the pre-registered `gate_e4.yaml` three-branch interpretation table:
+  - **Branch**: **`PARTIAL_FIX_B`**
+  - **Consequence**: Fix B scope keying successfully resolves S4 scoped reasoning and S1/S2 discovery recall. Fix A empirical probability estimation improves ECE to 0.1395 but requires prior smoothing for early-stream convergence.
+  - **Action**: Register scope-keyed representation for Phase 2 and register probability estimator prior smoothing experiment.
+
 
 ---
 
