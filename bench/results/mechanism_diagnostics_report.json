@@ -1,0 +1,30 @@
+{
+  "study_1_calibration": {
+    "phase_a": {
+      "dp_brier_regret": 0.05723660750232948,
+      "flat_brier_regret": 0.006706859260653147,
+      "avg_dp_stating_gap": 0.12660255989400318
+    },
+    "phase_b": {
+      "dp_brier_regret": 0.010847705448130969,
+      "flat_brier_regret": 0.001342669671350584,
+      "avg_dp_stating_gap": 0.07221974319062364
+    },
+    "phase_c": {
+      "dp_brier_regret": 0.024981310404500107,
+      "flat_brier_regret": 0.00027602900840920097,
+      "avg_dp_stating_gap": 0.104383415119439
+    }
+  },
+  "study_2_recall": {
+    "d1_e1_conf": 0.6320381100424244,
+    "d2_e2_conf": 0.3089743334028593,
+    "d1_e1_promoted": true,
+    "d2_e2_promoted": false
+  },
+  "study_3_scoped": {
+    "dp_beliefs_count": 0,
+    "ctx_beliefs_count": 3,
+    "d1_e1_conf": 0.2880536675932406
+  }
+}
