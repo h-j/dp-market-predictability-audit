@@ -18,6 +18,24 @@ This register tracks "what remains unknown or unverified" in the substrate. It o
 | **SD-006** | **Bypassed Scientific Validation Gates** `[CLEARED]` | Historically, Milestone 5, 6, and 7 completion gates were hardcoded to `PASS`. Removed all hardcoded `PASS` literals from `verify_scientific_closures.py`, pre-registered MME thresholds in `config/cognition.yaml`, and dynamically evaluate honest verdicts (`PASS | FAIL | INSUFFICIENT EVIDENCE`). | Resolved via PROMPT R3. Verified by `tests/test_closure_gates.py`, `EVD-005` in `EKAMNET_EVIDENCE_LEDGER.md`, and `DEC-009` in `EKAMNET_DECISION_LEDGER.md`. | Cleared: Pre-registered MME thresholds in `config/cognition.yaml`; hardcoded PASS literals eliminated; honest gate verdicts committed & reflected in program state. |
 
 | **SD-007** | **Zero Resolved Evidence Accumulation in Market Replay** `[CLEARED]` | Historically, market replay accumulated zero evidence (all posteriors at Beta prior 0.50) due to plumbing gaps: `ValidationRecord` terminal states (`SUPPORTED`/`CONTRADICTED`) were not delivered to `ScoredConfidenceEngine.evolve()`, and offline compiler fallbacks lacked canonical proposition structure. | Resolved via PROMPT C2. Instrumented `telemetry/evidence_funnel.py`, wired `ValidationRecord` terminal outcomes to `confidence_engine.evolve()`, and verified with `tests/test_evidence_funnel.py` wiring canary. Post-fix 35-day replay delivered 15 resolutions (4 SUPPORTED, 11 CONTRADICTED), moving 15 lineages off prior 0.50. |
+| **SD-008** | **DP Lifecycle Predictive Underperformance & Promotion Gate Recall Gap** | On the ground-truth benchmark (20 seeds, reference baselines), the DP lifecycle underperforms plain Bayesian baselines on prediction quality: (a) Brier regret vs oracle is worst of three learners in every scenario; (b) Discovery recall is 0.45-0.48 (vs 1.00 for both baselines); (c) S4 scoped rule scored 0.00 precision and 0.00 recall; (d) S3 recovery advantage (292 vs 1874 steps) is attributable to confidence decay, not superior reasoning. | Benchmark Gate A (PROMPT C3 / E2_v2). Prevents claims of predictive superiority over baseline learners. | `OPEN`. Governance note: SD-008 may NOT be cleared by tuning constants against the benchmark scenarios; it is cleared only by a separately pre-registered design-change experiment with its own gate. |
+
+
+---
+
+## Detailed Scientific Debt Records
+
+### SD-008: DP Lifecycle Predictive Underperformance & Promotion Gate Recall Gap
+
+* **Status**: `OPEN`
+* **Statement**: "On the ground-truth benchmark (20 seeds, reference baselines), the DP lifecycle underperforms plain Bayesian baselines on prediction quality:
+- Brier regret vs oracle is worst of three learners in every scenario (S1 0.068 vs FlatBayesian 0.0005; S3 0.052 vs Windowed 0.0038; S4 0.116 vs 0.033).
+- Discovery recall is 0.45-0.48 (vs 1.00 for both baselines): the promotion gate is high-precision, low-recall - it discards more than half of true rules.
+- S4 (scoped rule): DP scored precision 0.00 and recall 0.00 - the scope machinery found zero correct scoped beliefs.
+- The only clause DP passes is S3 recovery vs FlatBayesian (292 vs 1874 steps), attributable to confidence decay, not superior reasoning; it loses S3 recovery to WindowedFrequency (124 steps).
+Interpretation (hypotheses, NOT yet acted on): (a) promotion threshold too conservative -> low recall; (b) Beta-confidence -> predicted-probability mapping is miscalibrated -> high Brier; (c) scope predicate handling fails on S4's context gating. Root cause unconfirmed."
+* **Governance Note**: SD-008 may NOT be cleared by tuning constants against the benchmark scenarios; it is cleared only by a separately pre-registered design-change experiment with its own gate.
+
 
 
 

@@ -219,6 +219,8 @@ This table outlines the corrections applied to the program state to eliminate cl
   - **S1 Brier Regret (FAIL)**: DP/EkamNet = `0.0679` vs FlatBayesian = `0.0005` (static stream penalty due to promotion thresholding).
   - **Calibration**: DP/EkamNet ECE = `0.1630` across all scenarios $\times$ 20 seeds.
 * **Registered Governance Consequence**: Per `gate_a.yaml` `AMBIGUOUS` branch, mixed results require registering an extension (longer horizons or higher seed counts) without modifying frozen parameters ($k_{\text{falsify}}=3.0, \lambda=0.01$, promotion tiers).
+* **2026-07-24 Claim-Drift Correction**: E2_v2 (Gate A) returned AMBIGUOUS trending toward the FAIL region: DP does not currently outperform architecture-free baselines on ground-truth prediction (see `SD-008`). Characterization/freeze remains LOCKED. No lifecycle claim of predictive superiority is supported. Next step is a pre-registered design-change experiment targeting the SD-008 hypotheses; no tuning against the benchmark is permitted in the interim.
+
 
 
 

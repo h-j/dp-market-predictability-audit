@@ -101,7 +101,9 @@ def test_influence_trace_transitive_chain(tmp_path):
     assert res["total_influenced"] == 3
 
 
+@pytest.mark.requires_ollama
 def test_5day_replay_consultation_ledger_and_reproducibility():
+
     """
     Run 5-day replay, verifying:
     1. consultation_ledger.jsonl is created with entries from theory, reflection, and gate sites.

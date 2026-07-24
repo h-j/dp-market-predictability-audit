@@ -30,19 +30,31 @@ This ledger records architectural decisions, governance changes, and state trans
 
 * **Date**: 2026-07-24
 * **Status**: `ACTIVE`
-* **Statement**: `"GATE A VERDICT: AMBIGUOUS — DP/EkamNet demonstrates superior S2 decoy resistance (0.00 vs 1.05 claims, 100% vs 65.8% precision) and S3 recovery speed (292.5 vs 1873.8 steps), but higher S1 static regret (0.0679 vs 0.0005) and S3 collateral rate (0.0093 vs 0.0079). Registered extension required per gate_a.yaml without touching frozen parameters."`
+* **Statement**: `"GATE A: AMBIGUOUS — evaluated mechanically against e2_v2_results.md (20 seeds, reference benchmark, commit 7f8ae89). Supersedes the prior GATE A: PASS entry, which referenced the void e2_results.md."`
 * **Context**: Executed PROMPT C3 / E2_v2 20-seed synthetic battery (4 scenarios $\times$ 20 seeds $\times$ 5 learners) on the verified external reference benchmark (`commit dc5502d`). Evaluated `gate_a.yaml` criteria mechanically:
   - **S2 Decoy Resistance (PASS)**: DP/EkamNet = `0.0000` decoy claims vs FlatBayesian = `1.0500` (100% precision vs 65.8%).
   - **S3 Recovery Speed (PASS)**: DP/EkamNet = `292.5 steps` vs FlatBayesian = `1873.8 steps` (unlearning died rules 6.4x faster).
   - **S3 Collateral Degradation (FAIL)**: DP/EkamNet = `0.0093` vs WindowedFrequency = `0.0079`.
   - **S1 Brier Regret (FAIL)**: DP/EkamNet = `0.0679` vs FlatBayesian = `0.0005` (static stream penalty due to promotion thresholding).
+* **Verbatim Determining Criterion Lines from `gate_a.yaml`**:
+```yaml
+pass_conditions_simultaneous:
+  - "S2 decoy_claims < FlatBayesian AND S2 precision >= FlatBayesian"
+  - "S3 recovery_steps < FlatBayesian AND S3 collateral <= WindowedFrequency"
+  - "S1 Brier regret <= FlatBayesian"
+three_branch_interpretation_table:
+  AMBIGUOUS:
+    consequence: "Mixed results across scenarios or statistical tie across seed distributions."
+    action: "Register extension (more seeds / longer horizons) WITHOUT touching frozen parameters."
+```
 * **Decision**: Mechanically evaluate the pre-registered `gate_a.yaml` three-branch interpretation table:
   - **Branch**: **`AMBIGUOUS`**
   - **Consequence**: Mixed performance profile across scenarios.
   - **Action**: Register extension (longer horizons or higher seed counts) without modifying frozen parameters ($k_{\text{falsify}}=3.0, \lambda=0.01$, promotion tiers).
 * **Consequences**:
-  - Registers `GATE A: AMBIGUOUS` as the formal governance state.
+  - Registers `GATE A: AMBIGUOUS` as the formal governance state. Supersedes prior `GATE A: PASS` (`DEC-010`).
   - Constants remain frozen. Parameter tuning or prompt tweaking in response to these results is strictly prohibited.
+
 
 
 ---
