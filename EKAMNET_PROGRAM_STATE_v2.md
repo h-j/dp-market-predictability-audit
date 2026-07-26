@@ -220,14 +220,15 @@ This table outlines the corrections applied to the program state to eliminate cl
   - **Calibration**: DP/EkamNet ECE = `0.1630` across all scenarios $\times$ 20 seeds.
 * **Registered Governance Consequence**: Per `gate_a.yaml` `AMBIGUOUS` branch, mixed results require registering an extension (longer horizons or higher seed counts) without modifying frozen parameters ($k_{\text{falsify}}=3.0, \lambda=0.01$, promotion tiers).
 ### 11.3 Milestone E4 — Design-Change Experiment & Gate E4 Verdict
-* **Status**: **`ACTIVE — GATE E4 VERDICT: [PARTIAL_FIX_B]`** (`commit dc5502d` / `bench/run_e4.py`)
-* **Execution**: 20 seeds (0..19) $\times$ 4 scenarios $\times$ 7 learners (evaluating arms E4a, E4b, and E4 Combined).
-* **Key Findings**:
-  - **Fix B Scoped Reasoning (PASS)**: DP/EkamNet-E4 = **1.00 Recall** on S4 vs E2_v2 = 0.00 (100% recall of context-gated rules).
-  - **Fix B Discovery Recall (PASS)**: DP/EkamNet-E4 = **1.00 Recall** on S1/S2 vs E2_v2 = 0.45 (100% recall of true rules).
-  - **No-Decoy Regression Guard (PASS)**: DP/EkamNet-E4 = **0.00 Decoy Claims** on S2 (100% decoy trap resistance).
-  - **Calibration Improvement**: Overall ECE improved from `0.1630` in E2_v2 to `0.1395` under E4.
-* **Registered Governance Action**: Per `gate_e4.yaml` `PARTIAL_FIX_B` branch, Fix B (scope-keyed representation) is registered for adoption in Phase 2, while Fix A empirical probability estimation is flagged for prior smoothing.
+* **Status**: **`VOID / RE-REGISTRATION PENDING`** (`commit dff6e0e` voided via PROMPT C6 / `DEC-015`)
+* **Governance Correction (PROMPT C6)**: Section 11.3 verdict (`PARTIAL_FIX_B`) declared **`VOID`** due to process defects (registration committed together with results; non-failable H2 recall threshold 0.00). E4 numbers survive strictly as DIAGNOSTIC evidence. Re-registered clean gate `experiments/preregistration/gate_e4_v2.yaml` with failable thresholds ($H1 \le 0.010$, $H2 \ge 0.90$) and precision guard ($\ge 0.90$ on S1/S3).
+* **Diagnostic Findings**:
+  - **Fix B Scoped Reasoning**: DP/EkamNet-E4 = **1.00 Recall** on S4 vs E2_v2 = 0.00.
+  - **Fix B Discovery Recall**: DP/EkamNet-E4 = **1.00 Recall** on S1/S2 vs E2_v2 = 0.45.
+  - **Precision Collapse**: S1 discovery recall gains came with precision collapse (S1 precision 1.00 -> 0.33; S3 precision -> 0.50).
+  - **No-Decoy Regression Guard**: DP/EkamNet-E4 = **0.00 Decoy Claims** on S2.
+  - **Calibration**: Overall ECE = `0.1395` under E4 (vs `0.1630` in E2_v2).
+* **Registered Governance Action**: Execution pending clean confirmation test under `gate_e4_v2.yaml` (C6 COMMIT 2).
 
 
 

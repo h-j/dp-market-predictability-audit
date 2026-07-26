@@ -21,7 +21,30 @@ This ledger records architectural decisions, governance changes, and state trans
 | **DEC-011** | 2026-07-24 | Reversal of Gate A Branch Outcome (PROMPT C1) | ACTIVE | Governance Correction & Record Integrity |
 | **DEC-012** | 2026-07-24 | Counterfactual Ablation Protocol & Precondition Gate Verdict (PROMPT E1_v2) | ACTIVE | Governance & Counterfactual Validation |
 | **DEC-013** | 2026-07-24 | Registration of Gate A Branch Verdict [AMBIGUOUS] from 20-Seed Reference Battery (PROMPT C3 / E2_v2) | ACTIVE | Benchmark Governance & Research Extension |
-| **DEC-014** | 2026-07-24 | Registration of Gate E4 Verdict [PARTIAL_FIX_B] from Milestone E4 Design-Change Battery (PROMPT E4) | ACTIVE | Architecture Governance & Scope Representation |
+| **DEC-014** | 2026-07-24 | Registration of Gate E4 Verdict [PARTIAL_FIX_B] from Milestone E4 Design-Change Battery (PROMPT E4) | VOID / REVERTED | Architecture Governance & Scope Representation |
+| **DEC-015** | 2026-07-26 | Voiding of Gate E4 Verdict & Re-Registration of Gate E4_v2 (PROMPT C6) | ACTIVE | Governance Correction & Record Integrity |
+
+---
+
+## Decision Record Details
+
+### DEC-015: Voiding of Gate E4 Verdict & Re-Registration of Gate E4_v2 (PROMPT C6)
+
+* **Date**: 2026-07-26
+* **Status**: `ACTIVE`
+* **Statement**: `"GATE E4 VERDICT [PARTIAL_FIX_B] (DEC-014) VOIDED: process defects invalidate blind-threshold guarantee and include non-failable H2 threshold. Empirical metrics retained as diagnostic evidence; Gate E4_v2 registered cleanly."`
+* **Context**: External verification of the E4 run (`commit dff6e0e`) identified two process defects:
+  1. Registration (`gate_e4.yaml`) and results (`e4_results.md`) were committed together in the same commit (`dff6e0e`). No commit exists where registration exists without results, breaking the blind-threshold guarantee.
+  2. Registered H2 criterion included `recall: target val 0.00`, which passes on any non-negative value (a null bar that cannot fail).
+  Additionally, numbers showed recall gain was accompanied by precision collapse on S1 (recall 0.40 -> 1.00 but precision 1.00 -> 0.33; S3 precision -> 0.50), a regression un-guarded by the original gate.
+* **Decision**: Per repo governance (E2 void precedent, DEC-011):
+  1. Declare the Gate E4 `PARTIAL_FIX_B` verdict VOID.
+  2. Retain all E4 numerical results as DIAGNOSTIC evidence only.
+  3. Re-register `experiments/preregistration/gate_e4_v2.yaml` with failable thresholds ($H1 \le 0.010$, $H2 \ge 0.90$ recall AND precision), decoy guard ($\le 0.05$), and a new precision guard ($\ge 0.90$ on S1 and S3).
+* **Consequences**:
+  - Reverts `DEC-014` status to `VOID / REVERTED`.
+  - Marks `experiments/preregistration/gate_e4.yaml` VOID in place.
+  - Registers `experiments/preregistration/gate_e4_v2.yaml` as the sole active pre-registration gate for Milestone E4.
 
 ---
 
@@ -30,7 +53,7 @@ This ledger records architectural decisions, governance changes, and state trans
 ### DEC-014: Registration of Gate E4 Verdict [PARTIAL_FIX_B] from Milestone E4 Battery (PROMPT E4)
 
 * **Date**: 2026-07-24
-* **Status**: `ACTIVE`
+* **Status**: `VOID / REVERTED (Superseded by DEC-015)`
 * **Statement**: `"GATE E4 VERDICT: PARTIAL_FIX_B — Fix B (scope-keyed belief representation (c, e, x)) resolves S4 scoped reasoning (raising recall from 0.00 to 1.00) and S1/S2 discovery recall (raising recall from 0.45 to 1.00) while maintaining 0.00 decoy claims. Fix A (s_hat empirical rule strength) improves ECE (0.1395) but requires prior smoothing for early-stream Brier regret."`
 * **Context**: Executed Milestone E4 20-seed synthetic battery (4 scenarios $\times$ 20 seeds $\times$ 7 learners) comparing isolated arms E4a (Fix A only), E4b (Fix B only), and E4 (Combined) on the verified reference benchmark (`commit dc5502d`). Evaluated `gate_e4.yaml` criteria mechanically:
   - **S4 Scoped Discovery Recall (PASS)**: DP/EkamNet-E4 = `1.00` vs E2_v2 = `0.00` (100% recall of context-gated rules).

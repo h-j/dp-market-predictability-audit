@@ -1,0 +1,77 @@
+# Pre-Registered Verification Gate Criteria: Gate E4 v2 (PROMPT C6 Re-Registration)
+# Registered: 2026-07-26
+
+gate_e4_v2:
+  version: "2.0.0"
+  registered_date: "2026-07-26"
+  experiment: "e4_design_change_battery_v2"
+  status: "ACTIVE"
+
+  frozen_parameters:
+    k_falsify: 3.0
+    decay_lambda: 0.01
+    promotion_threshold: 0.50
+
+  hypotheses:
+    H1_fix_a_calibration:
+      description: "Fix A probability estimation resolves calibration regret vs oracle"
+      criteria:
+        - scenario: "S1"
+          metric: "brier_regret"
+          operator: "<="
+          target_val: 0.010
+          timeframe: "steady-state (t>=300)"
+        - scenario: "S3"
+          metric: "brier_regret"
+          operator: "<="
+          target_val: 0.010
+          timeframe: "stable-effect"
+
+    H2_fix_b_scoped_discovery:
+      description: "Fix B scope keying resolves S4 scoped reasoning without precision loss"
+      criteria:
+        - scenario: "S4"
+          metric: "recall"
+          operator: ">="
+          target_val: 0.90
+        - scenario: "S4"
+          metric: "precision"
+          operator: ">="
+          target_val: 0.90
+
+  guards:
+    precision_guard:
+      description: "A fix arm may only be credited if DP precision on S1 and S3 does not fall below pre-fix-A level"
+      criteria:
+        - scenario: "S1"
+          metric: "precision"
+          operator: ">="
+          target_val: 0.90
+        - scenario: "S3"
+          metric: "precision"
+          operator: ">="
+          target_val: 0.90
+    decoy_guard:
+      description: "Decoy claims rate on S2 must remain near zero"
+      criteria:
+        - scenario: "S2"
+          metric: "decoy_claims"
+          operator: "<="
+          target_val: 0.05
+
+  four_branch_interpretation_table:
+    FIX_CONFIRMED:
+      condition: "H1 PASS AND H2 PASS AND guards hold"
+      consequence: "Wiring fixes resolve both calibration regret and scoped reasoning."
+    STRUCTURAL_CALIBRATION_BOUND:
+      condition: "H1 FAIL AND H2 PASS AND guards hold"
+      consequence: "Scope is wiring-fixable; calibration is not. Pivot to auditability-first contribution; P1 unaffected."
+    PARTIAL:
+      condition: "H1 PASS AND H2 FAIL AND guards hold"
+      consequence: "Calibration fixed, scope needs work."
+    STRUCTURAL:
+      condition: "H1 FAIL AND H2 FAIL"
+      consequence: "Both bounds structural."
+    REGRESSION:
+      condition: "Any credited arm failing precision_guard"
+      consequence: "That arm's recall gain is recorded as a REGRESSION, not credited."

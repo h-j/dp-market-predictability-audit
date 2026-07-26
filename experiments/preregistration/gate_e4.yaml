@@ -1,7 +1,9 @@
 # Pre-Registered Verification Gate Criteria: Gate E4 (PROMPT E4)
 # Registered: 2026-07-24
+# STATUS: VOID (Voided 2026-07-26 per C6 governance; process defect: registration committed with results, non-failable H2 threshold recall 0.00). Superseded by gate_e4_v2.yaml.
 
 gate_e4:
+  status: "VOID"
   version: "1.0.0"
   registered_date: "2026-07-24"
   experiment: "e4_design_change_battery"
