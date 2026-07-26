@@ -1,14 +1,15 @@
 """
-Unit & Integration Tests for Milestone E4 Design-Change Experiment (PROMPT E4).
+Unit & Integration Tests for Milestone E4 Design-Change Experiment (PROMPT E4 / C6).
 
 Verifies:
 1. Per-seed determinism across 20-seed E4 battery runs.
 2. Fix A vs Fix B isolation in E4a / E4b arms.
-3. Gate E4 branch mapping reachability from registered gate_e4.yaml.
+3. Frozen runtime parameters and pre-registered gate_e4_v2.yaml.
 """
 from pathlib import Path
 import pytest
-from bench.run_e4 import run_single_seed_battery
+import yaml
+from bench.run_e4 import run_single_seed_battery, assert_frozen_constants
 from experiments.e4_adapter import E4Adapter
 from bench.synthworld.scenarios import s1_clean, s4_scope
 
@@ -45,3 +46,16 @@ def test_e4_arm_isolation():
     # E4b and E4 use scope-conditioned hypotheses
     assert any(h.scope_var == "C" for h in ad_e4b.hypotheses)
     assert any(h.scope_var == "C" for h in ad_e4.hypotheses)
+
+
+def test_frozen_constants_and_gate_v2():
+    """Verify runtime assertions and gate_e4_v2.yaml existence."""
+    assert_frozen_constants()
+    
+    gate_v2_path = Path(__file__).parent.parent / "experiments" / "preregistration" / "gate_e4_v2.yaml"
+    assert gate_v2_path.exists()
+    
+    with open(gate_v2_path, "r", encoding="utf-8") as f:
+        data = yaml.safe_load(f)
+    assert data["gate_e4_v2"]["version"] == "2.0.0"
+    assert data["gate_e4_v2"]["frozen_parameters"]["k_falsify"] == 3.0

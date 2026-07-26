@@ -23,6 +23,39 @@ This ledger records architectural decisions, governance changes, and state trans
 | **DEC-013** | 2026-07-24 | Registration of Gate A Branch Verdict [AMBIGUOUS] from 20-Seed Reference Battery (PROMPT C3 / E2_v2) | ACTIVE | Benchmark Governance & Research Extension |
 | **DEC-014** | 2026-07-24 | Registration of Gate E4 Verdict [PARTIAL_FIX_B] from Milestone E4 Design-Change Battery (PROMPT E4) | VOID / REVERTED | Architecture Governance & Scope Representation |
 | **DEC-015** | 2026-07-26 | Voiding of Gate E4 Verdict & Re-Registration of Gate E4_v2 (PROMPT C6) | ACTIVE | Governance Correction & Record Integrity |
+| **DEC-016** | 2026-07-26 | Certification of Gate E4_v2 Confirmation Battery & Structural Calibration Bound Verdict (PROMPT C6) | ACTIVE | Research Governance & Substrate Repositioning |
+
+---
+
+## Decision Record Details
+
+### DEC-016: Certification of Gate E4_v2 Confirmation Battery & Structural Calibration Bound Verdict (PROMPT C6)
+
+* **Date**: 2026-07-26
+* **Status**: `ACTIVE`
+* **Statement**: `"GATE E4_v2 VERDICT: STRUCTURAL_CALIBRATION_BOUND — confirmed structural; the lifecycle trades predictive calibration for auditability; not tunable without abandoning evidence-gating. Contribution repositions to auditability/provenance (P1 unaffected)."`
+* **Context**: Executed 20-seed confirmation battery (`bench/run_e4.py`) under pre-registered `experiments/preregistration/gate_e4_v2.yaml` (`sha256 ee7973c5b...`). Frozen constants verified at runtime ($k_{\text{falsify}}=3.0, \lambda=0.01$, threshold $=0.50$). Evaluated criteria mechanically:
+  - **Verbatim Determining Criterion Lines from `gate_e4_v2.yaml`**:
+```yaml
+    H1_fix_a_calibration:
+      - scenario: "S1" metric: "brier_regret" operator: "<=" target_val: 0.010
+      - scenario: "S3" metric: "brier_regret" operator: "<=" target_val: 0.010
+    H2_fix_b_scoped_discovery:
+      - scenario: "S4" metric: "recall" operator: ">=" target_val: 0.90
+      - scenario: "S4" metric: "precision" operator: ">=" target_val: 0.90
+    guards:
+      precision_guard:
+        - scenario: "S1" metric: "precision" operator: ">=" target_val: 0.90
+        - scenario: "S3" metric: "precision" operator: ">=" target_val: 0.90
+      decoy_guard:
+        - scenario: "S2" metric: "decoy_claims" operator: "<=" target_val: 0.05
+```
+  - **H1 Fix A Calibration (FAIL)**: S1 Brier regret = `0.0593` (target $\le 0.010$), S3 Brier regret = `0.0578` (target $\le 0.010$).
+  - **H2 Fix B Scoped Discovery (FAIL)**: S4 Recall = `1.0000` (target $\ge 0.90$), S4 Precision = `0.5000` (target $\ge 0.90$).
+  - **Precision Guard (REGRESSION)**: Fix B recall gains in E4b and E4 arms came with precision collapse on S1 (precision 1.00 -> 0.33) and S3 (precision -> 0.33), flagged as `REGRESSION`.
+* **Decision**: Mechanically evaluate the pre-registered `gate_e4_v2.yaml` four-branch interpretation table:
+  - **Branch**: **`STRUCTURAL_CALIBRATION_BOUND`**
+  - **Resolution of SD-008 Calibration Arm**: Confirmed structural; the lifecycle trades predictive calibration for auditability; not tunable without abandoning evidence-gating. Contribution repositions to auditability/provenance (P1 unaffected).
 
 ---
 

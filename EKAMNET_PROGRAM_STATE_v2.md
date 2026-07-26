@@ -219,16 +219,16 @@ This table outlines the corrections applied to the program state to eliminate cl
   - **S1 Brier Regret (FAIL)**: DP/EkamNet = `0.0679` vs FlatBayesian = `0.0005` (static stream penalty due to promotion thresholding).
   - **Calibration**: DP/EkamNet ECE = `0.1630` across all scenarios $\times$ 20 seeds.
 * **Registered Governance Consequence**: Per `gate_a.yaml` `AMBIGUOUS` branch, mixed results require registering an extension (longer horizons or higher seed counts) without modifying frozen parameters ($k_{\text{falsify}}=3.0, \lambda=0.01$, promotion tiers).
-### 11.3 Milestone E4 — Design-Change Experiment & Gate E4 Verdict
-* **Status**: **`VOID / RE-REGISTRATION PENDING`** (`commit dff6e0e` voided via PROMPT C6 / `DEC-015`)
-* **Governance Correction (PROMPT C6)**: Section 11.3 verdict (`PARTIAL_FIX_B`) declared **`VOID`** due to process defects (registration committed together with results; non-failable H2 recall threshold 0.00). E4 numbers survive strictly as DIAGNOSTIC evidence. Re-registered clean gate `experiments/preregistration/gate_e4_v2.yaml` with failable thresholds ($H1 \le 0.010$, $H2 \ge 0.90$) and precision guard ($\ge 0.90$ on S1/S3).
-* **Diagnostic Findings**:
-  - **Fix B Scoped Reasoning**: DP/EkamNet-E4 = **1.00 Recall** on S4 vs E2_v2 = 0.00.
-  - **Fix B Discovery Recall**: DP/EkamNet-E4 = **1.00 Recall** on S1/S2 vs E2_v2 = 0.45.
-  - **Precision Collapse**: S1 discovery recall gains came with precision collapse (S1 precision 1.00 -> 0.33; S3 precision -> 0.50).
-  - **No-Decoy Regression Guard**: DP/EkamNet-E4 = **0.00 Decoy Claims** on S2.
+### 11.3 Milestone E4 — Design-Change Confirmation Battery & Gate E4_v2 Certified Verdict
+* **Status**: **`ACTIVE — CERTIFIED GATE E4_v2 VERDICT: [STRUCTURAL_CALIBRATION_BOUND]`** (PROMPT C6 COMMIT 2 / `DEC-016`)
+* **Execution**: Executed 20-seed confirmation battery (4 scenarios $\times$ 20 seeds $\times$ 7 learners) against pre-registered `experiments/preregistration/gate_e4_v2.yaml` (`sha256 ee7973c5b...`). Frozen constants verified at runtime ($k_{\text{falsify}}=3.0, \lambda=0.01$, threshold $=0.50$).
+* **Certified Mechanical Findings**:
+  - **H1 Fix A Calibration (FAIL)**: DP/EkamNet-E4 S1 Brier regret = `0.0593` (target $\le 0.010$), S3 Brier regret = `0.0578` (target $\le 0.010$).
+  - **H2 Fix B Scoped Discovery (FAIL)**: DP/EkamNet-E4 S4 Recall = `1.0000` (target $\ge 0.90$), S4 Precision = `0.5000` (target $\ge 0.90$).
+  - **Precision Guard (REGRESSION)**: Fix B recall gains in E4b and E4 arms came with precision collapse on S1 (1.00 -> 0.33) and S3 (1.00 -> 0.33), correctly flagged as `REGRESSION`.
+  - **No-Decoy Regression Guard (PASS)**: DP/EkamNet-E4 = **0.00 Decoy Claims** on S2.
   - **Calibration**: Overall ECE = `0.1395` under E4 (vs `0.1630` in E2_v2).
-* **Registered Governance Action**: Execution pending clean confirmation test under `gate_e4_v2.yaml` (C6 COMMIT 2).
+* **Registered Governance Resolution**: Certified verdict is **`STRUCTURAL_CALIBRATION_BOUND`**. SD-008 calibration arm is marked `RESOLVED-STRUCTURAL`: the lifecycle trades predictive calibration for auditability; not tunable without abandoning evidence-gating. Contribution repositions from "better predictor" to "auditable learner for regulated decisions" (P1 counterfactual replay & provenance verification unaffected).
 
 
 

@@ -18,7 +18,7 @@ This register tracks "what remains unknown or unverified" in the substrate. It o
 | **SD-006** | **Bypassed Scientific Validation Gates** `[CLEARED]` | Historically, Milestone 5, 6, and 7 completion gates were hardcoded to `PASS`. Removed all hardcoded `PASS` literals from `verify_scientific_closures.py`, pre-registered MME thresholds in `config/cognition.yaml`, and dynamically evaluate honest verdicts (`PASS | FAIL | INSUFFICIENT EVIDENCE`). | Resolved via PROMPT R3. Verified by `tests/test_closure_gates.py`, `EVD-005` in `EKAMNET_EVIDENCE_LEDGER.md`, and `DEC-009` in `EKAMNET_DECISION_LEDGER.md`. | Cleared: Pre-registered MME thresholds in `config/cognition.yaml`; hardcoded PASS literals eliminated; honest gate verdicts committed & reflected in program state. |
 
 | **SD-007** | **Zero Resolved Evidence Accumulation in Market Replay** `[CLEARED]` | Historically, market replay accumulated zero evidence (all posteriors at Beta prior 0.50) due to plumbing gaps: `ValidationRecord` terminal states (`SUPPORTED`/`CONTRADICTED`) were not delivered to `ScoredConfidenceEngine.evolve()`, and offline compiler fallbacks lacked canonical proposition structure. | Resolved via PROMPT C2. Instrumented `telemetry/evidence_funnel.py`, wired `ValidationRecord` terminal outcomes to `confidence_engine.evolve()`, and verified with `tests/test_evidence_funnel.py` wiring canary. Post-fix 35-day replay delivered 15 resolutions (4 SUPPORTED, 11 CONTRADICTED), moving 15 lineages off prior 0.50. |
-| **SD-008** | **DP Lifecycle Predictive Underperformance & Calibration Bound** | Across three DP arms (Fix A, Fix B, combined), S1/S3 Brier regret remained ~0.06 vs FlatBayesian ~0.0005-0.018, unmoved by the wiring fixes; recall gains came with precision collapse (S1 precision 1.00->0.33). Provisional structural interpretation: the lifecycle trades predictive calibration for auditability; pending clean confirmation (C6 COMMIT 2). | Benchmark Gate A & Gate E4. Prevents claims of predictive superiority over baseline learners. | `OPEN (Diagnostic Reading Registered)`. Governance note: Pending clean confirmation test under `gate_e4_v2.yaml`. |
+| **SD-008** | **DP Lifecycle Predictive Underperformance & Calibration Bound** `[RESOLVED-STRUCTURAL]` | Confirmed structural via pre-registered 20-seed confirmation battery under `gate_e4_v2.yaml`. S1/S3 Brier regret remained ~0.06 vs FlatBayesian ~0.0005, unmoved by Fix A/B wiring modifications; recall gains came with precision collapse (S1 precision 1.00->0.33, flagged as REGRESSION). The DP lifecycle trades predictive calibration for provable auditability; not tunable without abandoning evidence-gating. | Milestone E4 / Gate E4_v2 (DEC-016). Repositions contribution to auditability and provenance (P1 unaffected). | `RESOLVED-STRUCTURAL (Calibration Arm)`. Scope arm remains open for non-collapsing candidate enumeration design. |
 
 
 ---
@@ -27,9 +27,9 @@ This register tracks "what remains unknown or unverified" in the substrate. It o
 
 ### SD-008: DP Lifecycle Predictive Underperformance & Calibration Bound
 
-* **Status**: `OPEN (Diagnostic Reading Registered)`
-* **Statement**: "Across three DP arms (Fix A, Fix B, combined), S1/S3 Brier regret remained ~0.06 vs FlatBayesian ~0.0005-0.018, unmoved by the wiring fixes; recall gains came with precision collapse (S1 precision 1.00->0.33). Provisional structural interpretation: the lifecycle trades predictive calibration for auditability; pending clean confirmation (C6 COMMIT 2)."
-* **Governance Note**: SD-008 may NOT be cleared by tuning constants against the benchmark scenarios; it is evaluated strictly under the pre-registered `gate_e4_v2.yaml` confirmation test.
+* **Status**: `RESOLVED-STRUCTURAL (Calibration Arm)`
+* **Statement**: "Confirmed structural (Gate E4_v2 certified verdict: STRUCTURAL_CALIBRATION_BOUND, DEC-016). Across three DP arms, S1/S3 Brier regret remained ~0.06 vs FlatBayesian ~0.0005, unmoved by the wiring fixes; recall gains came with precision collapse (S1 precision 1.00->0.33). The lifecycle trades predictive calibration for auditability; not tunable without abandoning evidence-gating. Contribution repositions to auditability/provenance (P1 unaffected)."
+* **Governance Note**: Resolved as a structural calibration bound via certified 20-seed confirmation test under pre-registered `gate_e4_v2.yaml`.
 
 
 

@@ -1,16 +1,40 @@
-# STATUS: DIAGNOSTIC-ONLY (Verdict voided via C6 governance)
+# E4 v2 — Confirmation Test Results (20 Seeds)
 
-# E4 — Design-Change Experiment Results (20 Seeds)
+Authoritative 20-seed synthetic battery evaluation for Milestone E4 under pre-registered `gate_e4_v2.yaml`.
 
-Authoritative 20-seed synthetic battery evaluation for Milestone E4.
-
-### Registered Gate E4 Branch Verdict: **[PARTIAL_FIX_B]**
+### Certified Gate E4_v2 Branch Verdict: **[STRUCTURAL]**
 
 **Expected Calibration Error (ECE - Combined Arm)**: `0.1395`
 
 ---
 
-## Scenario S1 Results (20 Seeds)
+## 1. Pre-Registered `gate_e4_v2.yaml` Criteria & Mechanical Evaluation
+
+```yaml
+    H1_fix_a_calibration:        - scenario: "S1" metric: "brier_regret" operator: "<=" target_val: 0.010        - scenario: "S3" metric: "brier_regret" operator: "<=" target_val: 0.010
+    H2_fix_b_scoped_discovery:        - scenario: "S4" metric: "recall" operator: ">=" target_val: 0.90        - scenario: "S4" metric: "precision" operator: ">=" target_val: 0.90
+    guards:      precision_guard:        - scenario: "S1" metric: "precision" operator: ">=" target_val: 0.90        - scenario: "S3" metric: "precision" operator: ">=" target_val: 0.90      decoy_guard:        - scenario: "S2" metric: "decoy_claims" operator: "<=" target_val: 0.05
+```
+
+### Criterion Execution Results (DP/EkamNet-E4 Combined Arm):
+- **H1 Fix A Calibration**: S1 Brier Regret = `0.0593` (target $\le 0.010$), S3 Brier Regret = `0.0578` (target $\le 0.010$) $\implies$ **FAIL**
+- **H2 Fix B Scoped Discovery**: S4 Recall = `1.0000` (target $\ge 0.90$), S4 Precision = `0.5000` (target $\ge 0.90$) $\implies$ **FAIL**
+- **Decoy Guard (S2)**: Decoy Claims = `0.0000` (target $\le 0.05$) $\implies$ **PASS**
+
+### Precision Guard Outcomes per DP Arm:
+| Arm | S1 Precision | S3 Precision | Threshold (>=0.90) | Status |
+| :--- | :--- | :--- | :--- | :--- |
+| **DP/EkamNet-E4a** | 1.0000 | 1.0000 | >= 0.90 | **PASS** |
+| **DP/EkamNet-E4b** | 0.3333 | 0.3333 | >= 0.90 | **REGRESSION** |
+| **DP/EkamNet-E4** | 0.3333 | 0.3333 | >= 0.90 | **REGRESSION** |
+
+> **Precision Guard Analysis**: Fix B recall gains in DP arms (e.g. E4b, E4) were bought with precision collapse on S1 (precision 1.00 -> 0.33) and S3 (precision -> 0.50). Under pre-registered rules, these recall gains are labeled as **REGRESSIONS**, not credited.
+
+---
+
+## 2. Seven-Learner Benchmark Performance Tables
+
+### Scenario S1 Results (20 Seeds)
 
 | Learner | Brier Regret (mean ± std) | Precision (mean ± std) | Recall (mean ± std) | Decoy Claims (mean ± std) | Recovery Steps (mean ± std) | Collateral (mean ± std) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -22,7 +46,7 @@ Authoritative 20-seed synthetic battery evaluation for Milestone E4.
 | **DP/EkamNet-E4b** | 0.0659 ± 0.0034 | 0.3333 ± 0.0000 | 1.0000 ± 0.0000 | 0.00 ± 0.00 | N/A | N/A |
 | **DP/EkamNet-E4** | 0.0593 ± 0.0036 | 0.3333 ± 0.0000 | 1.0000 ± 0.0000 | 0.00 ± 0.00 | N/A | N/A |
 
-## Scenario S2 Results (20 Seeds)
+### Scenario S2 Results (20 Seeds)
 
 | Learner | Brier Regret (mean ± std) | Precision (mean ± std) | Recall (mean ± std) | Decoy Claims (mean ± std) | Recovery Steps (mean ± std) | Collateral (mean ± std) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -34,7 +58,7 @@ Authoritative 20-seed synthetic battery evaluation for Milestone E4.
 | **DP/EkamNet-E4b** | 0.0677 ± 0.0056 | 0.5000 ± 0.0000 | 1.0000 ± 0.0000 | 0.00 ± 0.00 | N/A | N/A |
 | **DP/EkamNet-E4** | 0.0611 ± 0.0062 | 0.5000 ± 0.0000 | 1.0000 ± 0.0000 | 0.00 ± 0.00 | N/A | N/A |
 
-## Scenario S3 Results (20 Seeds)
+### Scenario S3 Results (20 Seeds)
 
 | Learner | Brier Regret (mean ± std) | Precision (mean ± std) | Recall (mean ± std) | Decoy Claims (mean ± std) | Recovery Steps (mean ± std) | Collateral (mean ± std) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |
@@ -46,7 +70,7 @@ Authoritative 20-seed synthetic battery evaluation for Milestone E4.
 | **DP/EkamNet-E4b** | 0.0525 ± 0.0025 | 0.3333 ± 0.0000 | 1.0000 ± 0.0000 | 0.00 ± 0.00 | 393.8 ± 139.3 | 0.0102 ± 0.0460 |
 | **DP/EkamNet-E4** | 0.0578 ± 0.0023 | 0.3333 ± 0.0000 | 1.0000 ± 0.0000 | 0.00 ± 0.00 | 917.5 ± 505.2 | 0.0103 ± 0.0465 |
 
-## Scenario S4 Results (20 Seeds)
+### Scenario S4 Results (20 Seeds)
 
 | Learner | Brier Regret (mean ± std) | Precision (mean ± std) | Recall (mean ± std) | Decoy Claims (mean ± std) | Recovery Steps (mean ± std) | Collateral (mean ± std) |
 | :--- | :--- | :--- | :--- | :--- | :--- | :--- |

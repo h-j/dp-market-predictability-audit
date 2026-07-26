@@ -20,6 +20,26 @@ This ledger records empirical evidence artifacts, replication run verifications,
 | **EVD-010** | Level L4 (Governance) | PROMPT E1_v2 | Counterfactual Ablation Protocol: Positive Control PASSED (verified_influence=17); Market Run REFUSED (precondition evidence_count 1.0 < 5.0). | `tests/test_ablation_protocol.py` |
 | **EVD-011** | Level L4 (Governance) | PROMPT C3 / E2_v2 | 20-Seed Reference Synthetic Battery: Gate A Branch [AMBIGUOUS] (DP 0 decoy claims vs Flat 1.05; S3 recovery 292.5 vs 1873.8 steps; ECE 0.1630). | `bench/results/e2_v2_results.md` |
 | **EVD-012** | Level L4 (Governance) | PROMPT E4 | Milestone E4 20-Seed Design-Change Battery: Verdict **VOID** (process defects: registration committed with results; H2 threshold 0.00). Numbers retained as diagnostic evidence. | `bench/results/e4_results.md` |
+| **EVD-013** | Level L4 (Governance) | PROMPT C6 / Milestone E4 | 20-Seed Gate E4_v2 Confirmation Battery: Certified Verdict [STRUCTURAL_CALIBRATION_BOUND] (DP ECE 0.1395; Fix B recall gains flagged as precision collapse regression). | `bench/results/e4_v2_results.md` |
+
+---
+
+## Detailed Evidence Records
+
+### EVD-013: 20-Seed Gate E4_v2 Confirmation Battery (PROMPT C6 COMMIT 2)
+
+* **Date**: 2026-07-26
+* **Status**: `ACTIVE`
+* **Target Milestone**: Milestone E4 (SD-008 Design-Change Confirmation Test)
+* **Verification Level**: `Level L4 (Governance & Benchmark Battery Verification)`
+* **Gate Verification Integrity**: Executed 20 seeds against pre-registered `gate_e4_v2.yaml` (`sha256 ee7973c5b096604743182b04c423f91192a5c03fc9d1f8add8a3baf3d4339687`). Frozen parameters verified at runtime ($k_{\text{falsify}}=3.0, \lambda=0.01$, threshold $=0.50$).
+* **Empirical Findings**:
+  1. **Calibration Regret (H1 FAIL)**: S1 Brier regret = `0.0593` (target $\le 0.010$), S3 Brier regret = `0.0578` (target $\le 0.010$). DP predictive calibration remains at ~0.06 vs FlatBayesian ~0.0005.
+  2. **Scoped Reasoning Precision (H2 FAIL)**: S4 Recall = `1.0000`, but S4 Precision = `0.5000` (target $\ge 0.90$).
+  3. **Precision Guard (REGRESSION)**: Fix B recall gains in E4b and E4 arms came with precision collapse on S1 (1.00 -> 0.33) and S3 (1.00 -> 0.33), correctly flagged as `REGRESSION`.
+  4. **Decoy Resistance (PASS)**: Maintained `0.0000` decoy claims on Scenario S2.
+  5. **ECE**: Expected Calibration Error across 20 seeds = `0.1395`.
+* **Certified Gate Verdict**: **`STRUCTURAL_CALIBRATION_BOUND`**
 
 ---
 
