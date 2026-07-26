@@ -1,8 +1,15 @@
 # EKAMNET PROGRAM STATE v2.0
 ## DP / EKAMNET RESEARCH PROGRAM
 
-* **Last Updated**: 2026-07-26T08:00:00Z
-* **Program North Star**: Build and scientifically validate an EkamNet v0.1 in which past epistemic experience causally changes future cognitive behavior.
+> [!IMPORTANT]
+> **Certified Bottom Line**
+> - **Governance & Substrate Stability**: The substrate is stable, instrumented, and governed.
+> - **Causal Influence Status**: Causal influence of accumulated experience is **OPERATIONALLY DEMONSTRATED** (`GENERATE`-decision divergence under shock in synthetic/pilot runs) but **NOT CERTIFIED** — the hardened market counterfactual (10.3) was refused due to insufficient evidence accumulation.
+> - **Predictive Calibration Status**: Predictive calibration is a **CERTIFIED STRUCTURAL BOUND** (11.3) under pre-registered `gate_e4_v2.yaml` (`commit 3458b57`): the DP lifecycle does not outperform plain Bayesian baselines and cannot be tuned into one without abandoning evidence-gating.
+> - **Core Scientific Contribution**: The contribution is **auditability, counterfactual replay, and provenance verification**, not predictive accuracy.
+
+* **Last Updated**: 2026-07-26T22:18:00Z
+* **Program North Star**: Build, characterize, and govern an EkamNet v0.1 in which past epistemic experience causally changes future cognitive behavior.
 * **Current Epoch**: 10
 * **Current Iteration**: 4
 * **Current Milestone**: Milestone E4 — STRUCTURAL_CALIBRATION_BOUND / SD-008 Calibration Arm RESOLVED-STRUCTURAL
@@ -32,7 +39,7 @@ This table outlines the corrections applied to the program state to eliminate cl
 *   **Milestone 5 (Selection Engine)**: `OPEN (Operational 100%, Scientific Closure: INSUFFICIENT EVIDENCE)`. Deterministic pairwise competition engine integrated. Scientific gate status `INSUFFICIENT_EVIDENCE` (sample size 13 < min_sample 50 required for pre-registered MME threshold +10pp).
 *   **Milestone 6 (Belief State Transitions)**: `OPEN (Operational 100%, Scientific Closure: INSUFFICIENT EVIDENCE)`. Integrated `WEAKENED` and `RETIRED` belief state schema models. Scientific gate status `INSUFFICIENT_EVIDENCE` (synthetic planted regime flip artifact pending).
 *   **Milestone 7 (Learning Loop Pruning)**: `OPEN (Operational 100%, Scientific Closure: FAILED)`. Active candidate pruning hooks verified. Scientific gate status `FAIL` (Family B context-shift degradation -76.92pp fails pre-registered MME threshold >= -0.10).
-*   **Milestone 9 (Two-Stage Proposition Compiler)**: `100.0% Complete`. Integrated `SemanticCompiler` flow, `ParameterGrounder` code calculations, and database repository tables.
+*   **Milestone 8 (Two-Stage Proposition Compiler)**: `100.0% Complete`. Integrated `SemanticCompiler` flow, `ParameterGrounder` code calculations, and database repository tables.
 *   **Milestone 9 (Validation Engine & Records)**: `100.0% Complete`. Code implementation completed, type-sanitized, and Postgres/JSON persistence verified. Immutability contract verified. Section O scorecard printing integrated.
 *   **Milestone 10 (Closed-Loop Belief Update)**: `100.0% Complete`. Integrated Validation Records with active theory belief states, empirical confidence evolution, and lineage survival/retirement dynamics without trade-sourced feedback.
 
@@ -42,7 +49,7 @@ This table outlines the corrections applied to the program state to eliminate cl
     - Phase 2: Implemented JSON list serialization & relational FK constraints (`4bf33d5`).
     - Phase 3: Added `telemetry/logging_config.py`, gated debug traces, triaged exceptions with `_degraded_steps` tracking (`00eaa24`).
     - Phase 4: Created unit test suite (`tests/`, 23 tests, 0.44s runtime) & GitHub Actions CI (`d4c6184`).
-    - Phase 5: Centralized parameters to `config/cognition_tuning.yaml` & `CHANGELOG_tuning.md` (`7baacbb`).
+    - Phase 5: Centralized parameters to `config/cognition.yaml` & `CHANGELOG_tuning.md` (`7baacbb`).
     - Phase 6: Added SHA-256 LLM prompt cache (`data/llm_cache/`) & `--offline` replay flag (`e6f3337`).
     - Phase 7: Verified structured output `json_format=True` migration.
     - Phase 8: Annotated stub infra with `# STUB` headers and created `docs/planned_infra.md` (`5533a01`).
@@ -93,6 +100,8 @@ This table outlines the corrections applied to the program state to eliminate cl
 
 ## 7. Phase 1C Scientific Progress & Experimental Findings
 
+*   **Metric Definition**: $D_{\text{epistemic}}$ is defined as a quantized text-Jaccard divergence between theory summaries; it takes sparse rational values (e.g. $3/7 \approx 0.4286$) and indicates the PRESENCE of a decision-divergence, not a graded effect size.
+
 ### 7.1 EXP-1C.1 Diagnostic Replay (10-Day Reliance Window)
 *   **Status**: COMPLETED (`commit 56dd7dd`)
 *   **Execution Integrity**: 0 degraded steps across 10 matched seed runs (Control $C_0$ vs Intervention $I_1$, $k=5$).
@@ -121,24 +130,24 @@ This table outlines the corrections applied to the program state to eliminate cl
 *   **Protocol**: [PHASE_1D_EPISTEMIC_BRIDGE_ARCHITECTURE_AND_PROTOCOL.md](file:///Users/hemantj/.gemini/antigravity-ide/brain/877ece6d-f299-4c12-b07c-dfc28f55cd90/PHASE_1D_EPISTEMIC_BRIDGE_ARCHITECTURE_AND_PROTOCOL.md)
 
 ### 8.2 EXP-1D.1 Scientific Validation Results
-*   **Status**: COMPLETED & SCIENTIFICALLY VALIDATED (`commit d9f81a2`)
+*   **Status**: COMPLETED & OPERATIONALLY DEMONSTRATED (`commit d9f81a2`)
 *   **Matched Seeds**: $k=5$ matched seed pairs ($\{42, 100, 200, 500, 777\}$) over 60 trading days under $S_{\text{shock}}$.
 *   **Three-Tier Evaluation Results**:
     1.  **Level 1 (Engineering Stability)**: `VERIFIED` (0 degraded steps across all 60 steps $\times$ 10 runs).
     2.  **Level 2 (Learning Activation)**: `ACTIVATED` ($Y_{\text{lesson}} = 2.0$ lessons extracted and persisted).
-    3.  **Level 3 (Causal Cognitive Adaptation)**: **`VALIDATED` ($D_{\text{epistemic}} = 0.4286 > 0.25$ threshold)**.
+    3.  **Level 3 (Causal Cognitive Adaptation)**: **`OPERATIONALLY DEMONSTRATED, NOT CERTIFIED` ($D_{\text{epistemic}} \approx 3/7 \text{ [quantized 0.4286]}$ clearing nominal $0.25$ threshold)**. Note: clearing the nominal $0.25$ threshold is a weak comparison since the quantized metric takes discrete rational values ($3/7 \approx 0.4286$) and cannot take values near $0.25$.
 *   **Causal Mechanism**:
     *   Legacy Gate ($C_0$): Issued **0 GENERATE decisions** post-shock (stuck in `REINFORCE`).
     *   Candidate Alpha Gate ($I_1$): Issued **10 GENERATE decisions** post-shock, forcing full theory generation that actively consumes persisted failure lessons and mutates theory claims.
-*   **North Star Verdict**: **VALIDATED** — Stored epistemic experience causally alters future cognitive behavior.
+*   **North Star Verdict**: **OPERATIONALLY DEMONSTRATED, NOT CERTIFIED** — Stored epistemic experience causally alters local decisions under shock in pilot runs, but certification under market replay was refused due to evidence rate thresholds (10.3).
 
 ### 8.3 EXP-1D.2 Extended Replication (10 Seeds, 120 Days on Reliance)
-*   **Status**: COMPLETED & GRADUATED TO LEVEL 4 REPLICATED EVIDENCE
+*   **Status**: COMPLETED & DETERMINISTICALLY REPRODUCIBLE UNDER MATCHED SEEDS
 *   **Scale**: 10 matched seed pairs ($k=10$, 20 full 120-day runs, 2,400 trading steps).
 *   **Findings**:
     1.  **Level 1 Stability**: `VERIFIED` (0 degraded steps across 2,400 steps).
     2.  **Level 2 Activation**: $Y_{\text{lesson}} = 4.0$ active failure lessons extracted per run across 4 shock windows ($t \in \{15, 35, 75, 95\}$).
-    3.  **Level 3 Adaptation**: **$D_{\text{epistemic}} = 0.4286 > 0.25$** ($C_0$: 0 GENERATE decisions vs $I_1$: 40 GENERATE decisions).
+    3.  **Level 3 Adaptation**: **$D_{\text{epistemic}} \approx 3/7 \text{ (quantized 0.4286)}$** ($C_0$: 0 GENERATE decisions vs $I_1$: 40 GENERATE decisions). Note: identical recurrence of $3/7 \approx 0.4286$ across runs reflects deterministic replay of the same shock-driven `GENERATE` delta, not a replicated continuous magnitude.
 
 ---
 
@@ -149,20 +158,20 @@ This table outlines the corrections applied to the program state to eliminate cl
 *   **Scale**: 10 full 360-day replays (5 matched seed pairs $k=5$, 3,600 total trading steps) across 12 monthly sampling checkpoints ($T_1 \dots T_{12}$) under 6 bi-monthly regime shocks ($t \in \{30, 90, 150, 210, 270, 330\}$).
 *   **Findings**:
     1.  **Level 1 Stability**: `VERIFIED` (0 degraded steps across all 3,600 trading steps).
-    2.  **Trajectory Classification**: **`ASYMPTOTE / STABLE EQUILIBRIUM`** ($D_{\text{epistemic}} = 0.4286$).
+    2.  **Trajectory Classification**: **`STABLE REINFORCE/GENERATE CYCLING UNDER REPEATED SHOCK`** ($D_{\text{epistemic}} \approx 3/7 \text{ [quantized 0.4286]}$). Note: metric is constant by construction under matched seeds and does not support attractor or limit-cycle claims.
     3.  **Dynamic Profile**:
         *   **Shock Months (M1, M3, M5, M7, M9, M11):** $\pi_{\text{GENERATE}} = 0.0333$ (forces theory generation consuming active lessons).
         *   **Quiescent Months (M2, M4, M6, M8, M10, M12):** $\pi_{\text{REINFORCE}} = 1.0000$ (reuses failure-resilient theory).
-    4.  **Verdict**: Cognition adapts rapidly to regime shocks and stabilizes into a resilient asymptotic equilibrium without over-falsification or epistemic collapse.
+    4.  **Verdict**: Cognition cycles between REINFORCE and GENERATE under repeated shocks, reusing failure-resilient theories during quiescent periods.
 
 ### 9.2 EXP-2.2 Adaptation Dynamics & REVISE Corridor Forensics
 *   **Status**: COMPLETED & SCIENTIFICALLY CHARACTERIZED (`commit b68f12a`)
 *   **Advanced Metric Profile**:
-    *   **Text Epistemic Divergence ($D_{\text{epistemic}}$)**: $0.4286$
+    *   **Text Epistemic Divergence ($D_{\text{epistemic}}$)**: $\approx 3/7 \text{ (quantized 0.4286)}$
     *   **Mechanism Component Divergence ($D_{\text{mech}}$)**: $0.4000$
     *   **Theory Information Entropy ($H_{\text{theory}}$)**: $6.8920$ bits (rich vocabulary diversity)
     *   **Lesson Utilization Rate ($U_{\text{lesson}}$)**: $1.00$ under $S_{\text{shock}}$
-*   **Dynamical Regime Classification**: **`RESILIENT ATTRACTOR / LIMIT CYCLE`** (true cognitive equilibrium).
+*   **Dynamical Regime Classification**: **`STABLE REINFORCE/GENERATE CYCLING`**. (Reconciled: attractor and limit-cycle claims removed; metric is constant by construction).
 
 ### 9.3 Phase 2C Decision Surface Mapping & Cognitive Geometry (EXP-2C.1)
 *   **Status**: COMPLETED & SCIENTIFICALLY CHARACTERIZED (`commit 38f9021`)
@@ -204,7 +213,6 @@ This table outlines the corrections applied to the program state to eliminate cl
   - Market ablation run **`REFUSED / BLOCKED ✗`** per `gate_a.yaml` pre-registered criteria.
 * **Reportable Scientific Unit**: The pairing ("Positive control proves instrument detects causal influence; 35-day market run refused due to evidence rate precondition") is the authoritative reportable scientific unit under repo governance (`DEC-012`).
 
-
 ---
 
 ## 11. Synthetic Benchmark Battery & Gate A Evaluation (PROMPT E2)
@@ -214,15 +222,16 @@ This table outlines the corrections applied to the program state to eliminate cl
 * **Governance Correction (PROMPT C1)**: Section 11.1 results declared **`VOID`** (criteria not pre-registered; non-conformant benchmark). Superseded by Section 11.2 (PROMPT C3 / E2_v2).
 
 ### 11.2 PROMPT C3 / E2_v2 — 20-Seed Reference Synthetic Battery & Gate A Branch Verdict
-* **Status**: **`ACTIVE — GATE A VERDICT: [AMBIGUOUS]`** (`commit dc5502d` / `bench/run_e2_v2.py`)
-* **Execution**: 20 seeds (0..19) $\times$ 4 scenarios ($T=3000, 3000, 4000, 4000$) $\times$ 5 learners on verified external reference benchmark (`commit dc5502d`).
+* **Status**: **`ACTIVE — GATE A VERDICT: [AMBIGUOUS]`** (`commit 7f8ae89` / `bench/run_e2_v2.py`)
+* **Execution**: 20 seeds (0..19) $\times$ 4 scenarios ($T=3000, 3000, 4000, 4000$) $\times$ 5 learners on verified external reference benchmark (`commit 7f8ae89`, executed on reference code restored in `commit dc5502d`).
 * **Key Findings**:
   - **S2 Decoy Resistance (PASS)**: DP/EkamNet = `0.0000` decoy claims vs FlatBayesian = `1.0500` (100% precision vs 65.8%).
-  - **S3 Recovery Speed (PASS)**: DP/EkamNet = `292.5 steps` vs FlatBayesian = `1873.8 steps` (unlearning died rules 6.4x faster).
+  - **S3 Recovery Speed (PASS)**: DP/EkamNet = `292.5 steps` vs FlatBayesian = `1873.8 steps` (unlearning dead rules 6.4x faster).
   - **S3 Collateral Degradation (FAIL)**: DP/EkamNet = `0.0093` vs WindowedFrequency = `0.0079`.
   - **S1 Brier Regret (FAIL)**: DP/EkamNet = `0.0679` vs FlatBayesian = `0.0005` (static stream penalty due to promotion thresholding).
-  - **Calibration**: DP/EkamNet ECE = `0.1630` across all scenarios $\times$ 20 seeds.
+  - **Calibration**: DP/EkamNet ECE = `0.1630` across all scenarios $\times$ 20 seeds (baseline reference under E2_v2 / PROMPT C3).
 * **Registered Governance Consequence**: Per `gate_a.yaml` `AMBIGUOUS` branch, mixed results require registering an extension (longer horizons or higher seed counts) without modifying frozen parameters ($k_{\text{falsify}}=3.0, \lambda=0.01$, promotion tiers).
+
 ### 11.3 Milestone E4 — Design-Change Confirmation Battery & Gate E4_v2 Certified Verdict
 * **Status**: **`ACTIVE — CERTIFIED GATE E4_v2 VERDICT: [STRUCTURAL_CALIBRATION_BOUND]`** (PROMPT C6 COMMIT 2 / `DEC-016`)
 * **Execution**: Executed 20-seed confirmation battery (4 scenarios $\times$ 20 seeds $\times$ 7 learners) against pre-registered `experiments/preregistration/gate_e4_v2.yaml` (`sha256 ee7973c5b...`). Frozen constants verified at runtime ($k_{\text{falsify}}=3.0, \lambda=0.01$, threshold $=0.50$).
@@ -231,17 +240,6 @@ This table outlines the corrections applied to the program state to eliminate cl
   - **H2 Fix B Scoped Discovery (FAIL)**: DP/EkamNet-E4 S4 Recall = `1.0000` (target $\ge 0.90$), S4 Precision = `0.5000` (target $\ge 0.90$).
   - **Precision Guard (REGRESSION)**: Fix B recall gains in E4b and E4 arms came with precision collapse on S1 (1.00 -> 0.33) and S3 (1.00 -> 0.33), correctly flagged as `REGRESSION`.
   - **No-Decoy Regression Guard (PASS)**: DP/EkamNet-E4 = **0.00 Decoy Claims** on S2.
-  - **Calibration**: Overall ECE = `0.1395` under E4 (vs `0.1630` in E2_v2).
+  - **Calibration**: Overall ECE = `0.1395` under E4 Combined arm (certified under `gate_e4_v2.yaml`; vs `0.1630` baseline in E2_v2).
 * **Registered Governance Resolution**: Certified verdict is **`STRUCTURAL_CALIBRATION_BOUND`**. SD-008 calibration arm is marked `RESOLVED-STRUCTURAL`: the lifecycle trades predictive calibration for auditability; not tunable without abandoning evidence-gating. Contribution repositions from "better predictor" to "auditable learner for regulated decisions" (P1 counterfactual replay & provenance verification unaffected).
-
-
-
-
-
-
-
-
-
-
-
-
+* **Pre-Registration Timing Integrity Note**: The auditability-first repositioning was pre-registered as one of four outcome branches in `gate_e4_v2.yaml` (commit `90d4d67`), committed BEFORE the run (commit `3458b57`); the STRUCTURAL branch was selected mechanically. No earlier commit contains the framing as a settled conclusion.
