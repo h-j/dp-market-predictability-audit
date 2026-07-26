@@ -181,6 +181,10 @@ This table outlines the corrections applied to the program state to eliminate cl
 * **Status**: COMPLETED & VERIFIED (`commit c893628`)
 * **Substrate**: Append-only `ConsultationLedger` (`dp/observability/consultation_ledger.py`) recording all cognitive consultations without wall-clock fields. 100% byte-stability verified across duplicate runs.
 * **Analysis Tool**: `dp.observability.influence_trace` computing multi-hop transitive influence taints.
+* **Producer-Agnostic & Async Extensions (3-Step Upgrade)**:
+  1. **Injectable Taxonomy**: Constructor accepts `valid_object_kinds` and `valid_roles` sets; `record_consultation()` threads `provenance_method` ("observed" / "ablation_inferred").
+  2. **Async ContextVars Isolation**: Active ledger tracking migrated to `contextvars.ContextVar` (`_ledger_ctx`), enabling safe concurrent/async execution without cross-session contamination.
+  3. **Read-Side Session Ledger Unification**: Added `dp.observability.merge_session_ledgers` (`merge_session_ledgers.py`) to merge per-session ledgers with session-prefixed decision IDs while unifying shared `object_structural_id`s across sessions.
 
 ### 10.2 PROMPT E0b — Synthworld Benchmark Port & DPAdapter
 * **Status**: COMPLETED & VERIFIED (`commit 3fbc8ea`)

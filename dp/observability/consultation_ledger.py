@@ -8,13 +8,14 @@ reads for logging/metrics display are INSPECTIONS and are not recorded.
 Records every cognitive read (prior theories, regime memory, lessons, principles, confidence states)
 and decision output in an append-only, byte-stable JSONL ledger without wall-clock fields.
 """
+import contextvars
 import hashlib
 import json
 from pathlib import Path
-from typing import Dict, List, Optional, Union
+from typing import Dict, List, Optional, Set, Union
 
 
-VALID_OBJECT_KINDS = {
+DEFAULT_OBJECT_KINDS = {
     "theory",
     "lesson",
     "principle",
@@ -22,7 +23,7 @@ VALID_OBJECT_KINDS = {
     "confidence_state",
 }
 
-VALID_ROLES = {
+DEFAULT_ROLES = {
     "prompt_context",
     "gate",
     "prior",
@@ -37,8 +38,23 @@ class ConsultationLedger:
     Does NOT contain wall-clock fields (e.g. timestamp/created_at).
     """
 
-    def __init__(self, output_path: Optional[Union[str, Path]] = None):
+    def __init__(
+        self,
+        output_path: Optional[Union[str, Path]] = None,
+        valid_object_kinds: Optional[Set[str]] = None,
+        valid_roles: Optional[Set[str]] = None,
+    ):
         self.output_path = Path(output_path) if output_path else None
+        self.valid_object_kinds = (
+            set(valid_object_kinds)
+            if valid_object_kinds is not None
+            else DEFAULT_OBJECT_KINDS
+        )
+        self.valid_roles = (
+            set(valid_roles)
+            if valid_roles is not None
+            else DEFAULT_ROLES
+        )
         self._decision_seq: Dict[str, int] = {}
         self._records: List[Dict] = []
         if self.output_path and self.output_path.exists():
@@ -64,17 +80,18 @@ class ConsultationLedger:
         object_structural_id: str,
         object_kind: str,
         role: str,
+        provenance_method: str = "observed",
     ) -> Dict:
         """
         Record a read consultation that informed a decision or gated control flow.
         """
-        if object_kind not in VALID_OBJECT_KINDS:
+        if object_kind not in self.valid_object_kinds:
             raise ValueError(
-                f"Invalid object_kind '{object_kind}'. Must be one of {VALID_OBJECT_KINDS}"
+                f"Invalid object_kind '{object_kind}'. Must be one of {self.valid_object_kinds}"
             )
-        if role not in VALID_ROLES:
+        if role not in self.valid_roles:
             raise ValueError(
-                f"Invalid role '{role}'. Must be one of {VALID_ROLES}"
+                f"Invalid role '{role}'. Must be one of {self.valid_roles}"
             )
 
         seq = self._decision_seq.get(decision_id, 0) + 1
@@ -86,6 +103,7 @@ class ConsultationLedger:
             "object_structural_id": object_structural_id,
             "object_kind": object_kind,
             "role": role,
+            "provenance_method": provenance_method,
             "seq": seq,
         }
         self._records.append(record)
@@ -119,16 +137,17 @@ class ConsultationLedger:
         return list(self._records)
 
 
-_active_consultation_ledger: Optional[ConsultationLedger] = None
+_ledger_ctx: contextvars.ContextVar[Optional[ConsultationLedger]] = (
+    contextvars.ContextVar("consultation_ledger", default=None)
+)
 
 
 def get_active_consultation_ledger() -> Optional[ConsultationLedger]:
-    return _active_consultation_ledger
+    return _ledger_ctx.get()
 
 
 def set_active_consultation_ledger(ledger: Optional[ConsultationLedger]):
-    global _active_consultation_ledger
-    _active_consultation_ledger = ledger
+    _ledger_ctx.set(ledger)
 
 
 def record_consultation(
@@ -136,11 +155,16 @@ def record_consultation(
     object_structural_id: str,
     object_kind: str,
     role: str,
+    provenance_method: str = "observed",
 ) -> Optional[Dict]:
     ledger = get_active_consultation_ledger()
     if ledger:
         return ledger.record_consultation(
-            decision_id, object_structural_id, object_kind, role
+            decision_id,
+            object_structural_id,
+            object_kind,
+            role,
+            provenance_method=provenance_method,
         )
     return None
 

@@ -8,12 +8,17 @@ Verifies:
 4. 5-day replay produces consultation ledger with entries from theory generation, reflection, and gate sites.
 5. Two identical replays produce 100% byte-identical consultation ledgers.
 """
+import asyncio
 import json
 from pathlib import Path
 import pytest
 
 from cognition.schemas.identity import build_structural_id
-from dp.observability.consultation_ledger import ConsultationLedger
+from dp.observability.consultation_ledger import (
+    ConsultationLedger,
+    record_consultation,
+    set_active_consultation_ledger,
+)
 from dp.observability.influence_trace import compute_influence_set, parse_consultation_ledger
 from market.replay.replay_engine import ReplayExecutor
 
@@ -139,3 +144,92 @@ def test_5day_replay_consultation_ledger_and_reproducibility():
     influence_res = compute_influence_set(records1, "0:regime_memory:0")
     assert "target_object_id" in influence_res
     assert influence_res["total_influenced"] >= 1
+
+
+def test_injectable_vocabulary_and_provenance_method(tmp_path):
+    """
+    Verify that ConsultationLedger accepts custom injectable object_kind/role sets
+    and records the provenance_method field.
+    """
+    custom_ledger = ConsultationLedger(
+        output_path=tmp_path / "custom.jsonl",
+        valid_object_kinds={"prompt_segment"},
+        valid_roles={"context_window"},
+    )
+
+    # Custom ledger accepts 'prompt_segment' and 'context_window'
+    rec1 = custom_ledger.record_consultation(
+        decision_id="0:dec:0",
+        object_structural_id="seg:1",
+        object_kind="prompt_segment",
+        role="context_window",
+        provenance_method="ablation_inferred",
+    )
+    assert rec1["object_kind"] == "prompt_segment"
+    assert rec1["role"] == "context_window"
+    assert rec1["provenance_method"] == "ablation_inferred"
+
+    # Custom ledger rejects DP's default 'theory' kind
+    with pytest.raises(ValueError, match="Invalid object_kind 'theory'"):
+        custom_ledger.record_consultation(
+            decision_id="0:dec:1",
+            object_structural_id="0:theory:0",
+            object_kind="theory",
+            role="context_window",
+        )
+
+    # Default-constructed ledger accepts 'theory' and rejects 'prompt_segment'
+    default_ledger = ConsultationLedger(output_path=tmp_path / "default.jsonl")
+    rec2 = default_ledger.record_consultation(
+        decision_id="0:dec:0",
+        object_structural_id="0:theory:0",
+        object_kind="theory",
+        role="prompt_context",
+    )
+    assert rec2["object_kind"] == "theory"
+    assert rec2["provenance_method"] == "observed"  # default provenance_method
+
+    with pytest.raises(ValueError, match="Invalid object_kind 'prompt_segment'"):
+        default_ledger.record_consultation(
+            decision_id="0:dec:1",
+            object_structural_id="seg:1",
+            object_kind="prompt_segment",
+            role="prompt_context",
+        )
+
+
+def test_async_contextvars_isolation(tmp_path):
+    """
+    Verify that set_active_consultation_ledger uses contextvars for per-async-task
+    isolation without cross-contamination.
+    """
+    ledger_a = ConsultationLedger(output_path=tmp_path / "ledger_a.jsonl")
+    ledger_b = ConsultationLedger(output_path=tmp_path / "ledger_b.jsonl")
+
+    async def task_worker(ledger: ConsultationLedger, task_id_str: str):
+        set_active_consultation_ledger(ledger)
+        await asyncio.sleep(0.01)  # Yield control to encourage race condition if un-isolated
+        record_consultation(
+            decision_id=f"{task_id_str}:dec:0",
+            object_structural_id=f"{task_id_str}:obj:0",
+            object_kind="theory",
+            role="prompt_context",
+        )
+
+    async def main():
+        await asyncio.gather(
+            task_worker(ledger_a, "task_a"),
+            task_worker(ledger_b, "task_b"),
+        )
+
+    asyncio.run(main())
+
+    recs_a = ledger_a.get_records()
+    recs_b = ledger_b.get_records()
+
+    assert len(recs_a) == 1
+    assert len(recs_b) == 1
+    assert recs_a[0]["decision_id"] == "task_a:dec:0"
+    assert recs_b[0]["decision_id"] == "task_b:dec:0"
+
+
