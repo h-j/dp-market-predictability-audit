@@ -20,6 +20,7 @@ def test_positive_control_verified_influence_non_empty():
     assert len(report["unpredicted_divergence_set"]) == 0
 
 
+@pytest.mark.requires_postgres
 def test_precondition_gate_refusal():
     """Verify market run is refused when lineage evidence_count < 5."""
     res = run_e1_protocol(max_days=35)
