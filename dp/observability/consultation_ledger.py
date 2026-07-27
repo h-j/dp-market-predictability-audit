@@ -5,8 +5,12 @@ Boundary Rule:
 A read is a CONSULTATION if it informed a decision's output or gated control flow;
 reads for logging/metrics display are INSPECTIONS and are not recorded.
 
-Records every cognitive read (prior theories, regime memory, lessons, principles, confidence states)
-and decision output in an append-only, byte-stable JSONL ledger without wall-clock fields.
+Records every cognitive read that informed a decision or gated control flow
+(a CONSULTATION, per the boundary rule above), and every decision output, in
+an append-only, byte-stable JSONL ledger without wall-clock fields. Object
+kinds and roles are defined by the calling producer (see
+valid_object_kinds/valid_roles on ConsultationLedger.__init__), not by this
+module.
 """
 import contextvars
 import hashlib
