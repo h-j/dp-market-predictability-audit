@@ -11,7 +11,9 @@ Verifies:
 """
 import pytest
 from pathlib import Path
+import pytest
 
+from dp.domain.dp_taxonomy import DP_OBJECT_KINDS, DP_ROLES
 from dp.observability.consultation_ledger import ConsultationLedger
 from dp.observability.merge_session_ledgers import merge_session_ledgers
 from dp.observability.influence_trace import compute_influence_set
@@ -22,11 +24,19 @@ def test_merge_two_session_ledgers_order(tmp_path):
     file1 = tmp_path / "session1.jsonl"
     file2 = tmp_path / "session2.jsonl"
 
-    ledger1 = ConsultationLedger(output_path=file1)
+    ledger1 = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=file1,
+    )
     ledger1.record_consultation("0:dec:0", "obj:1", "theory", "prompt_context")
     ledger1.record_decision("0:dec:0", "Output 1", day=0)
 
-    ledger2 = ConsultationLedger(output_path=file2)
+    ledger2 = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=file2,
+    )
     ledger2.record_consultation("0:dec:1", "obj:2", "theory", "prompt_context")
     ledger2.record_decision("0:dec:1", "Output 2", day=0)
 
@@ -51,10 +61,18 @@ def test_prefix_decision_ids_prevents_collision(tmp_path):
     file2 = tmp_path / "s2.jsonl"
 
     # Both sessions use raw decision_id "0:dec:0"
-    l1 = ConsultationLedger(output_path=file1)
+    l1 = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=file1,
+    )
     l1.record_consultation("0:dec:0", "obj:1", "theory", "prompt_context")
 
-    l2 = ConsultationLedger(output_path=file2)
+    l2 = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=file2,
+    )
     l2.record_consultation("0:dec:0", "obj:2", "theory", "prompt_context")
 
     merged = merge_session_ledgers([file1, file2])
@@ -71,10 +89,18 @@ def test_object_structural_id_remains_unprefixed(tmp_path):
     file2 = tmp_path / "s2.jsonl"
 
     # Both sessions reference the exact same object_structural_id "shared_doc:123"
-    l1 = ConsultationLedger(output_path=file1)
+    l1 = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=file1,
+    )
     l1.record_consultation("0:dec:0", "shared_doc:123", "theory", "prompt_context")
 
-    l2 = ConsultationLedger(output_path=file2)
+    l2 = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=file2,
+    )
     l2.record_consultation("0:dec:1", "shared_doc:123", "theory", "prompt_context")
 
     merged = merge_session_ledgers([file1, file2])
@@ -97,12 +123,20 @@ def test_integration_influence_trace_across_merged_sessions(tmp_path):
     file2 = tmp_path / "session_b.jsonl"
 
     # Session A: decision 0:dec:A consults target object "shared_knowledge:1"
-    l1 = ConsultationLedger(output_path=file1)
+    l1 = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=file1,
+    )
     l1.record_consultation("0:dec:A", "shared_knowledge:1", "theory", "prompt_context")
     l1.record_decision("0:dec:A", "Session A output", day=0)
 
     # Session B: decision 0:dec:B also consults target object "shared_knowledge:1"
-    l2 = ConsultationLedger(output_path=file2)
+    l2 = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=file2,
+    )
     l2.record_consultation("0:dec:B", "shared_knowledge:1", "theory", "gate")
     l2.record_decision("0:dec:B", "Session B output", day=0)
 

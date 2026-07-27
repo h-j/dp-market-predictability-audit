@@ -7,6 +7,7 @@ Verifies:
 3. Transitive influence chain resolution in influence_trace.py on synthetic ledger.
 4. 5-day replay produces consultation ledger with entries from theory generation, reflection, and gate sites.
 5. Two identical replays produce 100% byte-identical consultation ledgers.
+6. Injectable producer taxonomy and contextvars isolation.
 """
 import asyncio
 import json
@@ -14,6 +15,7 @@ from pathlib import Path
 import pytest
 
 from cognition.schemas.identity import build_structural_id
+from dp.domain.dp_taxonomy import DP_OBJECT_KINDS, DP_ROLES
 from dp.observability.consultation_ledger import (
     ConsultationLedger,
     record_consultation,
@@ -26,7 +28,11 @@ from market.replay.replay_engine import ReplayExecutor
 def test_decision_ids_and_byte_stability(tmp_path):
     """Verify structural ID formatting and byte-stability of consultation ledger output."""
     ledger_path1 = tmp_path / "run1" / "consultation_ledger.jsonl"
-    ledger1 = ConsultationLedger(output_path=ledger_path1)
+    ledger1 = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=ledger_path1,
+    )
 
     dec_id_0 = build_structural_id(0, "theory", 0)
     assert dec_id_0 == "0:theory:0"
@@ -44,7 +50,11 @@ def test_decision_ids_and_byte_stability(tmp_path):
     )
 
     ledger_path2 = tmp_path / "run2" / "consultation_ledger.jsonl"
-    ledger2 = ConsultationLedger(output_path=ledger_path2)
+    ledger2 = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=ledger_path2,
+    )
 
     ledger2.record_consultation(
         decision_id="0:theory:0",
@@ -67,7 +77,11 @@ def test_decision_ids_and_byte_stability(tmp_path):
 def test_influence_trace_transitive_chain(tmp_path):
     """Verify transitive chain resolution in influence_trace on synthetic ledger fixture."""
     ledger_path = tmp_path / "synthetic_ledger.jsonl"
-    ledger = ConsultationLedger(output_path=ledger_path)
+    ledger = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=ledger_path,
+    )
 
     # 0:theory:0 directly consults 0:regime_memory:0
     ledger.record_consultation(
@@ -108,7 +122,6 @@ def test_influence_trace_transitive_chain(tmp_path):
 
 @pytest.mark.requires_ollama
 def test_5day_replay_consultation_ledger_and_reproducibility():
-
     """
     Run 5-day replay, verifying:
     1. consultation_ledger.jsonl is created with entries from theory, reflection, and gate sites.
@@ -148,16 +161,20 @@ def test_5day_replay_consultation_ledger_and_reproducibility():
 
 def test_injectable_vocabulary_and_provenance_method(tmp_path):
     """
-    Verify that ConsultationLedger accepts custom injectable object_kind/role sets
-    and records the provenance_method field.
+    Verify that ConsultationLedger requires valid_object_kinds and valid_roles,
+    accepts custom or empty sets, and rejects missing arguments with TypeError.
     """
-    custom_ledger = ConsultationLedger(
-        output_path=tmp_path / "custom.jsonl",
-        valid_object_kinds={"prompt_segment"},
-        valid_roles={"context_window"},
-    )
+    # Omitting valid_object_kinds / valid_roles must raise TypeError
+    with pytest.raises(TypeError):
+        ConsultationLedger(output_path=tmp_path / "missing.jsonl")
 
     # Custom ledger accepts 'prompt_segment' and 'context_window'
+    custom_ledger = ConsultationLedger(
+        valid_object_kinds={"prompt_segment"},
+        valid_roles={"context_window"},
+        output_path=tmp_path / "custom.jsonl",
+    )
+
     rec1 = custom_ledger.record_consultation(
         decision_id="0:dec:0",
         object_structural_id="seg:1",
@@ -169,7 +186,7 @@ def test_injectable_vocabulary_and_provenance_method(tmp_path):
     assert rec1["role"] == "context_window"
     assert rec1["provenance_method"] == "ablation_inferred"
 
-    # Custom ledger rejects DP's default 'theory' kind
+    # Custom ledger rejects DP's 'theory' kind
     with pytest.raises(ValueError, match="Invalid object_kind 'theory'"):
         custom_ledger.record_consultation(
             decision_id="0:dec:1",
@@ -178,24 +195,43 @@ def test_injectable_vocabulary_and_provenance_method(tmp_path):
             role="context_window",
         )
 
-    # Default-constructed ledger accepts 'theory' and rejects 'prompt_segment'
-    default_ledger = ConsultationLedger(output_path=tmp_path / "default.jsonl")
-    rec2 = default_ledger.record_consultation(
+    # DP taxonomy constructed ledger accepts 'theory' and rejects 'prompt_segment'
+    dp_ledger = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=tmp_path / "dp.jsonl",
+    )
+    rec2 = dp_ledger.record_consultation(
         decision_id="0:dec:0",
         object_structural_id="0:theory:0",
         object_kind="theory",
         role="prompt_context",
     )
     assert rec2["object_kind"] == "theory"
-    assert rec2["provenance_method"] == "observed"  # default provenance_method
+    assert rec2["provenance_method"] == "observed"
 
     with pytest.raises(ValueError, match="Invalid object_kind 'prompt_segment'"):
-        default_ledger.record_consultation(
+        dp_ledger.record_consultation(
             decision_id="0:dec:1",
             object_structural_id="seg:1",
             object_kind="prompt_segment",
             role="prompt_context",
         )
+
+    # Empty taxonomy ledger validates nothing (accepts any kind/role)
+    empty_ledger = ConsultationLedger(
+        valid_object_kinds=set(),
+        valid_roles=set(),
+        output_path=tmp_path / "empty.jsonl",
+    )
+    rec3 = empty_ledger.record_consultation(
+        decision_id="0:dec:2",
+        object_structural_id="any:1",
+        object_kind="custom_kind",
+        role="custom_role",
+    )
+    assert rec3["object_kind"] == "custom_kind"
+    assert rec3["role"] == "custom_role"
 
 
 def test_async_contextvars_isolation(tmp_path):
@@ -203,8 +239,16 @@ def test_async_contextvars_isolation(tmp_path):
     Verify that set_active_consultation_ledger uses contextvars for per-async-task
     isolation without cross-contamination.
     """
-    ledger_a = ConsultationLedger(output_path=tmp_path / "ledger_a.jsonl")
-    ledger_b = ConsultationLedger(output_path=tmp_path / "ledger_b.jsonl")
+    ledger_a = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=tmp_path / "ledger_a.jsonl",
+    )
+    ledger_b = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=tmp_path / "ledger_b.jsonl",
+    )
 
     async def task_worker(ledger: ConsultationLedger, task_id_str: str):
         set_active_consultation_ledger(ledger)
@@ -231,5 +275,3 @@ def test_async_contextvars_isolation(tmp_path):
     assert len(recs_b) == 1
     assert recs_a[0]["decision_id"] == "task_a:dec:0"
     assert recs_b[0]["decision_id"] == "task_b:dec:0"
-
-

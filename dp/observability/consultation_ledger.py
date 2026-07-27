@@ -15,21 +15,6 @@ from pathlib import Path
 from typing import Dict, List, Optional, Set, Union
 
 
-DEFAULT_OBJECT_KINDS = {
-    "theory",
-    "lesson",
-    "principle",
-    "regime_memory",
-    "confidence_state",
-}
-
-DEFAULT_ROLES = {
-    "prompt_context",
-    "gate",
-    "prior",
-}
-
-
 class ConsultationLedger:
     """
     Append-only consultation ledger for tracking read-side provenance.
@@ -40,21 +25,13 @@ class ConsultationLedger:
 
     def __init__(
         self,
+        valid_object_kinds: Set[str],
+        valid_roles: Set[str],
         output_path: Optional[Union[str, Path]] = None,
-        valid_object_kinds: Optional[Set[str]] = None,
-        valid_roles: Optional[Set[str]] = None,
     ):
         self.output_path = Path(output_path) if output_path else None
-        self.valid_object_kinds = (
-            set(valid_object_kinds)
-            if valid_object_kinds is not None
-            else DEFAULT_OBJECT_KINDS
-        )
-        self.valid_roles = (
-            set(valid_roles)
-            if valid_roles is not None
-            else DEFAULT_ROLES
-        )
+        self.valid_object_kinds = set(valid_object_kinds)
+        self.valid_roles = set(valid_roles)
         self._decision_seq: Dict[str, int] = {}
         self._records: List[Dict] = []
         if self.output_path and self.output_path.exists():
@@ -85,11 +62,11 @@ class ConsultationLedger:
         """
         Record a read consultation that informed a decision or gated control flow.
         """
-        if object_kind not in self.valid_object_kinds:
+        if self.valid_object_kinds and object_kind not in self.valid_object_kinds:
             raise ValueError(
                 f"Invalid object_kind '{object_kind}'. Must be one of {self.valid_object_kinds}"
             )
-        if role not in self.valid_roles:
+        if self.valid_roles and role not in self.valid_roles:
             raise ValueError(
                 f"Invalid role '{role}'. Must be one of {self.valid_roles}"
             )

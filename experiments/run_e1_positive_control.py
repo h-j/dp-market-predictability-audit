@@ -22,6 +22,7 @@ from bench.synthworld.world import World
 from bench.synthworld.scenarios import s1_clean
 from bench.synthworld.dp_adapter import DPAdapter
 
+from dp.domain.dp_taxonomy import DP_OBJECT_KINDS, DP_ROLES
 from dp.observability.consultation_ledger import (
     ConsultationLedger,
     set_active_consultation_ledger,
@@ -43,7 +44,11 @@ def run_positive_control(output_dir: Path = None) -> Dict[str, Any]:
 
     # 1. Setup Baseline Consultation Ledger
     base_ledger_path = output_dir / "consultation_ledger.jsonl"
-    base_ledger = ConsultationLedger(base_ledger_path)
+    base_ledger = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=base_ledger_path,
+    )
     set_active_consultation_ledger(base_ledger)
 
     scenario = s1_clean(T=50)
@@ -80,7 +85,11 @@ def run_positive_control(output_dir: Path = None) -> Dict[str, Any]:
     cf_run_dir = output_dir / "counterfactual"
     cf_run_dir.mkdir(parents=True, exist_ok=True)
     cf_ledger_path = cf_run_dir / "consultation_ledger.jsonl"
-    cf_ledger = ConsultationLedger(cf_ledger_path)
+    cf_ledger = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=cf_ledger_path,
+    )
     set_active_consultation_ledger(cf_ledger)
 
     scenario_cf = s1_clean(T=50)

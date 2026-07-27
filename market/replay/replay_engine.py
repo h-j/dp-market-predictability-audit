@@ -21,6 +21,7 @@ from typing import Any, Dict, List, Optional
 
 import pandas as pd
 
+from dp.domain.dp_taxonomy import DP_OBJECT_KINDS, DP_ROLES
 # NOTE(charter): DecisionPolicyEngine and CapitalSimulator are downstream observers only.
 from dp.observability.consultation_ledger import (
     ConsultationLedger,
@@ -352,7 +353,9 @@ class ReplayExecutor:
         self._initialize_run_dir(restart=self.restart)
 
         self.consultation_ledger = ConsultationLedger(
-            output_path=self.run_dir / "consultation_ledger.jsonl"
+            valid_object_kinds=DP_OBJECT_KINDS,
+            valid_roles=DP_ROLES,
+            output_path=self.run_dir / "consultation_ledger.jsonl",
         )
         set_active_consultation_ledger(self.consultation_ledger)
 

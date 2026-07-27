@@ -11,6 +11,7 @@ import json
 from pathlib import Path
 import pytest
 
+from dp.domain.dp_taxonomy import DP_OBJECT_KINDS, DP_ROLES
 from dp.observability.consultation_ledger import ConsultationLedger
 from dp.observability.divergence_analyzer import analyze_divergence_and_influence
 from market.replay.ablation_replay import run_ablation_replay, calculate_dir_file_md5
@@ -110,7 +111,11 @@ def test_overlay_never_mutates_baseline(tmp_path):
     base_dir = tmp_path / "baseline_run"
     base_dir.mkdir()
     ledger_file = base_dir / "consultation_ledger.jsonl"
-    ledger = ConsultationLedger(output_path=ledger_file)
+    ledger = ConsultationLedger(
+        valid_object_kinds=DP_OBJECT_KINDS,
+        valid_roles=DP_ROLES,
+        output_path=ledger_file,
+    )
     ledger.record_consultation("0:theory:0", "0:theory:0", "theory", "prompt_context")
     ledger.record_decision("0:theory:0", "Test Output", day=0)
 
