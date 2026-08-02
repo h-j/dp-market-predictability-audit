@@ -443,6 +443,28 @@ class GenericHistoryDownloader(HistoricalMarketDownloader):
         super().__init__(csv_path=csv_path)
 
 
+SYMBOL_FILE_MAP = {
+    "RELIANCE": "reliance_daily_3y.csv",
+    "RELIANCE.NS": "reliance_daily_3y.csv",
+    "NIFTY": "nifty_daily_3y.csv",
+    "NIFTY 50": "nifty_daily_3y.csv",
+    "^NSEI": "nifty_daily_3y.csv",
+    "TCS": "tcs_daily_3y.csv",
+    "TCS.NS": "tcs_daily_3y.csv",
+}
+
+
+def resolve_symbol_file(symbol: str, enriched: bool = False) -> str:
+    sym_upper = symbol.strip().upper()
+    base_file = SYMBOL_FILE_MAP.get(sym_upper)
+    if not base_file:
+        clean_sym = sym_upper.replace(".NS", "").replace("^", "").lower()
+        base_file = f"{clean_sym}_daily_3y.csv"
+    if enriched:
+        return base_file.replace("_daily_3y.csv", "_enriched_daily_3y.csv")
+    return base_file
+
+
 STOCK_SECTOR_MAP = {
     "RELIANCE": "^CNXENERGY",
     "RELIANCE.NS": "^CNXENERGY",
@@ -471,14 +493,21 @@ def ensure_data(
     from market.replay.run import (DataPreparationManager,
                                    FeaturePreparationManager)
 
-    # 1. Run Data Preparation Stage
+    raw_filename = resolve_symbol_file(symbol, enriched=False)
+    enriched_filename = resolve_symbol_file(symbol, enriched=True)
+
+    data_dir = Path(__file__).parent.parent.parent / "data"
+    raw_path = Path(dataset_path) if dataset_path else data_dir / raw_filename
+    enriched_path = data_dir / enriched_filename
+
+    # 1. Run Data Preparation Stage (populates raw_path)
     prep_manager = DataPreparationManager(
-        symbol=symbol, force_refresh=force_refresh, dataset_path=dataset_path
+        symbol=symbol, force_refresh=force_refresh, dataset_path=str(raw_path)
     )
     prep_manager.prepare(start_date=start_date, end_date=end_date)
 
-    # 2. Run Feature Preparation Stage
+    # 2. Run Feature Preparation Stage (reads raw_path, writes enriched_path)
     feature_manager = FeaturePreparationManager(
-        symbol=symbol, dataset_path=dataset_path
+        symbol=symbol, dataset_path=str(raw_path), output_path=str(enriched_path)
     )
     return feature_manager.prepare()

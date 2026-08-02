@@ -2,8 +2,8 @@
 Walk-Forward Validation Harness Module.
 
 Provides reusable expanding-window time-series cross-validation for market direction models.
-Evaluates ML candidate models (Logistic Regression, Gradient Boosted Decision Stumps) against three baselines
-(majority-class, persistence, and always-range_bound) across time-series folds without lookahead bias.
+Evaluates ML candidate models (Logistic Regression, Boosted Decision Stumps) against three baselines
+(majority-class, non-overlapping stride persistence, and always-range_bound) across time-series folds without lookahead bias.
 """
 
 import logging
@@ -15,6 +15,40 @@ import pandas as pd
 
 logger = logging.getLogger("walkforward_validation")
 logger.setLevel(logging.INFO)
+
+
+def compute_balanced_accuracy(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    classes = np.unique(y_true)
+    recalls = []
+    for cls in classes:
+        mask = (y_true == cls)
+        if np.sum(mask) == 0:
+            continue
+        recall = np.mean(y_pred[mask] == cls)
+        recalls.append(recall)
+    return float(np.mean(recalls)) if recalls else 0.0
+
+
+def compute_mcc(y_true: np.ndarray, y_pred: np.ndarray) -> float:
+    classes = np.unique(np.concatenate([y_true, y_pred]))
+    K = len(classes)
+    if K <= 1:
+        return 0.0
+    cls_map = {cls: i for i, cls in enumerate(classes)}
+    conf_mat = np.zeros((K, K), dtype=float)
+    for t, p in zip(y_true, y_pred):
+        conf_mat[cls_map[t], cls_map[p]] += 1.0
+
+    c = np.trace(conf_mat)
+    s = np.sum(conf_mat)
+    p_k = np.sum(conf_mat, axis=0)
+    t_k = np.sum(conf_mat, axis=1)
+
+    num = c * s - np.sum(p_k * t_k)
+    den = np.sqrt((s**2 - np.sum(p_k**2)) * (s**2 - np.sum(t_k**2)))
+    if den == 0:
+        return 0.0
+    return float(num / den)
 
 
 class LogisticRegressionModel:
@@ -103,7 +137,7 @@ class DecisionStump:
         return np.where(X[:, self.feature_idx] <= self.threshold, self.left_val, self.right_val)
 
 
-class GradientBoostedTreeModel:
+class BoostedDecisionStumpsModel:
     """Gradient Boosted Decision Stump Ensemble Classifier."""
 
     def __init__(self, n_estimators: int = 25, lr: float = 0.1):
@@ -154,44 +188,69 @@ class FoldResult:
     test_range: Tuple[str, str]
     train_size: int
     test_size: int
+    # Logistic Regression metrics
     logistic_accuracy: float
+    logistic_bal_acc: float
+    logistic_mcc: float
     logistic_score: float
-    hgb_accuracy: float
-    hgb_score: float
+    # Boosted Decision Stumps metrics
+    bds_accuracy: float
+    bds_bal_acc: float
+    bds_mcc: float
+    bds_score: float
+    # Baselines
     majority_accuracy: float
+    majority_bal_acc: float
+    majority_mcc: float
     majority_score: float
     persistence_accuracy: float
+    persistence_bal_acc: float
+    persistence_mcc: float
     persistence_score: float
     range_bound_accuracy: float
+    range_bound_bal_acc: float
+    range_bound_mcc: float
     range_bound_score: float
+    # Wins over baselines (based on MCC and Balanced Accuracy)
     logistic_beats_all: bool
-    hgb_beats_all: bool
+    bds_beats_all: bool
 
 
 @dataclass
 class WalkForwardStudyResult:
     asset_name: str
+    target_horizon: str  # "3d" or "1d"
     total_samples: int
     num_folds: int
     fold_results: List[FoldResult] = field(default_factory=list)
     avg_logistic_accuracy: float = 0.0
+    avg_logistic_bal_acc: float = 0.0
+    avg_logistic_mcc: float = 0.0
     avg_logistic_score: float = 0.0
-    avg_hgb_accuracy: float = 0.0
-    avg_hgb_score: float = 0.0
+    avg_bds_accuracy: float = 0.0
+    avg_bds_bal_acc: float = 0.0
+    avg_bds_mcc: float = 0.0
+    avg_bds_score: float = 0.0
     avg_majority_accuracy: float = 0.0
+    avg_majority_bal_acc: float = 0.0
+    avg_majority_mcc: float = 0.0
     avg_majority_score: float = 0.0
     avg_persistence_accuracy: float = 0.0
+    avg_persistence_bal_acc: float = 0.0
+    avg_persistence_mcc: float = 0.0
     avg_persistence_score: float = 0.0
     avg_range_bound_accuracy: float = 0.0
+    avg_range_bound_bal_acc: float = 0.0
+    avg_range_bound_mcc: float = 0.0
     avg_range_bound_score: float = 0.0
     logistic_wins_count: int = 0
-    hgb_wins_count: int = 0
+    bds_wins_count: int = 0
     consistent_edge_found: bool = False
 
 
 class WalkForwardValidator:
     """
-    Expanding-Window Time-Series Cross-Validator.
+    Expanding-Window Time-Series Cross-Validator with Tier 1 Features & Primary Metrics.
     """
 
     FEATURE_COLS = [
@@ -207,16 +266,26 @@ class WalkForwardValidator:
         "highs_minus_lows_pct",
         "composite_breadth_score",
         "volatility_30d_rank",
+        # Tier 1 Auxiliary Features (Item 4)
+        "delivery_pct",
+        "delivery_pct_5d",
+        "fii_net",
+        "dii_net",
+        "sector_rs_ratio",
+        "sector_zscore",
+        "sector_percentile",
     ]
 
     def __init__(
         self,
         df: pd.DataFrame,
         asset_name: str = "UNKNOWN",
+        target_horizon: str = "3d",
         initial_train_size: int = 250,
         test_fold_size: int = 100,
     ):
         self.asset_name = asset_name
+        self.target_horizon = target_horizon.lower()
         self.initial_train_size = initial_train_size
         self.test_fold_size = test_fold_size
         self.df = df.copy().sort_values("date").reset_index(drop=True)
@@ -240,10 +309,21 @@ class WalkForwardValidator:
         df["norm_gap"] = (df["gap_pct"].fillna(0.0) / vol_10d).round(4)
         df["norm_range"] = (df["range_pct"].fillna(0.0) / vol_10d).round(4)
 
+        # Market breadth features
         df["net_advances_pct"] = df.get("net_advances_pct", pd.Series(0.0, index=df.index)).fillna(0.0)
         df["pct_above_50dma"] = df.get("pct_above_50dma", pd.Series(0.5, index=df.index)).fillna(0.5)
         df["highs_minus_lows_pct"] = df.get("highs_minus_lows_pct", pd.Series(0.0, index=df.index)).fillna(0.0)
         df["composite_breadth_score"] = df.get("composite_breadth_score", pd.Series(0.5, index=df.index)).fillna(0.5)
+
+        # Tier 1 Features
+        df["delivery_pct"] = df.get("delivery_pct", pd.Series(45.0, index=df.index)).fillna(45.0)
+        df["delivery_pct_5d"] = df.get("delivery_pct_5d", pd.Series(45.0, index=df.index)).fillna(45.0)
+        df["fii_net"] = df.get("fii_net", pd.Series(0.0, index=df.index)).fillna(0.0)
+        df["dii_net"] = df.get("dii_net", pd.Series(0.0, index=df.index)).fillna(0.0)
+
+        df["sector_rs_ratio"] = df.get("sector_rs_ratio", pd.Series(1.0, index=df.index)).fillna(1.0)
+        df["sector_zscore"] = df.get("sector_zscore", pd.Series(0.0, index=df.index)).fillna(0.0)
+        df["sector_percentile"] = df.get("sector_percentile", pd.Series(0.5, index=df.index)).fillna(0.5)
 
         vol_30d = df["rolling_volatility_30d"].fillna(1.0)
         vol_ranks = []
@@ -256,15 +336,21 @@ class WalkForwardValidator:
                 vol_ranks.append(round(rank, 4))
         df["volatility_30d_rank"] = vol_ranks
 
-        # Forward 3-day return target
-        fwd_return_3d = ((df["close"].shift(-3) - df["close"]) / df["close"] * 100.0).fillna(0.0)
-        fwd_norm_return = fwd_return_3d / vol_10d
+        # Forward Targets
+        if self.target_horizon == "1d":
+            fwd_return = ((df["close"].shift(-1) - df["close"]) / df["close"] * 100.0).fillna(0.0)
+            threshold = 0.2
+        else:
+            fwd_return = ((df["close"].shift(-3) - df["close"]) / df["close"] * 100.0).fillna(0.0)
+            threshold = 0.3
+
+        fwd_norm_return = fwd_return / vol_10d
 
         targets = []
         for norm_ret in fwd_norm_return:
-            if norm_ret > 0.3:
+            if norm_ret > threshold:
                 targets.append(1)  # higher
-            elif norm_ret < -0.3:
+            elif norm_ret < -threshold:
                 targets.append(-1)  # lower
             else:
                 targets.append(0)  # range_bound
@@ -273,10 +359,8 @@ class WalkForwardValidator:
         self.df = df
 
     def generate_expanding_folds(self) -> List[Tuple[np.ndarray, np.ndarray]]:
-        """
-        Generate time-series expanding training window fold indices.
-        """
-        n_samples = len(self.df) - 3
+        shift_len = 1 if self.target_horizon == "1d" else 3
+        n_samples = len(self.df) - shift_len
         folds = []
 
         start = self.initial_train_size
@@ -308,6 +392,8 @@ class WalkForwardValidator:
         y = self.df["target_direction"].values
         dates = self.df["date"].values
 
+        stride = 3 if self.target_horizon == "3d" else 1
+
         for k, (train_idx, test_idx) in enumerate(folds):
             X_train, y_train = X[train_idx], y[train_idx]
             X_test, y_test = X[test_idx], y[test_idx]
@@ -320,41 +406,58 @@ class WalkForwardValidator:
             lr.fit(X_train, y_train)
             pred_lr = lr.predict(X_test)
 
-            # Candidate 2: Gradient Boosted Trees
-            hgb = GradientBoostedTreeModel(n_estimators=25, lr=0.1)
-            hgb.fit(X_train, y_train)
-            pred_hgb = hgb.predict(X_test)
+            # Candidate 2: Boosted Decision Stumps
+            bds = BoostedDecisionStumpsModel(n_estimators=25, lr=0.1)
+            bds.fit(X_train, y_train)
+            pred_bds = bds.predict(X_test)
 
             # Baseline 1: Majority Class (in training set)
             vals, counts = np.unique(y_train, return_counts=True)
             maj_class = vals[np.argmax(counts)]
             pred_maj = np.full_like(y_test, maj_class)
 
-            # Baseline 2: Persistence (prior 1-day direction in target array)
-            pred_pers = y[test_idx - 1]
+            # Baseline 2: Persistence (Non-overlapping stride)
+            # Item 3: Evaluate persistence on stride-spaced test indices to avoid overlap inflation
+            test_stride_idx = np.arange(0, len(test_idx), stride)
+            y_test_stride = y_test[test_stride_idx]
+            pred_pers_stride = y[test_idx[test_stride_idx] - stride]
+
+            # Full test predictions for persistence (for metric calculation)
+            pred_pers_full = y[test_idx - stride]
 
             # Baseline 3: Always Range-Bound (0)
             pred_rb = np.zeros_like(y_test)
 
-            # Calculate Accuracies and Direction Scores
+            # Metrics
             acc_lr = float((pred_lr == y_test).mean())
+            bal_lr = compute_balanced_accuracy(y_test, pred_lr)
+            mcc_lr = compute_mcc(y_test, pred_lr)
             score_lr = float(np.mean([self._calculate_direction_score(p, a) for p, a in zip(pred_lr, y_test)]))
 
-            acc_hgb = float((pred_hgb == y_test).mean())
-            score_hgb = float(np.mean([self._calculate_direction_score(p, a) for p, a in zip(pred_hgb, y_test)]))
+            acc_bds = float((pred_bds == y_test).mean())
+            bal_bds = compute_balanced_accuracy(y_test, pred_bds)
+            mcc_bds = compute_mcc(y_test, pred_bds)
+            score_bds = float(np.mean([self._calculate_direction_score(p, a) for p, a in zip(pred_bds, y_test)]))
 
             acc_maj = float((pred_maj == y_test).mean())
+            bal_maj = compute_balanced_accuracy(y_test, pred_maj)
+            mcc_maj = compute_mcc(y_test, pred_maj)
             score_maj = float(np.mean([self._calculate_direction_score(p, a) for p, a in zip(pred_maj, y_test)]))
 
-            acc_pers = float((pred_pers == y_test).mean())
-            score_pers = float(np.mean([self._calculate_direction_score(p, a) for p, a in zip(pred_pers, y_test)]))
+            # Persistence non-overlapping stride metric
+            acc_pers = float((pred_pers_stride == y_test_stride).mean())
+            bal_pers = compute_balanced_accuracy(y_test_stride, pred_pers_stride)
+            mcc_pers = compute_mcc(y_test_stride, pred_pers_stride)
+            score_pers = float(np.mean([self._calculate_direction_score(p, a) for p, a in zip(pred_pers_stride, y_test_stride)]))
 
             acc_rb = float((pred_rb == y_test).mean())
+            bal_rb = compute_balanced_accuracy(y_test, pred_rb)
+            mcc_rb = compute_mcc(y_test, pred_rb)
             score_rb = float(np.mean([self._calculate_direction_score(p, a) for p, a in zip(pred_rb, y_test)]))
 
-            # Wins check (score must exceed ALL 3 baselines)
-            lr_win = (score_lr > score_maj) and (score_lr > score_pers) and (score_lr > score_rb)
-            hgb_win = (score_hgb > score_maj) and (score_hgb > score_pers) and (score_hgb > score_rb)
+            # Wins check (MCC and Balanced Accuracy must exceed ALL 3 baselines)
+            lr_win = (mcc_lr > mcc_maj) and (mcc_lr > mcc_pers) and (mcc_lr > mcc_rb) and (bal_lr > bal_maj) and (bal_lr > bal_pers)
+            bds_win = (mcc_bds > mcc_maj) and (mcc_bds > mcc_pers) and (mcc_bds > mcc_rb) and (bal_bds > bal_maj) and (bal_bds > bal_pers)
 
             fold_results.append(
                 FoldResult(
@@ -364,41 +467,62 @@ class WalkForwardValidator:
                     train_size=len(train_idx),
                     test_size=len(test_idx),
                     logistic_accuracy=round(acc_lr, 4),
+                    logistic_bal_acc=round(bal_lr, 4),
+                    logistic_mcc=round(mcc_lr, 4),
                     logistic_score=round(score_lr, 4),
-                    hgb_accuracy=round(acc_hgb, 4),
-                    hgb_score=round(score_hgb, 4),
+                    bds_accuracy=round(acc_bds, 4),
+                    bds_bal_acc=round(bal_bds, 4),
+                    bds_mcc=round(mcc_bds, 4),
+                    bds_score=round(score_bds, 4),
                     majority_accuracy=round(acc_maj, 4),
+                    majority_bal_acc=round(bal_maj, 4),
+                    majority_mcc=round(mcc_maj, 4),
                     majority_score=round(score_maj, 4),
                     persistence_accuracy=round(acc_pers, 4),
+                    persistence_bal_acc=round(bal_pers, 4),
+                    persistence_mcc=round(mcc_pers, 4),
                     persistence_score=round(score_pers, 4),
                     range_bound_accuracy=round(acc_rb, 4),
+                    range_bound_bal_acc=round(bal_rb, 4),
+                    range_bound_mcc=round(mcc_rb, 4),
                     range_bound_score=round(score_rb, 4),
                     logistic_beats_all=lr_win,
-                    hgb_beats_all=hgb_win,
+                    bds_beats_all=bds_win,
                 )
             )
 
         n_folds = len(fold_results)
         res = WalkForwardStudyResult(
             asset_name=self.asset_name,
+            target_horizon=self.target_horizon,
             total_samples=len(self.df),
             num_folds=n_folds,
             fold_results=fold_results,
             avg_logistic_accuracy=round(float(np.mean([r.logistic_accuracy for r in fold_results])), 4),
+            avg_logistic_bal_acc=round(float(np.mean([r.logistic_bal_acc for r in fold_results])), 4),
+            avg_logistic_mcc=round(float(np.mean([r.logistic_mcc for r in fold_results])), 4),
             avg_logistic_score=round(float(np.mean([r.logistic_score for r in fold_results])), 4),
-            avg_hgb_accuracy=round(float(np.mean([r.hgb_accuracy for r in fold_results])), 4),
-            avg_hgb_score=round(float(np.mean([r.hgb_score for r in fold_results])), 4),
+            avg_bds_accuracy=round(float(np.mean([r.bds_accuracy for r in fold_results])), 4),
+            avg_bds_bal_acc=round(float(np.mean([r.bds_bal_acc for r in fold_results])), 4),
+            avg_bds_mcc=round(float(np.mean([r.bds_mcc for r in fold_results])), 4),
+            avg_bds_score=round(float(np.mean([r.bds_score for r in fold_results])), 4),
             avg_majority_accuracy=round(float(np.mean([r.majority_accuracy for r in fold_results])), 4),
+            avg_majority_bal_acc=round(float(np.mean([r.majority_bal_acc for r in fold_results])), 4),
+            avg_majority_mcc=round(float(np.mean([r.majority_mcc for r in fold_results])), 4),
             avg_majority_score=round(float(np.mean([r.majority_score for r in fold_results])), 4),
             avg_persistence_accuracy=round(float(np.mean([r.persistence_accuracy for r in fold_results])), 4),
+            avg_persistence_bal_acc=round(float(np.mean([r.persistence_bal_acc for r in fold_results])), 4),
+            avg_persistence_mcc=round(float(np.mean([r.persistence_mcc for r in fold_results])), 4),
             avg_persistence_score=round(float(np.mean([r.persistence_score for r in fold_results])), 4),
             avg_range_bound_accuracy=round(float(np.mean([r.range_bound_accuracy for r in fold_results])), 4),
+            avg_range_bound_bal_acc=round(float(np.mean([r.range_bound_bal_acc for r in fold_results])), 4),
+            avg_range_bound_mcc=round(float(np.mean([r.range_bound_mcc for r in fold_results])), 4),
             avg_range_bound_score=round(float(np.mean([r.range_bound_score for r in fold_results])), 4),
             logistic_wins_count=sum(1 for r in fold_results if r.logistic_beats_all),
-            hgb_wins_count=sum(1 for r in fold_results if r.hgb_beats_all),
+            bds_wins_count=sum(1 for r in fold_results if r.bds_beats_all),
         )
 
         res.consistent_edge_found = (res.logistic_wins_count >= 0.75 * n_folds) or (
-            res.hgb_wins_count >= 0.75 * n_folds
+            res.bds_wins_count >= 0.75 * n_folds
         )
         return res

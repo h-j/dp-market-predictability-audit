@@ -261,7 +261,7 @@ def test_item8_calibrate_confidence_from_history_stub():
 
     stats = calibrate_confidence_from_history(df)
     assert isinstance(stats, dict)
-    assert len(stats) == 10
+    assert len(stats["deciles"]) == 10
     assert "0.8-0.9" in stats
     assert stats["0.8-0.9"]["count"] == 1
     assert stats["0.8-0.9"]["actual_hit_rate"] == 1.0

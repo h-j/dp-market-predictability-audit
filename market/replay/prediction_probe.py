@@ -4,6 +4,7 @@ from dataclasses import dataclass
 from enum import Enum
 from statistics import mean
 from typing import Any, Iterable, List, Optional
+import numpy as np
 
 
 from market.replay.transition_memory import TransitionExample
@@ -552,38 +553,68 @@ class PredictionProbeGenerator:
 
 def calibrate_confidence_from_history(predictions_df: Any) -> dict:
     """
-    Compute actual hit-rate per confidence decile from corrected prediction history dataframe.
-
-    NOTE: Not-yet-integrated into live path (Item 8 stub). Follow-up item after Items 1-3 data stabilization.
+    Compute actual hit-rate per confidence decile and return empirical calibration stats & mapping.
     """
     if predictions_df is None or getattr(predictions_df, "empty", True):
-        return {}
+        return {"deciles": {}, "mean_calibration_gap": 0.0, "calibration_table": {}}
+
+    df = predictions_df.copy()
+    if "confidence" not in df.columns:
+        if "prediction" in df.columns:
+            df["confidence"] = df["prediction"].apply(
+                lambda p: p.get("confidence", 0.5) if isinstance(p, dict) else 0.5
+            )
+        else:
+            df["confidence"] = 0.5
+
+    if "direction_score" not in df.columns:
+        if "prior_prediction_result" in df.columns:
+            df["direction_score"] = df["prior_prediction_result"].apply(
+                lambda r: r.get("direction_score", 0.0) if isinstance(r, dict) else 0.0
+            )
+        else:
+            df["direction_score"] = 0.0
 
     decile_stats = {}
+    gaps = []
+    calibration_table = {}
+
     for i in range(10):
         low = i / 10.0
         high = (i + 1) / 10.0
         bucket_label = f"{low:.1f}-{high:.1f}"
 
         if i == 9:
-            mask = (predictions_df["confidence"] >= low) & (predictions_df["confidence"] <= high)
+            mask = (df["confidence"] >= low) & (df["confidence"] <= high)
         else:
-            mask = (predictions_df["confidence"] >= low) & (predictions_df["confidence"] < high)
+            mask = (df["confidence"] >= low) & (df["confidence"] < high)
 
-        decile_rows = predictions_df[mask]
+        decile_rows = df[mask]
         count = len(decile_rows)
         if count > 0:
             hits = (decile_rows["direction_score"] == 1.0).sum()
             actual_hit_rate = float(hits / count)
             mean_conf = float(decile_rows["confidence"].mean())
+            gap = abs(mean_conf - actual_hit_rate)
+            gaps.append(gap)
         else:
-            actual_hit_rate = 0.0
-            mean_conf = 0.0
+            actual_hit_rate = (low + high) / 2.0
+            mean_conf = (low + high) / 2.0
+            gap = 0.0
 
         decile_stats[bucket_label] = {
             "count": count,
             "actual_hit_rate": round(actual_hit_rate, 4),
             "mean_confidence": round(mean_conf, 4),
+            "calibration_gap": round(gap, 4),
         }
-    return decile_stats
+        calibration_table[round((low + high) / 2.0, 2)] = round(actual_hit_rate, 4)
+
+    mean_gap = float(np.mean(gaps)) if gaps else 0.0
+
+    res = dict(decile_stats)
+    res["deciles"] = decile_stats
+    res["mean_calibration_gap"] = round(mean_gap, 4)
+    res["calibration_table"] = calibration_table
+    return res
 
