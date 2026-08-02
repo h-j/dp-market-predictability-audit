@@ -387,6 +387,34 @@ class FeaturePreparationManager:
             df["fii_net"] = df["fii_net"].ffill().bfill().fillna(0.0)
             df["dii_net"] = df["dii_net"].ffill().bfill().fillna(0.0)
 
+        # 4. Merge Genuine Market/Sector Breadth
+        try:
+            from market.data.market_breadth_fetcher import MarketBreadthFetcher
+            breadth_fetcher = MarketBreadthFetcher()
+            breadth_df = breadth_fetcher.fetch_and_compute_breadth()
+            if not breadth_df.empty:
+                breadth_df["date"] = pd.to_datetime(breadth_df["date"])
+                df["date"] = pd.to_datetime(df["date"])
+                breadth_cols = [
+                    "date",
+                    "advance_decline_ratio",
+                    "net_advances_pct",
+                    "pct_above_50dma",
+                    "highs_minus_lows_pct",
+                    "composite_breadth_score",
+                    "market_breadth_state",
+                ]
+                for col in breadth_cols[1:]:
+                    if col in df.columns:
+                        df = df.drop(columns=[col])
+                df = pd.merge(df, breadth_df[breadth_cols], on="date", how="left")
+                df["market_breadth_state"] = (
+                    df["market_breadth_state"].ffill().bfill().fillna("mixed")
+                )
+                print("✓ Merged Genuine Market/Sector Breadth.")
+        except Exception as exc:
+            print(f"⚠ Could not merge Market Breadth: {exc}")
+
         df["date"] = df["date"].dt.strftime("%Y-%m-%d")
         df.to_csv(self.dataset_path, index=False)
         print(

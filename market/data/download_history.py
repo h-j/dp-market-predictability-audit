@@ -210,6 +210,32 @@ class HistoricalMarketDownloader:
             data["daily_return_pct"].rolling(window=30, min_periods=1).std()
         ).round(4)
 
+        try:
+            from market.data.market_breadth_fetcher import MarketBreadthFetcher
+            breadth_fetcher = MarketBreadthFetcher()
+            breadth_df = breadth_fetcher.fetch_and_compute_breadth()
+            if not breadth_df.empty:
+                breadth_df["date"] = pd.to_datetime(breadth_df["date"])
+                data["date"] = pd.to_datetime(data["date"])
+                breadth_cols = [
+                    "date",
+                    "advance_decline_ratio",
+                    "net_advances_pct",
+                    "pct_above_50dma",
+                    "highs_minus_lows_pct",
+                    "composite_breadth_score",
+                    "market_breadth_state",
+                ]
+                for col in breadth_cols[1:]:
+                    if col in data.columns:
+                        data = data.drop(columns=[col])
+                data = pd.merge(data, breadth_df[breadth_cols], on="date", how="left")
+                data["market_breadth_state"] = (
+                    data["market_breadth_state"].ffill().bfill().fillna("mixed")
+                )
+        except Exception as exc:
+            print(f"Warning: could not merge market breadth: {exc}")
+
         data["date"] = data["date"].dt.strftime("%Y-%m-%d")
         data.to_csv(self.CSV_PATH, index=False)
         print(f"Added derived fields. Updated: {self.CSV_PATH}")

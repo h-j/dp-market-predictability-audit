@@ -268,31 +268,45 @@ def generate_visualizations(analysis, logs, tp_history, output_dir):
 
 def _prediction_dataframe(analysis: dict) -> pd.DataFrame:
     rows = analysis.get("prediction_history", [])
-    if not rows:
+    if not rows or len(rows) < 2:
         return pd.DataFrame()
 
-    df = pd.DataFrame(rows)
-    if "prior_prediction_result" in df.columns:
-        df["actual_direction"] = df["prior_prediction_result"].apply(
-            lambda x: x.get("actual_direction") if isinstance(x, dict) else None
-        )
-    else:
-        df["actual_direction"] = None
+    aligned_rows = []
+    for i in range(1, len(rows)):
+        curr = rows[i]
+        prev = rows[i - 1]
+        prior_res = curr.get("prior_prediction_result")
+        pred = prev.get("prediction")
 
-    df["prediction_direction"] = df["prediction"].apply(
-        lambda x: x.get("direction") if isinstance(x, dict) else None
-    )
-    df["direction_score"] = df["prior_prediction_result"].apply(
-        lambda x: x.get("direction_score") if isinstance(x, dict) else None
-    )
-    if "theory_usefulness" in df.columns:
-        df["theory_usefulness"] = df["theory_usefulness"].apply(
-            extract_usefulness_score
-        )
-    df["confidence"] = df["prediction"].apply(
-        lambda x: x.get("confidence", 0.0) if isinstance(x, dict) else 0.0
-    )
-    return df
+        if prior_res and pred:
+            p_dict = pred.to_dict() if hasattr(pred, "to_dict") else pred
+            r_dict = prior_res.to_dict() if hasattr(prior_res, "to_dict") else prior_res
+
+            if not isinstance(p_dict, dict):
+                p_dict = {}
+            if not isinstance(r_dict, dict):
+                r_dict = {}
+
+            aligned_rows.append(
+                {
+                    "date": curr.get("date"),
+                    "market_name": curr.get(
+                        "market_name", analysis.get("market_name", "UNKNOWN")
+                    ),
+                    "prediction": p_dict,
+                    "prior_prediction_result": r_dict,
+                    "prediction_direction": p_dict.get("direction"),
+                    "actual_direction": r_dict.get("actual_direction"),
+                    "direction_score": r_dict.get("direction_score"),
+                    "confidence": p_dict.get("confidence", 0.0),
+                    "participation_confirmation": prev.get("participation_confirmation"),
+                    "theory_usefulness": extract_usefulness_score(
+                        prev.get("theory_usefulness")
+                    ),
+                }
+            )
+
+    return pd.DataFrame(aligned_rows)
 
 
 def _market_summary(analysis: dict) -> dict:

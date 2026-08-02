@@ -217,19 +217,32 @@ class PredictionProbeGenerator:
         if p_regime == "Persistent Lower" and "higher" not in trend:
             return PredictionDirection.lower
 
+        # Asset-relative threshold normalization (Item 7)
+        vol_scale = getattr(observation, "rolling_volatility_10d", None)
+        if vol_scale is None:
+            vol_scale = getattr(observation, "volatility_10d", None)
+        if not vol_scale or float(vol_scale) <= 0:
+            vol_scale = 1.0
+        else:
+            vol_scale = float(vol_scale)
+
+        norm_return_3d = return_3d / vol_scale
+        norm_return_5d = return_5d / vol_scale
+        norm_gap_pct = gap_pct / vol_scale
+
         strong_up = (
-            return_3d > 0.3
-            and return_5d > 0.5
+            norm_return_3d > 0.3
+            and norm_return_5d > 0.5
             and (
                 volume_ratio_5d > 1.0
-                or gap_pct > 0.35
+                or norm_gap_pct > 0.35
                 or "asset participation surge" in descriptors
             )
         )
         strong_down = (
-            return_3d < -0.3
-            and return_5d < -0.5
-            and (volume_ratio_5d > 1.0 or gap_pct < -0.35)
+            norm_return_3d < -0.3
+            and norm_return_5d < -0.5
+            and (volume_ratio_5d > 1.0 or norm_gap_pct < -0.35)
         )
         close_high = close_position_pct >= 0.80 or candle_type == "strong_bull"
         close_low = close_position_pct <= 0.20 or candle_type == "strong_bear"
@@ -277,7 +290,7 @@ class PredictionProbeGenerator:
                 if not (
                     strong_up
                     or "asset participation surge" in descriptors
-                    or gap_pct > 0.35
+                    or norm_gap_pct > 0.35
                 ):
                     return PredictionDirection.uncertain
             return PredictionDirection.higher
@@ -299,8 +312,8 @@ class PredictionProbeGenerator:
             ):
                 return PredictionDirection.lower
             if (
-                abs(return_3d) < 0.25
-                and abs(return_5d) < 0.35
+                abs(norm_return_3d) < 0.25
+                and abs(norm_return_5d) < 0.35
                 and volume_ratio_5d <= 1.05
                 and not close_high
                 and not close_low
@@ -308,9 +321,9 @@ class PredictionProbeGenerator:
                 return PredictionDirection.range_bound
             if "uncertain" in sentiment or "uncertain" in reflection_text:
                 return PredictionDirection.uncertain
-            if strong_up and (volume_ratio_5d > 1.05 or gap_pct > 0.25):
+            if strong_up and (volume_ratio_5d > 1.05 or norm_gap_pct > 0.25):
                 return PredictionDirection.higher
-            if strong_down and (volume_ratio_5d > 1.05 or gap_pct < -0.25):
+            if strong_down and (volume_ratio_5d > 1.05 or norm_gap_pct < -0.25):
                 return PredictionDirection.lower
             return PredictionDirection.range_bound
 
@@ -436,6 +449,9 @@ class PredictionProbeGenerator:
         }:
             base -= 0.05
 
+        # TODO (Item 8): The calibration multipliers below (>= 0.75 -> *0.82, >= 0.60 -> *0.88, <= 0.25 -> *1.05)
+        # are hand-picked constants. Once Items 1-3 provide trustworthy prediction history data,
+        # calibrate_confidence_from_history() should be used to derive data-driven multipliers.
         # v2.6 Calibration Logic
         raw_confidence = base
         if raw_confidence >= 0.75:
@@ -521,6 +537,8 @@ class PredictionProbeGenerator:
         act_val = actual.value if hasattr(actual, "value") else str(actual)
 
         if pred_val == "uncertain":
+            if act_val == "uncertain":
+                return 0.5
             return 0.0
         if pred_val == act_val:
             return 1.0
@@ -530,3 +548,42 @@ class PredictionProbeGenerator:
         }:
             return 0.5
         return 0.0
+
+
+def calibrate_confidence_from_history(predictions_df: Any) -> dict:
+    """
+    Compute actual hit-rate per confidence decile from corrected prediction history dataframe.
+
+    NOTE: Not-yet-integrated into live path (Item 8 stub). Follow-up item after Items 1-3 data stabilization.
+    """
+    if predictions_df is None or getattr(predictions_df, "empty", True):
+        return {}
+
+    decile_stats = {}
+    for i in range(10):
+        low = i / 10.0
+        high = (i + 1) / 10.0
+        bucket_label = f"{low:.1f}-{high:.1f}"
+
+        if i == 9:
+            mask = (predictions_df["confidence"] >= low) & (predictions_df["confidence"] <= high)
+        else:
+            mask = (predictions_df["confidence"] >= low) & (predictions_df["confidence"] < high)
+
+        decile_rows = predictions_df[mask]
+        count = len(decile_rows)
+        if count > 0:
+            hits = (decile_rows["direction_score"] == 1.0).sum()
+            actual_hit_rate = float(hits / count)
+            mean_conf = float(decile_rows["confidence"].mean())
+        else:
+            actual_hit_rate = 0.0
+            mean_conf = 0.0
+
+        decile_stats[bucket_label] = {
+            "count": count,
+            "actual_hit_rate": round(actual_hit_rate, 4),
+            "mean_confidence": round(mean_conf, 4),
+        }
+    return decile_stats
+

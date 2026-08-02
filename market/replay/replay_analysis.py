@@ -1129,7 +1129,7 @@ class ReplayAnalysisEngine(ReplayAnalysisReportingMixin):
         high_usefulness_predictions = [
             r
             for r in aligned_predictions
-            if r.get("theory_usefulness", {}).get("score", 0.0) > 0.7
+            if (r.get("theory_usefulness") or {}).get("score", 0.0) > 0.7
         ]
         accuracy_when_high_usefulness = (
             sum(1 for r in high_usefulness_predictions if is_correct(r))
@@ -1283,6 +1283,61 @@ class ReplayAnalysisEngine(ReplayAnalysisReportingMixin):
             except Exception:
                 correlation_coeff = 0.0
 
+        # Item 2 Baselines Computation (Data-only baselines)
+        actual_directions = [
+            r.get("prior_prediction_result", {}).get("actual_direction")
+            for r in aligned_predictions
+            if r.get("prior_prediction_result", {}).get("actual_direction")
+        ]
+
+        if actual_directions:
+            # 1. Always-range_bound baseline score
+            rb_scores = []
+            for act in actual_directions:
+                if act == "range_bound":
+                    rb_scores.append(1.0)
+                elif act in {"higher", "lower"}:
+                    rb_scores.append(0.5)
+                else:
+                    rb_scores.append(0.0)
+            always_range_bound_baseline = mean(rb_scores)
+
+            # 2. Majority class baseline score
+            from collections import Counter
+            counts = Counter(actual_directions)
+            majority_class = counts.most_common(1)[0][0]
+            maj_scores = []
+            for act in actual_directions:
+                if majority_class == "range_bound":
+                    if act == "range_bound":
+                        maj_scores.append(1.0)
+                    elif act in {"higher", "lower"}:
+                        maj_scores.append(0.5)
+                    else:
+                        maj_scores.append(0.0)
+                elif majority_class == "uncertain":
+                    if act == "uncertain":
+                        maj_scores.append(0.5)
+                    else:
+                        maj_scores.append(0.0)
+                else:
+                    if act == majority_class:
+                        maj_scores.append(1.0)
+                    else:
+                        maj_scores.append(0.0)
+            majority_class_baseline = mean(maj_scores)
+
+            system_mean_score = mean(scores) if scores else 0.0
+            exceeds_baselines = (system_mean_score > majority_class_baseline) and (
+                system_mean_score > always_range_bound_baseline
+            )
+        else:
+            always_range_bound_baseline = 0.0
+            majority_class_baseline = 0.0
+            majority_class = "N/A"
+            system_mean_score = 0.0
+            exceeds_baselines = False
+
         return {
             "total_predictions": total,
             "scored_predictions": scored_count,
@@ -1290,6 +1345,11 @@ class ReplayAnalysisEngine(ReplayAnalysisReportingMixin):
             "partial_accuracy": (
                 (correct + partial) / scored_count if scored_count else 0.0
             ),
+            "system_mean_direction_score": round(system_mean_score, 4),
+            "majority_class_baseline_score": round(majority_class_baseline, 4),
+            "always_range_bound_baseline_score": round(always_range_bound_baseline, 4),
+            "majority_class": majority_class,
+            "exceeds_baselines": exceeds_baselines,
             "uncertain_rate": (
                 sum(
                     1
