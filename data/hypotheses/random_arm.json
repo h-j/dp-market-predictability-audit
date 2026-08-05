@@ -1,0 +1,3266 @@
+[
+  {
+    "hypothesis_id": "H_RAND_001",
+    "description": "Random Hypothesis 1: norm_gap -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_002",
+    "description": "Random Hypothesis 2: rv_5d rv_1d vix_percentile_252d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.65
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_003",
+    "description": "Random Hypothesis 3: delivery_pct vix_percentile_252d vix_change_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_004",
+    "description": "Random Hypothesis 4: norm_gap -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_005",
+    "description": "Random Hypothesis 5: rv_5d volume_ratio_5d norm_gap -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_006",
+    "description": "Random Hypothesis 6: rs_nifty_3m vix_close delivery_pct -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_007",
+    "description": "Random Hypothesis 7: rs_nifty_3m volume_ratio_5d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_008",
+    "description": "Random Hypothesis 8: vix_change_5d delivery_pct norm_gap -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_009",
+    "description": "Random Hypothesis 9: volume_ratio_5d rs_nifty_3m norm_gap -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_010",
+    "description": "Random Hypothesis 10: vix_change_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_011",
+    "description": "Random Hypothesis 11: norm_gap -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_012",
+    "description": "Random Hypothesis 12: norm_gap vix_close -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_013",
+    "description": "Random Hypothesis 13: rv_1d volume_ratio_5d vix_close -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_014",
+    "description": "Random Hypothesis 14: vix_percentile_252d rs_nifty_3m vix_change_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_015",
+    "description": "Random Hypothesis 15: volume_ratio_5d rv_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_016",
+    "description": "Random Hypothesis 16: vix_change_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_017",
+    "description": "Random Hypothesis 17: rv_1d delivery_pct -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_018",
+    "description": "Random Hypothesis 18: norm_gap -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_019",
+    "description": "Random Hypothesis 19: vix_close volume_ratio_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_020",
+    "description": "Random Hypothesis 20: delivery_pct -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_021",
+    "description": "Random Hypothesis 21: norm_gap -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_022",
+    "description": "Random Hypothesis 22: volume_ratio_5d rv_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_023",
+    "description": "Random Hypothesis 23: vix_percentile_252d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_024",
+    "description": "Random Hypothesis 24: rv_5d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_025",
+    "description": "Random Hypothesis 25: vix_percentile_252d rs_nifty_3m vix_change_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_026",
+    "description": "Random Hypothesis 26: vix_close -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_027",
+    "description": "Random Hypothesis 27: volume_ratio_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_028",
+    "description": "Random Hypothesis 28: vix_percentile_252d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_029",
+    "description": "Random Hypothesis 29: norm_gap rv_1d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_030",
+    "description": "Random Hypothesis 30: rv_1d rs_nifty_3m vix_close -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_031",
+    "description": "Random Hypothesis 31: rv_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_032",
+    "description": "Random Hypothesis 32: rs_nifty_3m norm_gap -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_033",
+    "description": "Random Hypothesis 33: rs_nifty_3m -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_034",
+    "description": "Random Hypothesis 34: rs_nifty_3m delivery_pct -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.65
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_035",
+    "description": "Random Hypothesis 35: vix_close vix_change_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.65
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_036",
+    "description": "Random Hypothesis 36: vix_close delivery_pct rv_1d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_037",
+    "description": "Random Hypothesis 37: vix_percentile_252d norm_gap -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_038",
+    "description": "Random Hypothesis 38: rs_nifty_3m vix_percentile_252d vix_change_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_039",
+    "description": "Random Hypothesis 39: vix_percentile_252d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_040",
+    "description": "Random Hypothesis 40: delivery_pct -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_041",
+    "description": "Random Hypothesis 41: vix_change_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_042",
+    "description": "Random Hypothesis 42: vix_close vix_percentile_252d rv_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_043",
+    "description": "Random Hypothesis 43: rv_5d volume_ratio_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_044",
+    "description": "Random Hypothesis 44: volume_ratio_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_045",
+    "description": "Random Hypothesis 45: volume_ratio_5d delivery_pct -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_046",
+    "description": "Random Hypothesis 46: rv_5d vix_change_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_047",
+    "description": "Random Hypothesis 47: rv_1d vix_change_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_048",
+    "description": "Random Hypothesis 48: vix_close rv_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_049",
+    "description": "Random Hypothesis 49: vix_percentile_252d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_050",
+    "description": "Random Hypothesis 50: vix_close -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_051",
+    "description": "Random Hypothesis 51: vix_close -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_052",
+    "description": "Random Hypothesis 52: norm_gap -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_053",
+    "description": "Random Hypothesis 53: vix_percentile_252d rs_nifty_3m -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_054",
+    "description": "Random Hypothesis 54: rv_1d volume_ratio_5d vix_percentile_252d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_055",
+    "description": "Random Hypothesis 55: vix_change_5d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_056",
+    "description": "Random Hypothesis 56: rv_1d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_057",
+    "description": "Random Hypothesis 57: delivery_pct volume_ratio_5d vix_close -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_058",
+    "description": "Random Hypothesis 58: vix_close vix_percentile_252d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_059",
+    "description": "Random Hypothesis 59: vix_close -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_060",
+    "description": "Random Hypothesis 60: vix_close vix_percentile_252d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_061",
+    "description": "Random Hypothesis 61: norm_gap -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_062",
+    "description": "Random Hypothesis 62: vix_change_5d norm_gap volume_ratio_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_063",
+    "description": "Random Hypothesis 63: vix_close rv_1d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.35
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_064",
+    "description": "Random Hypothesis 64: rs_nifty_3m -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_065",
+    "description": "Random Hypothesis 65: rv_1d vix_percentile_252d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_066",
+    "description": "Random Hypothesis 66: delivery_pct norm_gap rs_nifty_3m -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_067",
+    "description": "Random Hypothesis 67: volume_ratio_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_068",
+    "description": "Random Hypothesis 68: volume_ratio_5d norm_gap -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.65
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_069",
+    "description": "Random Hypothesis 69: delivery_pct -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_070",
+    "description": "Random Hypothesis 70: norm_gap delivery_pct vix_close -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      },
+      {
+        "feature": "vix_close",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_071",
+    "description": "Random Hypothesis 71: rs_nifty_3m vix_close -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.35
+      },
+      {
+        "feature": "vix_close",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_072",
+    "description": "Random Hypothesis 72: vix_percentile_252d rv_5d rs_nifty_3m -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_073",
+    "description": "Random Hypothesis 73: rv_5d vix_change_5d norm_gap -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_074",
+    "description": "Random Hypothesis 74: rv_1d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_075",
+    "description": "Random Hypothesis 75: vix_close rs_nifty_3m vix_change_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_076",
+    "description": "Random Hypothesis 76: vix_close vix_percentile_252d delivery_pct -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.65
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_077",
+    "description": "Random Hypothesis 77: rv_1d vix_close norm_gap -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_078",
+    "description": "Random Hypothesis 78: delivery_pct rs_nifty_3m rv_1d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_079",
+    "description": "Random Hypothesis 79: rs_nifty_3m delivery_pct volume_ratio_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_080",
+    "description": "Random Hypothesis 80: norm_gap -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_081",
+    "description": "Random Hypothesis 81: delivery_pct -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_082",
+    "description": "Random Hypothesis 82: rv_1d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_083",
+    "description": "Random Hypothesis 83: rv_1d delivery_pct vix_percentile_252d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_084",
+    "description": "Random Hypothesis 84: norm_gap -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_085",
+    "description": "Random Hypothesis 85: norm_gap vix_close -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_086",
+    "description": "Random Hypothesis 86: vix_percentile_252d rs_nifty_3m -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_087",
+    "description": "Random Hypothesis 87: volume_ratio_5d vix_change_5d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_088",
+    "description": "Random Hypothesis 88: vix_close -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_089",
+    "description": "Random Hypothesis 89: vix_change_5d delivery_pct -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_090",
+    "description": "Random Hypothesis 90: vix_change_5d rv_1d vix_close -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_091",
+    "description": "Random Hypothesis 91: vix_percentile_252d volume_ratio_5d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_092",
+    "description": "Random Hypothesis 92: vix_percentile_252d vix_change_5d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_093",
+    "description": "Random Hypothesis 93: vix_percentile_252d volume_ratio_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_094",
+    "description": "Random Hypothesis 94: rv_1d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_095",
+    "description": "Random Hypothesis 95: vix_close -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_096",
+    "description": "Random Hypothesis 96: rv_1d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_097",
+    "description": "Random Hypothesis 97: vix_change_5d volume_ratio_5d rs_nifty_3m -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.65
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_098",
+    "description": "Random Hypothesis 98: vix_change_5d norm_gap -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_099",
+    "description": "Random Hypothesis 99: vix_close rv_1d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_100",
+    "description": "Random Hypothesis 100: norm_gap rs_nifty_3m -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.65
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_101",
+    "description": "Random Hypothesis 101: delivery_pct vix_change_5d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_102",
+    "description": "Random Hypothesis 102: rv_5d delivery_pct -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_103",
+    "description": "Random Hypothesis 103: vix_close -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_104",
+    "description": "Random Hypothesis 104: rs_nifty_3m rv_1d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_105",
+    "description": "Random Hypothesis 105: volume_ratio_5d delivery_pct -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_106",
+    "description": "Random Hypothesis 106: volume_ratio_5d vix_percentile_252d vix_close -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_107",
+    "description": "Random Hypothesis 107: vix_close volume_ratio_5d delivery_pct -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_108",
+    "description": "Random Hypothesis 108: rv_1d rv_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_109",
+    "description": "Random Hypothesis 109: vix_close vix_change_5d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_110",
+    "description": "Random Hypothesis 110: volume_ratio_5d norm_gap -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_111",
+    "description": "Random Hypothesis 111: volume_ratio_5d vix_close -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_112",
+    "description": "Random Hypothesis 112: volume_ratio_5d rs_nifty_3m vix_change_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_113",
+    "description": "Random Hypothesis 113: vix_close rv_1d vix_percentile_252d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_114",
+    "description": "Random Hypothesis 114: rs_nifty_3m -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_115",
+    "description": "Random Hypothesis 115: rv_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_116",
+    "description": "Random Hypothesis 116: vix_close norm_gap -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_117",
+    "description": "Random Hypothesis 117: norm_gap volume_ratio_5d vix_percentile_252d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_118",
+    "description": "Random Hypothesis 118: delivery_pct rv_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_119",
+    "description": "Random Hypothesis 119: vix_close rs_nifty_3m volume_ratio_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_120",
+    "description": "Random Hypothesis 120: norm_gap -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_121",
+    "description": "Random Hypothesis 121: rs_nifty_3m delivery_pct -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.65
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_122",
+    "description": "Random Hypothesis 122: volume_ratio_5d delivery_pct -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_123",
+    "description": "Random Hypothesis 123: volume_ratio_5d rs_nifty_3m vix_percentile_252d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_124",
+    "description": "Random Hypothesis 124: vix_change_5d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_125",
+    "description": "Random Hypothesis 125: vix_change_5d vix_percentile_252d delivery_pct -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_126",
+    "description": "Random Hypothesis 126: volume_ratio_5d rv_5d vix_close -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.65
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_127",
+    "description": "Random Hypothesis 127: delivery_pct -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_128",
+    "description": "Random Hypothesis 128: rv_1d norm_gap -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_129",
+    "description": "Random Hypothesis 129: norm_gap vix_percentile_252d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_130",
+    "description": "Random Hypothesis 130: rs_nifty_3m vix_change_5d rv_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_131",
+    "description": "Random Hypothesis 131: rv_1d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_132",
+    "description": "Random Hypothesis 132: rv_1d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_133",
+    "description": "Random Hypothesis 133: vix_percentile_252d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_134",
+    "description": "Random Hypothesis 134: norm_gap vix_change_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_135",
+    "description": "Random Hypothesis 135: vix_change_5d rv_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_136",
+    "description": "Random Hypothesis 136: vix_percentile_252d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_137",
+    "description": "Random Hypothesis 137: delivery_pct vix_percentile_252d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.65
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_138",
+    "description": "Random Hypothesis 138: rs_nifty_3m norm_gap -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_139",
+    "description": "Random Hypothesis 139: vix_change_5d delivery_pct -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_140",
+    "description": "Random Hypothesis 140: rs_nifty_3m delivery_pct rv_1d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_141",
+    "description": "Random Hypothesis 141: volume_ratio_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_142",
+    "description": "Random Hypothesis 142: rs_nifty_3m vix_percentile_252d vix_change_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_143",
+    "description": "Random Hypothesis 143: rs_nifty_3m delivery_pct -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_144",
+    "description": "Random Hypothesis 144: vix_close rv_5d -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_145",
+    "description": "Random Hypothesis 145: vix_change_5d vix_close rv_1d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.65,
+        "threshold_q2": 0.8
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_146",
+    "description": "Random Hypothesis 146: vix_close vix_percentile_252d rv_5d -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.35
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_147",
+    "description": "Random Hypothesis 147: rv_1d rs_nifty_3m vix_percentile_252d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_148",
+    "description": "Random Hypothesis 148: rv_5d vix_close -> volatility_5d",
+    "source": "RANDOM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_149",
+    "description": "Random Hypothesis 149: rv_1d rv_5d volume_ratio_5d -> vol_regime_expansion",
+    "source": "RANDOM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": 1.0
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_RAND_150",
+    "description": "Random Hypothesis 150: vix_change_5d norm_gap -> direction_3d",
+    "source": "RANDOM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.65
+      }
+    ]
+  }
+]

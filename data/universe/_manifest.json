@@ -1,0 +1,673 @@
+{
+  "as_of_date": "2026-08-05",
+  "download_timestamp": "2026-08-05T15:58:03.378307",
+  "total_requested": 98,
+  "successful_count": 94,
+  "excluded_count": 4,
+  "excluded_tickers": [
+    "LTIM",
+    "TATAMOTORS",
+    "ZOMATO",
+    "REC"
+  ],
+  "tickers": {
+    "RELIANCE": {
+      "raw_ticker": "RELIANCE.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "TCS": {
+      "raw_ticker": "TCS.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "HDFCBANK": {
+      "raw_ticker": "HDFCBANK.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "INFY": {
+      "raw_ticker": "INFY.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "ICICIBANK": {
+      "raw_ticker": "ICICIBANK.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "HINDUNILVR": {
+      "raw_ticker": "HINDUNILVR.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "ITC": {
+      "raw_ticker": "ITC.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "SBIN": {
+      "raw_ticker": "SBIN.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "BHARTIARTL": {
+      "raw_ticker": "BHARTIARTL.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "LT": {
+      "raw_ticker": "LT.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "KOTAKBANK": {
+      "raw_ticker": "KOTAKBANK.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "AXISBANK": {
+      "raw_ticker": "AXISBANK.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "ASIANPAINT": {
+      "raw_ticker": "ASIANPAINT.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "MARUTI": {
+      "raw_ticker": "MARUTI.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "SUNPHARMA": {
+      "raw_ticker": "SUNPHARMA.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "TITAN": {
+      "raw_ticker": "TITAN.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "ULTRACEMCO": {
+      "raw_ticker": "ULTRACEMCO.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "BAJFINANCE": {
+      "raw_ticker": "BAJFINANCE.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "BAJAJFINSV": {
+      "raw_ticker": "BAJAJFINSV.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "NESTLEIND": {
+      "raw_ticker": "NESTLEIND.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "WIPRO": {
+      "raw_ticker": "WIPRO.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "HCLTECH": {
+      "raw_ticker": "HCLTECH.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "TATASTEEL": {
+      "raw_ticker": "TATASTEEL.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "NTPC": {
+      "raw_ticker": "NTPC.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "POWERGRID": {
+      "raw_ticker": "POWERGRID.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "ONGC": {
+      "raw_ticker": "ONGC.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "COALINDIA": {
+      "raw_ticker": "COALINDIA.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "JSWSTEEL": {
+      "raw_ticker": "JSWSTEEL.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "M&M": {
+      "raw_ticker": "M&M.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "ADANIENT": {
+      "raw_ticker": "ADANIENT.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "ADANIPORTS": {
+      "raw_ticker": "ADANIPORTS.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "GRASIM": {
+      "raw_ticker": "GRASIM.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "BPCL": {
+      "raw_ticker": "BPCL.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "HEROMOTOCO": {
+      "raw_ticker": "HEROMOTOCO.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "EICHERMOT": {
+      "raw_ticker": "EICHERMOT.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "DIVISLAB": {
+      "raw_ticker": "DIVISLAB.NS",
+      "rows": 1034,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "DRREDDY": {
+      "raw_ticker": "DRREDDY.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "CIPLA": {
+      "raw_ticker": "CIPLA.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "APOLLOHOSP": {
+      "raw_ticker": "APOLLOHOSP.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "TATACONSUM": {
+      "raw_ticker": "TATACONSUM.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "BRITANNIA": {
+      "raw_ticker": "BRITANNIA.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "INDUSINDBK": {
+      "raw_ticker": "INDUSINDBK.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "HDFCLIFE": {
+      "raw_ticker": "HDFCLIFE.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "SBILIFE": {
+      "raw_ticker": "SBILIFE.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "BAJAJ-AUTO": {
+      "raw_ticker": "BAJAJ-AUTO.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "HINDALCO": {
+      "raw_ticker": "HINDALCO.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "TECHM": {
+      "raw_ticker": "TECHM.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "BEL": {
+      "raw_ticker": "BEL.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "TRENT": {
+      "raw_ticker": "TRENT.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "HAL": {
+      "raw_ticker": "HAL.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "VBL": {
+      "raw_ticker": "VBL.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "JIOFIN": {
+      "raw_ticker": "JIOFIN.NS",
+      "rows": 733,
+      "min_date": "2023-08-21",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "SIEMENS": {
+      "raw_ticker": "SIEMENS.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "ABB": {
+      "raw_ticker": "ABB.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "PIDILITIND": {
+      "raw_ticker": "PIDILITIND.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "DLF": {
+      "raw_ticker": "DLF.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "CHOLAFIN": {
+      "raw_ticker": "CHOLAFIN.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "GODREJPROP": {
+      "raw_ticker": "GODREJPROP.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "GAIL": {
+      "raw_ticker": "GAIL.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "IOC": {
+      "raw_ticker": "IOC.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "TATAPOWER": {
+      "raw_ticker": "TATAPOWER.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "SHRIRAMFIN": {
+      "raw_ticker": "SHRIRAMFIN.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "TORNTPHARM": {
+      "raw_ticker": "TORNTPHARM.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "LODHA": {
+      "raw_ticker": "LODHA.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "SRF": {
+      "raw_ticker": "SRF.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "INDIGO": {
+      "raw_ticker": "INDIGO.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "AMBUJACEM": {
+      "raw_ticker": "AMBUJACEM.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "BANKBARODA": {
+      "raw_ticker": "BANKBARODA.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "PNB": {
+      "raw_ticker": "PNB.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "CANBK": {
+      "raw_ticker": "CANBK.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "VEDL": {
+      "raw_ticker": "VEDL.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "HAVELLS": {
+      "raw_ticker": "HAVELLS.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "MOTHERSON": {
+      "raw_ticker": "MOTHERSON.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "MAXHEALTH": {
+      "raw_ticker": "MAXHEALTH.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "ICICIPRULI": {
+      "raw_ticker": "ICICIPRULI.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "ICICIGI": {
+      "raw_ticker": "ICICIGI.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "BOSCHLTD": {
+      "raw_ticker": "BOSCHLTD.NS",
+      "rows": 1034,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "UNITDSPR": {
+      "raw_ticker": "UNITDSPR.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "BERGEPAINT": {
+      "raw_ticker": "BERGEPAINT.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "NAUKRI": {
+      "raw_ticker": "NAUKRI.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "MUTHOOTFIN": {
+      "raw_ticker": "MUTHOOTFIN.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "TATAELXSI": {
+      "raw_ticker": "TATAELXSI.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "POLYCAB": {
+      "raw_ticker": "POLYCAB.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "MANKIND": {
+      "raw_ticker": "MANKIND.NS",
+      "rows": 804,
+      "min_date": "2023-05-09",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "DIXON": {
+      "raw_ticker": "DIXON.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "TVSMOTOR": {
+      "raw_ticker": "TVSMOTOR.NS",
+      "rows": 1035,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "CGPOWER": {
+      "raw_ticker": "CGPOWER.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "INDUSTOWER": {
+      "raw_ticker": "INDUSTOWER.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "UNIONBANK": {
+      "raw_ticker": "UNIONBANK.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "IOB": {
+      "raw_ticker": "IOB.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "IDBI": {
+      "raw_ticker": "IDBI.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "JINDALSTEL": {
+      "raw_ticker": "JINDALSTEL.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "NHPC": {
+      "raw_ticker": "NHPC.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    },
+    "PFC": {
+      "raw_ticker": "PFC.NS",
+      "rows": 1036,
+      "min_date": "2022-06-01",
+      "max_date": "2026-08-05",
+      "status": "VALID"
+    }
+  }
+}

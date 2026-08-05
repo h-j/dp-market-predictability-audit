@@ -428,7 +428,19 @@ class ReplayExecutor:
             self.paper_trader = PaperTrader()
             self.decision_journal = None
 
-        synthesizer = MarketObservationSynthesizer(self.engine.data)
+        market_name = getattr(self.engine, "market_name", "RELIANCE")
+        dataset_path = str(getattr(self.engine, "dataset_path", ""))
+
+        if dataset_path:
+            ds_lower = dataset_path.lower()
+            mn_upper = market_name.upper()
+            if "nifty" in ds_lower:
+                assert "NIFTY" in mn_upper, f"Market name mismatch: market_name='{market_name}' but dataset_path='{dataset_path}'"
+            elif "reliance" in ds_lower:
+                assert "RELIANCE" in mn_upper, f"Market name mismatch: market_name='{market_name}' but dataset_path='{dataset_path}'"
+
+        self._log(f"✓ Validated market name '{market_name}' matches dataset '{dataset_path}'")
+        synthesizer = MarketObservationSynthesizer(self.engine.data, market_name=market_name)
         num_days = len(self.engine)
 
         if not self.quiet:

@@ -1,18 +1,22 @@
-"""
-Observer-only capital simulator for replay analysis.
-Does not affect cognition.
-"""
-
+import warnings
 from typing import Any, Dict, List
 
 
 class CapitalSimulator:
     """
-    Simulates capital growth based on daily predictions and actual market returns.
-    Observer-only, does not influence cognition.
+    DEPRECATED: Legacy observer-only capital simulator.
+
+    WARNING: This legacy simulator uses simplified position rules (sell = cash, hold = 0.5x long)
+    which contradict the cost-aware execution rules in `paper_trader.py`.
+    Use `market.replay.paper_trader.PaperTrader` as the primary source of truth for portfolio capital simulation.
     """
 
     def __init__(self, starting_capital: float = 10000.0):
+        warnings.warn(
+            "CapitalSimulator is deprecated. Use market.replay.paper_trader.PaperTrader instead.",
+            DeprecationWarning,
+            stacklevel=2,
+        )
         self.starting_capital = starting_capital
         self.daily_logs: List[Dict] = []
         self.total_days = 0

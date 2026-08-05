@@ -70,11 +70,13 @@ class ReplayAnalysisReportingMixin:
                 print("No data to export for prediction analysis CSV.")
             return
 
-        for i in range(rows):
-            pred_rec = self.prediction_history[i] or {}
+        for i in range(1, rows):
+            curr_pred_rec = self.prediction_history[i] or {}
+            prev_pred_rec = self.prediction_history[i - 1] or {}
             cap_rec = self.capital_simulation_logs[i] or {}
-            prediction = pred_rec.get("prediction") or {}
-            prior_prediction_result = pred_rec.get("prior_prediction_result") or {}
+
+            prediction = prev_pred_rec.get("prediction") or {}
+            prior_prediction_result = curr_pred_rec.get("prior_prediction_result") or {}
 
             if hasattr(prediction, "to_dict"):
                 prediction = prediction.to_dict()
@@ -96,38 +98,39 @@ class ReplayAnalysisReportingMixin:
 
             combined_data.append(
                 {
-                    "date": pred_rec.get("date"),
+                    "date": curr_pred_rec.get("date"),
                     "prediction_direction": prediction.get("direction"),
                     "prediction_confidence": prediction.get("confidence")
                     or baseline.get("conviction"),
                     "actual_direction": prior_prediction_result.get("actual_direction"),
-                    "transition_pressure_score": pred_rec.get(
+                    "direction_score": prior_prediction_result.get("direction_score"),
+                    "transition_pressure_score": prev_pred_rec.get(
                         "transition_pressure_score"
                     ),
-                    "transition_breakout_risk": pred_rec.get(
+                    "transition_breakout_risk": prev_pred_rec.get(
                         "transition_breakout_risk"
                     ),
                     "theory_usefulness_score": extract_usefulness_score(
-                        pred_rec.get("theory_usefulness")
+                        prev_pred_rec.get("theory_usefulness")
                     ),
                     "theory_usefulness_label": (
-                        pred_rec.get("theory_usefulness", {}).get("label", "unknown")
-                        if isinstance(pred_rec.get("theory_usefulness"), dict)
+                        prev_pred_rec.get("theory_usefulness", {}).get("label", "unknown")
+                        if isinstance(prev_pred_rec.get("theory_usefulness"), dict)
                         else "unknown"
                     ),
-                    "regime_similarity": pred_rec.get("regime_similarity"),
+                    "regime_similarity": prev_pred_rec.get("regime_similarity"),
                     "capital_before": baseline.get("capital_before")
                     or cap_rec.get("capital_before"),
                     "capital_after": baseline.get("capital_after")
                     or cap_rec.get("capital_after"),
                     "daily_return_pct": baseline.get("daily_return_pct")
                     or cap_rec.get("daily_return_pct"),
-                    "volume_state": pred_rec.get("volume_state"),
-                    "volatility_regime": pred_rec.get("volatility_regime"),
-                    "momentum_regime": pred_rec.get("momentum_regime"),
-                    "regime_subtype": pred_rec.get("regime_subtype"),
-                    "analog_divergence_claim": pred_rec.get("analog_divergence_claim"),
-                    "regime_history": pred_rec.get("regime_history"),
+                    "volume_state": prev_pred_rec.get("volume_state"),
+                    "volatility_regime": prev_pred_rec.get("volatility_regime"),
+                    "momentum_regime": prev_pred_rec.get("momentum_regime"),
+                    "regime_subtype": prev_pred_rec.get("regime_subtype"),
+                    "analog_divergence_claim": prev_pred_rec.get("analog_divergence_claim"),
+                    "regime_history": prev_pred_rec.get("regime_history"),
                 }
             )
 
@@ -183,11 +186,26 @@ class ReplayJournalBuilder:
         # -------------------------------------------------------------
         # A. Learning Scorecard
         # -------------------------------------------------------------
+        system_score = p.get("system_mean_direction_score", p.get("accuracy", 0.0))
+        maj_baseline = p.get("majority_class_baseline_score", 0.0)
+        rb_baseline = p.get("always_range_bound_baseline_score", 0.0)
+        exceeds = p.get("exceeds_baselines", False)
+
         print("\nA. Learning Scorecard")
         print("━" * 50)
         print(
-            f"  • Overall Prediction Accuracy: {p.get('accuracy', 0.0):.1%} (n={p.get('total_predictions', 0)})"
+            f"  • System Mean Direction Score: {system_score:.3f} (Accuracy: {p.get('accuracy', 0.0):.1%}, n={p.get('total_predictions', 0)})"
         )
+        print(
+            f"  • Majority Class Baseline:     {maj_baseline:.3f} ({p.get('majority_class', 'N/A')})"
+        )
+        print(
+            f"  • Always Range-Bound Baseline: {rb_baseline:.3f}"
+        )
+        if not exceeds and p.get("scored_predictions", 0) > 0:
+            print(
+                f"  ⚠️ [WARNING] System mean score ({system_score:.3f}) DOES NOT EXCEED baselines (Majority: {maj_baseline:.3f}, Range-Bound: {rb_baseline:.3f})"
+            )
         print(f"  • Experiences Created:         {exp_stats.get('created', 0)}")
         print(f"    - Active:    {exp_stats.get('active', 0)}")
         print(f"    - Validated: {exp_stats.get('validated', 0)}")

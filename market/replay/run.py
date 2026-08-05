@@ -12,7 +12,8 @@ import pandas as pd
 
 from config.settings import settings
 from market.data.download_history import (STOCK_SECTOR_MAP,
-                                          GenericHistoryDownloader)
+                                          GenericHistoryDownloader,
+                                          resolve_symbol_file)
 from market.data.moneycontrol_fetcher import MoneycontrolFetcher
 from market.data.nse_fetcher import NSEFetcher
 from market.replay.replay_analysis import ReplayAnalysisEngine
@@ -33,11 +34,10 @@ class DataPreparationManager:
     ):
         self.symbol = symbol
         self.force_refresh = force_refresh
-        self.dataset_path = (
-            Path(dataset_path)
-            if dataset_path
-            else Path(__file__).parent.parent.parent / "data" / "reliance_daily_3y.csv"
-        )
+        if not dataset_path:
+            filename = resolve_symbol_file(symbol, enriched=False)
+            dataset_path = Path(__file__).parent.parent.parent / "data" / filename
+        self.dataset_path = Path(dataset_path)
 
     def prepare(self, start_date: str = "2023-01-01", end_date: str = None):
         if not end_date:
@@ -71,7 +71,9 @@ class DataPreparationManager:
 
         # 1. Primary Ticker
         primary_ticker = self.symbol
-        if "NIFTY" not in primary_ticker.upper() and "." not in primary_ticker:
+        if "NIFTY" in primary_ticker.upper():
+            primary_ticker = "^NSEI"
+        elif "." not in primary_ticker and "^" not in primary_ticker:
             primary_ticker = f"{primary_ticker.upper()}.NS"
 
         stock_cached = self.dataset_path.exists()
@@ -244,13 +246,19 @@ class FeaturePreparationManager:
     averages, and merges cached auxiliary features into the final CSV.
     """
 
-    def __init__(self, symbol: str, dataset_path: str = None):
+    def __init__(
+        self, symbol: str, dataset_path: str = None, output_path: str = None
+    ):
         self.symbol = symbol
-        self.dataset_path = (
-            Path(dataset_path)
-            if dataset_path
-            else Path(__file__).parent.parent.parent / "data" / "reliance_daily_3y.csv"
-        )
+        if not dataset_path:
+            filename = resolve_symbol_file(symbol, enriched=False)
+            dataset_path = Path(__file__).parent.parent.parent / "data" / filename
+        self.dataset_path = Path(dataset_path)
+
+        if not output_path:
+            out_filename = resolve_symbol_file(symbol, enriched=True)
+            output_path = Path(__file__).parent.parent.parent / "data" / out_filename
+        self.output_path = Path(output_path)
 
     def prepare(self) -> pd.DataFrame:
         print(
@@ -263,6 +271,14 @@ class FeaturePreparationManager:
 
         df = pd.read_csv(self.dataset_path)
         df["date"] = pd.to_datetime(df["date"])
+
+        # Assertion: source column matches requested symbol
+        if "source" in df.columns and len(df) > 0:
+            first_source = str(df["source"].iloc[0]).upper()
+            clean_sym = self.symbol.replace(".NS", "").replace("^", "").upper()
+            assert clean_sym in first_source or ("NSEI" in first_source and "NIFTY" in clean_sym), (
+                f"Loaded dataset source '{first_source}' does not match requested symbol '{self.symbol}'"
+            )
 
         # Drop pre-existing columns to avoid merge suffixes
         for col in [
@@ -387,10 +403,39 @@ class FeaturePreparationManager:
             df["fii_net"] = df["fii_net"].ffill().bfill().fillna(0.0)
             df["dii_net"] = df["dii_net"].ffill().bfill().fillna(0.0)
 
+        # 4. Merge Genuine Market/Sector Breadth
+        try:
+            from market.data.market_breadth_fetcher import MarketBreadthFetcher
+            breadth_fetcher = MarketBreadthFetcher()
+            breadth_df = breadth_fetcher.fetch_and_compute_breadth()
+            if not breadth_df.empty:
+                breadth_df["date"] = pd.to_datetime(breadth_df["date"])
+                df["date"] = pd.to_datetime(df["date"])
+                breadth_cols = [
+                    "date",
+                    "advance_decline_ratio",
+                    "net_advances_pct",
+                    "pct_above_50dma",
+                    "highs_minus_lows_pct",
+                    "composite_breadth_score",
+                    "market_breadth_state",
+                ]
+                for col in breadth_cols[1:]:
+                    if col in df.columns:
+                        df = df.drop(columns=[col])
+                df = pd.merge(df, breadth_df[breadth_cols], on="date", how="left")
+                df["market_breadth_state"] = (
+                    df["market_breadth_state"].ffill().bfill().fillna("mixed")
+                )
+                print("✓ Merged Genuine Market/Sector Breadth.")
+        except Exception as exc:
+            print(f"⚠ Could not merge Market Breadth: {exc}")
+
         df["date"] = df["date"].dt.strftime("%Y-%m-%d")
-        df.to_csv(self.dataset_path, index=False)
+        self.output_path.parent.mkdir(parents=True, exist_ok=True)
+        df.to_csv(self.output_path, index=False)
         print(
-            f"✓ Validated and saved enriched dataset to {self.dataset_path} ({len(df)} rows)"
+            f"✓ Validated and saved enriched dataset to {self.output_path} ({len(df)} rows)"
         )
         return df
 

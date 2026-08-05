@@ -259,7 +259,12 @@ class MarketObservationSynthesizer:
             return "range_bound"
 
     def _derive_volatility_state(self, day_index: int) -> str:
-        """Determine volatility regime."""
+        """
+        Determine volatility regime using asset-normalized expanding-window percentile rank.
+
+        Computes trailing percentile rank from rolling_volatility_30d (minimum 60 days
+        of history strictly prior to current day, avoiding lookahead bias).
+        """
         row = self.data.iloc[day_index]
 
         # Intraday range
@@ -268,24 +273,27 @@ class MarketObservationSynthesizer:
         close_price = float(row["close"])
         intraday_range_pct = (high_price - low_price) / close_price * 100
 
-        # Rolling volatility if available
-        if "rolling_volatility_30d" in row:
-            vol_30d = float(row["rolling_volatility_30d"])
+        # Rolling volatility percentile rank if 60+ trailing days available
+        if "rolling_volatility_30d" in self.data.columns and day_index >= 60:
+            prior_vols = self.data["rolling_volatility_30d"].iloc[:day_index].dropna()
+            if len(prior_vols) >= 60 and "rolling_volatility_30d" in row and not pd.isna(row["rolling_volatility_30d"]):
+                current_vol = float(row["rolling_volatility_30d"])
+                percentile = float((prior_vols < current_vol).mean())
 
-            if vol_30d > 2.0:  # High volatility
-                if intraday_range_pct > 1.5:
-                    return "expanded"
+                if percentile < 0.33:
+                    return "compressed"
+                elif percentile < 0.67:
+                    if intraday_range_pct > 1.0:
+                        return "moderate"
+                    else:
+                        return "stable"
                 else:
-                    return "high"
-            elif vol_30d > 1.0:  # Moderate
-                if intraday_range_pct > 1.0:
-                    return "moderate"
-                else:
-                    return "stable"
-            else:  # Low volatility
-                return "compressed"
+                    if intraday_range_pct > 1.5:
+                        return "expanded"
+                    else:
+                        return "high"
 
-        # Fallback to intraday range
+        # Fallback to intraday range if < 60 days history available
         if intraday_range_pct > 1.5:
             return "expanded"
         elif intraday_range_pct > 0.8:
@@ -330,19 +338,37 @@ class MarketObservationSynthesizer:
 
     def _derive_breadth_state(self, day_index: int) -> str:
         """
-        Derive breadth from directional persistence.
+        Derive market breadth state.
 
-        In absence of true breadth data, use rolling trend consistency
-        as a proxy for participation quality.
+        Uses genuine constituent-level market breadth (Advance/Decline, % above 50DMA, New Highs-Lows)
+        when available in dataset. Falls back to single-asset proxy if genuine breadth metrics are missing.
         """
+        row = self.data.iloc[day_index]
+
+        # 1. Use precomputed genuine market breadth state if available
+        if "market_breadth_state" in row and not pd.isna(row["market_breadth_state"]):
+            return str(row["market_breadth_state"])
+
+        # 2. Use composite breadth score if available
+        if "composite_breadth_score" in row and not pd.isna(row["composite_breadth_score"]):
+            score = float(row["composite_breadth_score"])
+            if score >= 0.70:
+                return "strongly_participatory"
+            elif score >= 0.55:
+                return "strengthened"
+            elif score >= 0.45:
+                return "mixed"
+            elif score >= 0.30:
+                return "weakened"
+            else:
+                return "deteriorated"
+
+        # 3. Fallback: single-asset 5-day up/down ratio proxy
         if day_index < 5:
             return "nascent"
 
-        # Look at last 5 days
         window = self.data.iloc[max(0, day_index - 4) : day_index + 1]
         up_days = (window["close"] > window["open"]).sum()
-        down_days = (window["close"] <= window["open"]).sum()
-
         up_ratio = up_days / len(window)
 
         if up_ratio >= 0.8:
