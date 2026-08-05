@@ -114,3 +114,17 @@ To overturn the current NO-GO / FAILED verdicts, future substrate research must 
 
 > Backfilling current NIFTY 100 constituent tickers introduces survivorship bias, inflating long-side returns. Any passing verdict must be treated as upper-bound candidate edge pending historical constituent verification.
 
+
+
+---
+
+## 7. Phase 3 Rebuild: Substrate LLM Reasoning Survival Study
+
+**Status**: Completed  
+**Final Track Verdict**: **`LLM REASONING NULL`**
+
+| Gate / Hypothesis | Subject | Pre-Registered Condition | Result | Verdict |
+| :--- | :--- | :--- | :---: | :---: |
+| **Gate G-P3** | Survivor OOS Edge Superiority | Pooled One-Sided Mann-Whitney p < 0.05 | LLM Survivor Edge=+0.1948 vs Random=+0.2493 (MW p=0.6876) | 🔴 **FAILED** |
+
+> Substrate LLM hypotheses are evaluated strictly out-of-sample over expanding historical walk-forward windows. If LLM hypothesis survival rates do not exceed random grammar generation at p < 0.05, the LLM reasoning pipeline provides zero monetizable or predictive value beyond random rule synthesis.
