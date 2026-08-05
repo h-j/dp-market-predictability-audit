@@ -32,12 +32,12 @@ All research tracks strictly enforced the substrate's non-negotiable engineering
 | Track # | Research Scope | Method & Model | Pre-Registered Gate | Empirical Result | Final Verdict | Study Report Link |
 | :-: | :--- | :--- | :--- | :---: | :---: | :--- |
 | **1** | **Daily / 3-Day Direction** | Logistic & Boosted Stumps over OHLCV, Breadth, Delivery, FII/DII | Directional Predictability ($MCC > 0.10$) | Mean $MCC \approx 0.00$ on RELIANCE, NIFTY, TCS | 🔴 **`DIRECTION IS DEAD`** | [Section 4.1](#track-1-single-name--index-daily3-day-direction) |
-| **2** | **5-Day Realized Volatility** | HAR-RV, EWMA, Gradient Boosting vs Persistence | Realized Vol Edge ($R^2_{\text{vs\_pers}} > 0.20$) | $R^2_{\text{vs\_pers}} = +0.26 \text{ to } +0.40$ out-of-sample | 🟢 **`VOLATILITY IS ALIVE`** | [volatility_options_track_report.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/volatility_options_track_report.md#1-workstream-3-volatility-harness--positive-control-study) |
-| **3** | **India VIX Encompassing** | Mincer-Zarnowitz Joint Regressions & Block Bootstrap | Gate G-VIX / H-V3 ($\beta_B > 0, 95\% \text{ CI} > 0$) | $\beta_B = 0.0410$, $95\% \text{ CI } [-0.2277, +0.3504]$ | 🟢 **`H-V3 CONFIRMED (NO EDGE BEYOND VIX)`** | [volatility_options_track_report.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/volatility_options_track_report.md#2-workstream-1-india-vix-ingestion--mincer-zarnowitz-encompassing-study) |
-| **4** | **Options Volatility Strategy** | Corrected Annualized Vol Options Filter (Short Strangle & Iron Condor) | Gate G-OPT (Sortino & MaxDD superiority vs Baseline) | Sortino $-0.23$ vs $-0.08$, MaxDD $3.30\%$ vs $3.26\%$ | 🔴 **`G-OPT FAILED`** | [volatility_options_track_report.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/volatility_options_track_report.md#3-workstream-2-corrected-options-strategy-simulation--gate-g-opt) |
-| **5** | **Cross-Sectional Ranking** | Point-in-Time Quintile Portfolios (0.25% Friction Costs) over NIFTY 100 | Gate G-XS1 (IC) & G-XS2 (Sharpe vs Benchmark) | Mean IC = $-0.0063$, Q5 Sharpe = $0.45$ vs Equal-Weight $0.72$ | 🔴 **`CROSS-SECTIONAL NULL`** | [cross_sectional_ranking_report.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/cross_sectional_ranking_report.md) |
-| **6** | **LLM Hypothesis Track (Initial)** | Ollama Candidate Hypotheses vs Random Noise Rules ($N=50$) | Gate G-LLM1 & G-LLM2 (Survival Rate Superiority) | Fisher $p=1.0000$, survival rate 0% | ⚠️ **`SUPERSEDED BY PHASE 3 REBUILD`** | [llm_hypothesis_value_prereg.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/experiments/preregistration/llm_hypothesis_value_prereg.md) |
-| **7** | **Substrate LLM Hypothesis Survival** | 60/40 IS/OOS Split, Binomial $p<0.10$ Filter, $N=150$ LLM vs $N=150$ Random | Gate G-P3 (Pooled Mann-Whitney $p<0.05$ on OOS Edge) | LLM Survivor Edge = $+0.1948$ vs Random = $+0.2493$ ($p=0.6876$) | 🔴 **`LLM REASONING NULL`** | [llm_hypothesis_survival_report.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/llm_hypothesis_survival_report.md) |
+| **2** | **5-Day Realized Volatility** | HAR-RV, EWMA, Gradient Boosting vs Persistence | Realized Vol Edge ($R^2_{\text{vs\_pers}} > 0.20$) | $R^2_{\text{vs\_pers}} = +0.26 \text{ to } +0.40$ out-of-sample | 🟢 **`VOLATILITY IS ALIVE`** | [volatility_options_track_report.md#1-workstream-3-volatility-harness--positive-control-study](volatility_options_track_report.md#1-workstream-3-volatility-harness--positive-control-study) |
+| **3** | **India VIX Encompassing** | Mincer-Zarnowitz Joint Regressions & Block Bootstrap | Gate G-VIX / H-V3 ($\beta_B > 0, 95\% \text{ CI} > 0$) | $\beta_B = 0.0410$, $95\% \text{ CI } [-0.2277, +0.3504]$ | 🟢 **`H-V3 CONFIRMED (NO EDGE BEYOND VIX)`** | [volatility_options_track_report.md#2-workstream-1-india-vix-ingestion--mincer-zarnowitz-encompassing-study](volatility_options_track_report.md#2-workstream-1-india-vix-ingestion--mincer-zarnowitz-encompassing-study) |
+| **4** | **Options Volatility Strategy** | Corrected Annualized Vol Options Filter (Short Strangle & Iron Condor) | Gate G-OPT (Sortino & MaxDD superiority vs Baseline) | Sortino $-0.23$ vs $-0.08$, MaxDD $3.30\%$ vs $3.26\%$ | 🔴 **`G-OPT FAILED`** | [volatility_options_track_report.md#3-workstream-2-corrected-options-strategy-simulation--gate-g-opt](volatility_options_track_report.md#3-workstream-2-corrected-options-strategy-simulation--gate-g-opt) |
+| **5** | **Cross-Sectional Ranking** | Point-in-Time Quintile Portfolios (0.25% Friction Costs) over NIFTY 100 | Gate G-XS1 (IC) & G-XS2 (Sharpe vs Benchmark) | Mean IC = $-0.0063$, Q5 Sharpe = $0.45$ vs Equal-Weight $0.72$ | 🔴 **`CROSS-SECTIONAL NULL`** | [cross_sectional_ranking_report.md](cross_sectional_ranking_report.md) |
+| **6** | **LLM Hypothesis Track (Initial)** | Ollama Candidate Hypotheses vs Random Noise Rules ($N=50$) | Gate G-LLM1 & G-LLM2 (Survival Rate Superiority) | Fisher $p=1.0000$, survival rate 0% | ⚠️ **`SUPERSEDED BY PHASE 3 REBUILD`** | [experiments/preregistration/llm_hypothesis_value_prereg.md](experiments/preregistration/llm_hypothesis_value_prereg.md) |
+| **7** | **Substrate LLM Hypothesis Survival** | 60/40 IS/OOS Split, Binomial $p<0.10$ Filter, $N=150$ LLM vs $N=150$ Random | Gate G-P3 (Pooled Mann-Whitney $p<0.05$ on OOS Edge) | LLM Survivor Edge = $+0.1948$ vs Random = $+0.2493$ ($p=0.6876$) | 🔴 **`LLM REASONING NULL`** | [llm_hypothesis_survival_report.md](llm_hypothesis_survival_report.md) |
 
 ---
 
@@ -71,7 +71,7 @@ All research tracks strictly enforced the substrate's non-negotiable engineering
 ### Track 6 & 7: Substrate LLM Hypothesis Survival Study (Phase 3 Rebuild)
 - **Question**: Do trading hypotheses generated by Substrate LLM reasoning survive backtesting at a rate or edge superior to random grammar baseline hypotheses?
 - **Finding**: After generating 150 unique LLM hypotheses and 150 unique control random hypotheses, 60/40 IS/OOS backtesting with binomial $p < 0.10$ filtering yields 10 LLM survivors (6.7%) and 6 Random survivors (4.0%). Out-of-sample survivor edge for LLM hypotheses is $+0.1948$ vs $+0.2493$ for random hypotheses (Mann-Whitney $p = 0.6876$).
-- **Verdict**: 🔴 **`LLM REASONING NULL`** — LLM-guided hypothesis generation over daily-bar technical features demonstrates no statistically significant edge over random structural sampling.
+- **Verdict**: 🔴 **`LLM REASONING NULL`** — Substrate LLM hypothesis generation demonstrates no detectable advantage over random generation (Mann-Whitney p=0.69); test powered only for large effects given survivor pool sizes (10 vs 6).
 
 ---
 
@@ -87,10 +87,10 @@ All research tracks strictly enforced the substrate's non-negotiable engineering
 
 The codebase and committed datasets serve as ground-truth empirical evidence:
 
-- **Consolidated Master Report**: [`volatility_options_track_report.md`](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/volatility_options_track_report.md)
-- **Cross-Sectional Study Report**: [`cross_sectional_ranking_report.md`](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/cross_sectional_ranking_report.md)
-- **Phase 3 LLM Survival Report**: [`llm_hypothesis_survival_report.md`](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/llm_hypothesis_survival_report.md)
-- **Pre-Registration Documents**: [`experiments/preregistration/`](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/experiments/preregistration/)
-- **Frozen Hypothesis Arms**: [`data/hypotheses/`](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/data/hypotheses/)
-- **Execution Entry Points**: [`bootstrap/`](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/)
-- **Hermetic Unit Test Suite**: [`tests/`](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/tests/)
+- **Consolidated Master Report**: [`volatility_options_track_report.md`](volatility_options_track_report.md)
+- **Cross-Sectional Study Report**: [`cross_sectional_ranking_report.md`](cross_sectional_ranking_report.md)
+- **Phase 3 LLM Survival Report**: [`llm_hypothesis_survival_report.md`](llm_hypothesis_survival_report.md)
+- **Pre-Registration Documents**: [`experiments/preregistration/`](experiments/preregistration/)
+- **Frozen Hypothesis Arms**: [`data/hypotheses/`](data/hypotheses/)
+- **Execution Entry Points**: [`bootstrap/`](bootstrap/)
+- **Hermetic Unit Test Suite**: [`tests/`](tests/)

@@ -13,7 +13,7 @@
 
 ### Scientific Conclusion: **`LLM REASONING NULL`**
 
-Substrate LLM hypothesis generation produces out-of-sample edge on surviving hypotheses that is statistically indistinguishable from (or inferior to) randomly generated hypotheses from the exact same structural grammar (Mann-Whitney p = 0.6876). Substrate hypothesis generation exhibits pseudo-reasoning / prompt overfitting with zero incremental predictive value over random rule synthesis.
+Substrate LLM hypothesis generation demonstrates no detectable advantage over random generation (Mann-Whitney p=0.69); test powered only for large effects given survivor pool sizes (10 vs 6).
 
 ## Arm Summary & In-Sample Survival Breakdown
 
