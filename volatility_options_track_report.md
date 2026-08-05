@@ -113,3 +113,18 @@ To overturn the current NO-GO / FAILED verdicts, future substrate research must 
 | **G-XS2** | Retail Implementability | Top Quintile Sharpe > NIFTY Sharpe (after 0.25% cost) | Top Quintile Sharpe=0.45 vs NIFTY Sharpe=0.47 | 🔴 **FAILED** |
 
 > Backfilling current NIFTY 100 constituent tickers introduces survivorship bias, inflating long-side returns. Any passing verdict must be treated as upper-bound candidate edge pending historical constituent verification.
+
+
+---
+
+## 7. Phase 4: Substrate LLM Hypothesis Survival vs. Random Grammar Study
+
+**Status**: Completed  
+**Final Track Verdict**: **`LLM REASONING NULL`**
+
+| Gate / Hypothesis | Subject | Pre-Registered Condition | Result | Verdict |
+| :--- | :--- | :--- | :---: | :---: |
+| **G-LLM1** | LLM Hypothesis Survival Advantage | Fisher p < 0.05 & LLM Survival > Random | LLM=0.0% vs Random=0.0% (Fisher p=1.0000) | 🔴 **FAILED** |
+| **G-LLM2** | Mean Out-of-Sample Metric Superiority | Mann-Whitney p < 0.05 & Bootstrap CI > 0 | MW p=0.0016, Mean Diff=+0.0319 (95% CI=[+0.0155, +0.0485]) | 🟢 **PASSED** |
+
+> Substrate LLM hypotheses are evaluated strictly out-of-sample over expanding historical walk-forward windows. If LLM hypothesis survival rates do not exceed random grammar generation at p < 0.05, the LLM reasoning pipeline provides zero monetizable or predictive value beyond random rule synthesis.
