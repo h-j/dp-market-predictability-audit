@@ -1,6 +1,12 @@
 """
-Unit tests for Workstream 2 options pricing, strategy simulation, friction costs, and Gate G-OPT.
+Hermetic Unit tests for Workstream 2 options pricing, strategy simulation, friction costs, and Gate G-OPT.
+
+All test fixtures read committed CSVs directly (nifty_enriched_daily_3y.csv & hist_india_vix*.csv).
+NO network calls, NO imports from market.replay.run.
 """
+
+import sys
+from pathlib import Path
 
 import numpy as np
 import pytest
@@ -10,6 +16,36 @@ from config.options_costs import calculate_leg_cost
 from market.options.regime_strategy import OptionsRegimeStrategyEngine
 from market.options.strategy_evaluator import StrategyEvaluator, StrategyMetrics
 from market.options.synthetic_pricer import SyntheticOptionPricer, bs_price
+
+
+@pytest.fixture(scope="module")
+def nifty_weekly_df():
+    """
+    Hermetic module-scoped fixture reading committed CSVs directly from data_dir.
+    No network calls, no market/replay/run.py import.
+    """
+    data_dir = Path(__file__).parent.parent / "data"
+    return generate_nifty_weekly_dataset_with_forecasts(data_dir=data_dir)
+
+
+def test_no_market_replay_run_imported():
+    """Verify that market.replay.run is NOT imported by options simulation modules."""
+    import bootstrap.run_options_simulation_study
+    import market.options.regime_strategy
+    import market.options.strategy_evaluator
+    import market.options.synthetic_pricer
+
+    opts_modules = [
+        bootstrap.run_options_simulation_study,
+        market.options.regime_strategy,
+        market.options.strategy_evaluator,
+        market.options.synthetic_pricer,
+    ]
+    for mod in opts_modules:
+        mod_src = getattr(mod, "__file__", "")
+        with open(mod_src, "r") as f:
+            src = f.read()
+            assert "market.replay.run" not in src, f"{mod.__name__} must NOT import market.replay.run!"
 
 
 def test_friction_costs_strictly_positive():
@@ -100,34 +136,31 @@ def test_gate_g_opt_evaluation_logic():
     assert not (beats_sortino_f and beats_max_dd_f), "Failing mock must fail Gate G-OPT conditions"
 
 
-def test_varying_calm_k_produces_differing_decisions():
+def test_varying_calm_k_produces_differing_decisions(nifty_weekly_df):
     """Regression Test 1: Varying calm_k across {0.8, 0.9, 1.0} produces differing decisions."""
-    df_weekly = generate_nifty_weekly_dataset_with_forecasts()
     engine = OptionsRegimeStrategyEngine()
 
-    actions_08 = [log.action_taken for log in engine.run_simulation(df_weekly, policy_name="sell_when_calm", calm_k=0.8)]
-    actions_09 = [log.action_taken for log in engine.run_simulation(df_weekly, policy_name="sell_when_calm", calm_k=0.9)]
-    actions_10 = [log.action_taken for log in engine.run_simulation(df_weekly, policy_name="sell_when_calm", calm_k=1.0)]
+    actions_08 = [log.action_taken for log in engine.run_simulation(nifty_weekly_df, policy_name="sell_when_calm", calm_k=0.8)]
+    actions_09 = [log.action_taken for log in engine.run_simulation(nifty_weekly_df, policy_name="sell_when_calm", calm_k=0.9)]
+    actions_10 = [log.action_taken for log in engine.run_simulation(nifty_weekly_df, policy_name="sell_when_calm", calm_k=1.0)]
 
     assert actions_08 != actions_10, "Varying calm_k across {0.8, 1.0} must produce differing decisions!"
     assert actions_08 != actions_09 or actions_09 != actions_10, "Varying calm_k must produce non-identical decision sets!"
 
 
-def test_vol_forecast_annualized_median_unit_assertion():
+def test_vol_forecast_annualized_median_unit_assertion(nifty_weekly_df):
     """Regression Test 2: Assert median vol_forecast_ann is within 0.3x - 3x of median vix_close at simulation start."""
-    df_weekly = generate_nifty_weekly_dataset_with_forecasts()
     engine = OptionsRegimeStrategyEngine()
-    logs = engine.run_simulation(df_weekly, policy_name="always_sell")
+    logs = engine.run_simulation(nifty_weekly_df, policy_name="always_sell")
     assert len(logs) > 0
 
 
-def test_election_and_low_vix_regime_classification_fixtures():
-    """Regression Test 3: Election week (2024-06-04) classifies as storm, low VIX week (2026-07) as calm at k=1.0."""
-    df_weekly = generate_nifty_weekly_dataset_with_forecasts()
+def test_election_and_low_vix_regime_classification_fixtures(nifty_weekly_df):
+    """Regression Test 3: Election week (2024-06-04) classifies as storm, low VIX week (2026-05/2026-06) as calm at k=1.0."""
     engine = OptionsRegimeStrategyEngine()
 
-    logs_storm = engine.run_simulation(df_weekly, policy_name="buy_when_storm")
-    logs_calm = engine.run_simulation(df_weekly, policy_name="sell_when_calm", calm_k=1.0)
+    logs_storm = engine.run_simulation(nifty_weekly_df, policy_name="buy_when_storm")
+    logs_calm = engine.run_simulation(nifty_weekly_df, policy_name="sell_when_calm", calm_k=1.0)
 
     # Election week containing 2024-06-04
     election_logs = [l for l in logs_storm if "2024-06" in l.entry_date or "2024-06" in l.expiry_date]

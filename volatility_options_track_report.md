@@ -63,13 +63,18 @@ Corrected weekly options trading strategy simulations on NIFTY index (119 test w
 
 | Strategy Structure | Policy Name | Total Return (%) | Sortino | Sharpe | Max Drawdown (%) | CVaR (95%) | PCR | Gate G-OPT Status |
 | :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
-| **Short Strangle (Naked)** | **always_sell (BASELINE)** | **+14.30%** | **-0.08** | **-0.07** | **3.26%** | **0.82%** | **0.2815** | BASELINE |
-| Short Strangle | sell_when_calm_k1.0 | +12.27% | -0.23 | -0.19 | 3.30% | 0.82% | 0.2815 | FAILED |
-| Short Strangle | sell_when_calm_k0.9 | +10.01% | -0.38 | -0.31 | 3.37% | 0.82% | 0.2815 | FAILED |
-| Short Strangle | sell_when_calm_k0.8 | +8.06% | -0.49 | -0.40 | 3.52% | 0.82% | 0.2815 | FAILED |
-| Short Strangle | buy_when_storm | +3.67% | -1.10 | -0.92 | 2.11% | 0.82% | 0.2815 | FAILED |
-| Short Strangle | combined_regime_k1.0 | +10.42% | -0.35 | -0.29 | 3.36% | 0.82% | 0.2815 | FAILED |
-| **Iron Condor (Defined Risk)** | always_sell | +10.23% | -0.21 | -0.18 | 3.51% | 0.89% | 0.2150 | FAILED |
+| **Short Strangle (Naked)** | **always_sell (BASELINE)** | +14.30% | -0.08 | -0.11 | 3.26% | 2.14% | 0.2815 | BASELINE |
+| Short Strangle | sell_when_calm_k1.0 | +12.27% | -0.23 | -0.29 | 3.30% | 2.14% | 0.2517 | FAILED |
+| Short Strangle | sell_when_calm_k0.9 | +10.01% | -0.38 | -0.50 | 3.37% | 2.14% | 0.2155 | FAILED |
+| Short Strangle | sell_when_calm_k0.8 | +8.06% | -0.49 | -0.73 | 3.52% | 2.02% | 0.2089 | FAILED |
+| Short Strangle | buy_when_storm | +3.67% | -1.10 | -1.27 | 2.11% | 0.04% | 0.0000 | FAILED |
+| Short Strangle | combined_regime_k1.0 | +10.42% | -0.35 | -0.45 | 3.36% | 2.24% | 0.2137 | FAILED |
+| **Iron Condor (Defined Risk)** | **always_sell** | +10.29% | -0.61 | -0.60 | 2.86% | 1.58% | 0.2391 | FAILED |
+| Iron Condor | sell_when_calm_k1.0 | +8.67% | -0.80 | -0.80 | 2.90% | 1.58% | 0.2094 | FAILED |
+| Iron Condor | sell_when_calm_k0.9 | +6.70% | -1.03 | -1.04 | 2.96% | 1.58% | 0.1703 | FAILED |
+| Iron Condor | sell_when_calm_k0.8 | +5.98% | -1.12 | -1.24 | 2.93% | 1.46% | 0.1834 | FAILED |
+| Iron Condor | buy_when_storm | +3.67% | -1.10 | -1.27 | 2.11% | 0.04% | 0.0000 | FAILED |
+| Iron Condor | combined_regime_k1.0 | +6.82% | -0.96 | -0.96 | 2.95% | 1.67% | 0.1647 | FAILED |
 
 ### Gate G-OPT Final Verdict: 🔴 FAILED (Re-Verified)
 

@@ -13,19 +13,26 @@ import numpy as np
 import pandas as pd
 from sklearn.ensemble import GradientBoostingRegressor
 
-from market.data.download_history import ensure_data
 from market.data.vix_loader import IndiaVIXLoader
 from market.options.regime_strategy import OptionsRegimeStrategyEngine
 from market.options.strategy_evaluator import HONESTY_CAVEATS_VERBATIM, StrategyEvaluator, StrategyMetrics
 from market.replay.walkforward_validation import WalkForwardValidator
 
 
-def generate_nifty_weekly_dataset_with_forecasts() -> pd.DataFrame:
+def generate_nifty_weekly_dataset_with_forecasts(data_dir: Path = None) -> pd.DataFrame:
     """
     Generate weekly NIFTY dataset with walk-forward Model C 5-day volatility forecasts.
+    Hermetic offline loader: reads committed data/nifty_enriched_daily_3y.csv directly.
     """
-    df_raw = ensure_data("NIFTY", start_date="2023-01-01")
-    vix_loader = IndiaVIXLoader()
+    if data_dir is None:
+        data_dir = Path(__file__).parent.parent / "data"
+
+    nifty_path = data_dir / "nifty_enriched_daily_3y.csv"
+    if not nifty_path.exists():
+        nifty_path = data_dir / "nifty_daily_3y.csv"
+
+    df_raw = pd.read_csv(nifty_path)
+    vix_loader = IndiaVIXLoader(data_dir=data_dir)
     df_enriched = vix_loader.merge_vix_features(df_raw)
 
     validator = WalkForwardValidator(
@@ -177,6 +184,54 @@ def generate_markdown_report(
     out_path = Path(__file__).parent.parent / "options_simulation_study_report.md"
     out_path.write_text(report_text)
     print(f"\n✓ Saved Options Simulation Study Report to {out_path}")
+
+    update_consolidated_track_report(naked_results, condor_results, g_opt_overall_passed)
+
+
+def update_consolidated_track_report(
+    naked_results: Dict[str, StrategyMetrics],
+    condor_results: Dict[str, StrategyMetrics],
+    g_opt_overall_passed: bool,
+):
+    track_report_path = Path(__file__).parent.parent / "volatility_options_track_report.md"
+    if not track_report_path.exists():
+        return
+
+    content = track_report_path.read_text()
+    
+    # Build updated table programmatically
+    table_lines = [
+        "| Strategy Structure | Policy Name | Total Return (%) | Sortino | Sharpe | Max Drawdown (%) | CVaR (95%) | PCR | Gate G-OPT Status |",
+        "| :--- | :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |",
+    ]
+    for k, m in naked_results.items():
+        struct_label = "**Short Strangle (Naked)**" if k == "always_sell" else "Short Strangle"
+        name_label = "**always_sell (BASELINE)**" if k == "always_sell" else k
+        g_str = "BASELINE" if k == "always_sell" else ("**PASSED**" if m.gate_g_opt_passed else "FAILED")
+        table_lines.append(
+            f"| {struct_label} | {name_label} | {m.total_return_pct:+.2f}% | {m.annualized_sortino:.2f} | {m.annualized_sharpe:.2f} | "
+            f"{m.max_drawdown_pct:.2f}% | {m.cvar_95_pct:.2f}% | {m.premium_capture_ratio:.4f} | {g_str} |"
+        )
+    for k, m in condor_results.items():
+        struct_label = "**Iron Condor (Defined Risk)**" if k == "always_sell" else "Iron Condor"
+        name_label = "**always_sell**" if k == "always_sell" else k
+        g_str = "FAILED" if k == "always_sell" else ("**PASSED**" if m.gate_g_opt_passed else "FAILED")
+        table_lines.append(
+            f"| {struct_label} | {name_label} | {m.total_return_pct:+.2f}% | {m.annualized_sortino:.2f} | {m.annualized_sharpe:.2f} | "
+            f"{m.max_drawdown_pct:.2f}% | {m.cvar_95_pct:.2f}% | {m.premium_capture_ratio:.4f} | {g_str} |"
+        )
+
+    updated_table_text = "\n".join(table_lines)
+    
+    # Replace options table section in consolidated report
+    import re
+    table_pattern = re.compile(
+        r"\| Strategy Structure \| Policy Name \|.*?\n(?:\|.*?\n)+", re.DOTALL
+    )
+    if table_pattern.search(content):
+        new_content = table_pattern.sub(updated_table_text + "\n", content, count=1)
+        track_report_path.write_text(new_content)
+        print(f"✓ Programmatically updated Gate G-OPT table in {track_report_path}")
 
 
 if __name__ == "__main__":
