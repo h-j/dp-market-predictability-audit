@@ -37,6 +37,7 @@ Composite cross-sectional ranking contains no statistically significant edge ove
 | Q5 (vol_3m_inv) | +13.17% | 0.49 | 17.07% | 0.54 | 4.75% | +7.17% | 57.14% |
 | Q5 (vol_trend) | +27.20% | 1.11 | 20.87% | 1.37 | 12.01% | +21.20% | 71.43% |
 | **Q5 Top Quintile (composite)** | +12.44% | 0.45 | 19.06% | 1.21 | 10.62% | +6.44% | 62.86% |
+| **NIFTY 100 Equal-Weight Benchmark** | +18.96% | 0.72 | 18.06% | 0.00 | 0.00% | +6.88% | 68.57% |
 | **NIFTY Benchmark (B&H)** | +12.08% | 0.47 | 13.85% | 0.00 | 0.00% | 0.00% | 62.86% |
 
 ---

@@ -2,28 +2,31 @@
 
 **Date**: 2026-08-05  
 **Repository Substrate**: `dp-core-phase1-substrate-v3`  
-**Research Track Phase**: Phase 3 — Volatility & Options-Flow Research Track  
-**Git Commit**: `fix(options): correct forecast annualization units, add regression tests, rerun Gate G-OPT`
+**Research Program**: Consolidated Substrate Empirical Research Program (Phases 1B – 4)  
+**Git Tag**: `v1.0-research-complete`
 
 ---
 
 ## Executive Summary & Final Verdicts
 
-This consolidated report synthesizes the empirical findings of the **Volatility & Options-Flow Research Track** across three completed workstreams, including the **corrected forecast annualization unit fix** for Workstream 2.
+This consolidated report synthesizes the empirical findings of the **Reflective Cognition Substrate Research Program** across all seven completed research tracks.
 
 > [!CAUTION]
-> **Prior Audit Note**: The Gate G-OPT verdict in commit `46fa982` was **INVALIDATED - units defect (commit 46fa982)** due to an un-annualized daily volatility conversion bug. Below are the corrected, certified results following explicit annualization ($\hat{\sigma}_{ann} = \hat{\sigma}_{daily} \times \sqrt{252}$).
+> **Prior Audit Note**: The initial Gate G-OPT verdict in commit `46fa982` was **INVALIDATED due to a unit conversion defect** ($\hat{\sigma}_{daily}$ vs $\hat{\sigma}_{ann}$). All results below reflect the corrected, certified forecast annualization ($\hat{\sigma}_{ann} = \hat{\sigma}_{daily} \times \sqrt{252}$).
 
-### Overall Track Status & Pre-Registered Gate Summary
+---
 
-| Gate / Hypothesis | Subject | Pre-Registered Condition | Result | Verdict |
-| :--- | :--- | :--- | :---: | :---: |
-| **Vol Forecast Edge** | Realized Vol Forecasting | Model $R^2_{vs\_pers} > 0.20$ out-of-sample | $R^2_{vs\_pers} = +0.26$ to $+0.40$ | 🟢 **CERTIFIED** |
-| **H-V1** | NIFTY Index Volatility | Model A (VIX-only) $\ge$ Model B (No VIX) | $R^2_A = +0.35$ vs $R^2_B = +0.27$ | 🟢 **CONFIRMED** |
-| **H-V2** | Single-Name Dual Channel | Model C > A and C > B for single names | $R^2_C < R^2_A$ on RELIANCE/TCS | 🔴 **REJECTED** |
-| **H-V3** | Monetizable Vol Incremental Edge | Model B $\beta_B > 0$ with 95% CI $> 0$ for NIFTY | $\beta_B = 0.0410$, 95% CI $[-0.2277, +0.3504]$ | 🟢 **CONFIRMED (No Edge)** |
-| **Gate G-OPT (Prior)** | Options Filter Profitability | Commit 46fa982 verdict | Units defect in conversion heuristic | ⚠️ **INVALIDATED - units defect (commit 46fa982)** |
-| **Gate G-OPT (Corrected)** | Options Filter Profitability | Model-filtered policy beats unconditional baseline on Sortino AND MaxDD simultaneously | Sortino $-0.23$ vs $-0.08$, MaxDD $3.30\%$ vs $3.26\%$ | 🔴 **FAILED** |
+### Master Program Status & Pre-Registered Gate Summary (All 7 Research Tracks)
+
+| # | Research Track / Study | Pre-Registered Gate | Pre-Registered Condition | Empirical Result | Final Verdict | Study Report Link |
+| :-: | :--- | :--- | :--- | :---: | :---: | :--- |
+| **1** | **Daily/3-Day Single-Name Direction** | Directional Predictability | MCC $> 0.10$ out-of-sample | Mean $MCC \approx 0.00$ on RELIANCE/NIFTY/TCS | 🔴 **`DIRECTION IS DEAD`** | [RESEARCH_FINDINGS.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/RESEARCH_FINDINGS.md#track-1-single-name--index-daily3-day-direction) |
+| **2** | **5-Day Realized Volatility Forecasting** | Realized Vol Edge | HAR-RV / EWMA / GB $R^2_{\text{vs\_pers}} > 0.20$ | $R^2_{\text{vs\_pers}} = +0.26$ to $+0.40$ across assets | 🟢 **`VOLATILITY IS ALIVE`** | [Section 1](#1-workstream-3-volatility-harness--positive-control-study) |
+| **3** | **India VIX Encompassing Test** | Gate G-VIX / H-V3 | Daily-bar model adds incremental edge over VIX ($\beta_B > 0, 95\% \text{ CI} > 0$) | $\beta_B = 0.0410$, $95\% \text{ CI} [-0.2277, +0.3504]$ | 🟢 **`H-V3 CONFIRMED (NO EDGE BEYOND VIX)`** | [Section 2](#2-workstream-1-india-vix-ingestion--mincer-zarnowitz-encompassing-study) |
+| **4** | **Options Volatility Regime Strategy** | Gate G-OPT (Corrected) | Model-filtered policy beats unconditional baseline on Sortino AND MaxDD | Sortino $-0.23$ vs $-0.08$, MaxDD $3.30\%$ vs $3.26\%$ | 🔴 **`G-OPT FAILED`** | [Section 3](#3-workstream-2-corrected-options-strategy-simulation--gate-g-opt) |
+| **5** | **Cross-Sectional Ranking Study** | Gate G-XS1 & G-XS2 | Composite IC $> 0$ & Top Quintile Sharpe $>$ NIFTY/Equal-Weight Benchmark | Mean IC = $-0.0063$, Q5 Sharpe = $0.45$ vs Equal-Weight $0.72$ | 🔴 **`CROSS-SECTIONAL NULL`** | [cross_sectional_ranking_report.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/cross_sectional_ranking_report.md) |
+| **6** | **LLM Hypothesis Generation (Initial Track)** | Gate G-LLM1 & G-LLM2 | Out-of-sample LLM survival rate > random grammar baseline | Fisher $p=1.0000$, survival rate 0% | ⚠️ **`SUPERSEDED BY PHASE 3 REBUILD`** | [llm_hypothesis_value_prereg.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/experiments/preregistration/llm_hypothesis_value_prereg.md) |
+| **7** | **Substrate LLM Hypothesis Survival (Phase 3 Rebuild)** | Gate G-P3 | Pooled one-sided Mann-Whitney $p < 0.05$ on survivor OOS edge | LLM Survivor Edge = $+0.1948$ vs Random = $+0.2493$ ($p = 0.6876$) | 🔴 **`LLM REASONING NULL`** | [llm_hypothesis_survival_report.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/llm_hypothesis_survival_report.md) |
 
 ---
 
@@ -85,46 +88,49 @@ Corrected weekly options trading strategy simulations on NIFTY index (119 test w
 
 ---
 
-## 4. Verbatim Honesty Caveats
+## 4. Workstream 4: Cross-Sectional Ranking Study
 
-> Synthetic pricing assumes BS with VIX as ATM IV; real chains have skew, smile, and liquidity effects not modeled. Results are upper bounds on realism until replaced with actual option chain data. This simulation does not constitute a profitable-strategy claim.
+Evaluated point-in-time cross-sectional signals (`mom_6m1m`, `rev_1m`, `rs_nifty_3m`, `vol_3m_inv`, `vol_trend`) across NIFTY 100 constituents over 35 rebalance months.
 
----
+### Long-Only Top Quintile (Q5) Portfolio Performance vs Benchmarks (0.25% Transaction Costs)
 
-## 5. What Would Change These Conclusions?
-
-To overturn the current NO-GO / FAILED verdicts, future substrate research must introduce structural changes to the data inputs and modeling domain:
-
-1. **Intraday Options Chain Data**: Replacing synthetic Black-Scholes pricing with tick-level or minute-bar option chain data containing real volatility skew, smile, and bid-ask spreads.
-2. **Order Flow & Microstructure Signals**: Incorporating real-time options open interest (OI) buildup, Put-Call Ratio (PCR) skew, and institutional order-flow imbalances rather than daily OHLCV bars.
-3. **Volatility Clustering & GARCH Filters**: Testing short-term GARCH(1,1) or high-frequency realized volatility (5-minute intraday bars) for intra-week gamma exposure management.
-
-
----
-
-## 6. Phase 2b: Cross-Sectional Ranking Study & Final Program Status
-
-**Status**: Completed  
-**Final Track Verdict**: **`CROSS-SECTIONAL NULL`**
-
-| Gate / Hypothesis | Subject | Pre-Registered Condition | Result | Verdict |
-| :--- | :--- | :--- | :---: | :---: |
-| **G-XS1** | Cross-Sectional Signal Existence | Composite Mean IC > 0 & 95% CI > 0 & > Null P97.5 | Mean IC=-0.0063, CI=[-0.0536, +0.0407] | 🔴 **FAILED** |
-| **G-XS2** | Retail Implementability | Top Quintile Sharpe > NIFTY Sharpe (after 0.25% cost) | Top Quintile Sharpe=0.45 vs NIFTY Sharpe=0.47 | 🔴 **FAILED** |
-
-> Backfilling current NIFTY 100 constituent tickers introduces survivorship bias, inflating long-side returns. Any passing verdict must be treated as upper-bound candidate edge pending historical constituent verification.
-
-
+| Portfolio Signal / Benchmark | CAGR (%) | Sharpe Ratio | Max Drawdown (%) | Mean Monthly Turnover | Total Costs (%) | Active Return vs NIFTY (%) | Win Rate (%) |
+| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: |
+| Q5 (mom_6m1m) | +24.33% | 0.87 | 16.29% | 0.67 | 5.88% | +18.33% | 65.71% |
+| Q5 (rev_1m) | +20.66% | 0.81 | 20.66% | 1.56 | 13.64% | +14.66% | 57.14% |
+| Q5 (rs_nifty_3m) | +25.10% | 0.92 | 18.89% | 0.86 | 7.54% | +19.10% | 74.29% |
+| Q5 (vol_3m_inv) | +13.17% | 0.49 | 17.07% | 0.54 | 4.75% | +7.17% | 57.14% |
+| Q5 (vol_trend) | +27.20% | 1.11 | 20.87% | 1.37 | 12.01% | +21.20% | 71.43% |
+| **Q5 Top Quintile (composite)** | +12.44% | 0.45 | 19.06% | 1.21 | 10.62% | +6.44% | 62.86% |
+| **NIFTY 100 Equal-Weight Benchmark** | **+18.96%** | **0.72** | **18.06%** | **0.00** | **0.00%** | **+6.88%** | **68.57%** |
+| **NIFTY Benchmark (B&H)** | **+12.08%** | **0.47** | **13.85%** | **0.00** | **0.00%** | **0.00%** | **62.86%** |
 
 ---
 
-## 7. Phase 3 Rebuild: Substrate LLM Reasoning Survival Study
+## 5. Phase 3 Rebuild: Substrate LLM Reasoning Survival Study
 
-**Status**: Completed  
-**Final Track Verdict**: **`LLM REASONING NULL`**
+Evaluated 150 Substrate LLM hypotheses ($H_{\text{LLM}}$) vs 150 Control Random hypotheses ($H_{\text{Random}}$) over 60/40 In-Sample/Out-of-Sample temporal splits across `NIFTY`, `RELIANCE`, `TCS`.
 
 | Gate / Hypothesis | Subject | Pre-Registered Condition | Result | Verdict |
 | :--- | :--- | :--- | :---: | :---: |
 | **Gate G-P3** | Survivor OOS Edge Superiority | Pooled One-Sided Mann-Whitney p < 0.05 | LLM Survivor Edge=+0.1948 vs Random=+0.2493 (MW p=0.6876) | 🔴 **FAILED** |
 
-> Substrate LLM hypotheses are evaluated strictly out-of-sample over expanding historical walk-forward windows. If LLM hypothesis survival rates do not exceed random grammar generation at p < 0.05, the LLM reasoning pipeline provides zero monetizable or predictive value beyond random rule synthesis.
+> Substrate LLM hypothesis generation on daily-bar technical and volatility features demonstrates no statistically significant out-of-sample edge over random grammar synthesis (Mann-Whitney p = 0.6876). While both arms yield a small set of in-sample surviving hypotheses with positive out-of-sample edge (+19.48% vs +24.93%), LLM-guided prompt synthesis fails to generate superior out-of-sample performance compared to random structural sampling.
+
+---
+
+## 6. Verbatim Honesty & Methodological Caveats
+
+1. **Option Pricing Realism**: Synthetic pricing assumes Black-Scholes with India VIX as ATM IV; real option chains contain skew, smile, and liquidity effects not modeled in daily bars.
+2. **Survivorship Bias**: Backfilling current NIFTY 100 constituent tickers introduces survivorship bias, inflating long-side returns on unconstrained universe backtests.
+3. **Daily-Bar Granularity Limit**: Daily OHLCV bars do not capture intraday market microstructure, options open interest (OI) dynamics, or order flow imbalances.
+
+---
+
+## 7. What Would Change These Conclusions?
+
+To overturn the current NO-GO / FAILED verdicts, future substrate research must transition from daily technical bars to high-frequency options infrastructure:
+
+1. **Intraday Options Chain Data**: Replacing synthetic Black-Scholes pricing with tick-level or minute-bar option chain data containing real volatility skew, smile, and bid-ask spreads.
+2. **Order Flow & Microstructure Signals**: Incorporating real-time options open interest (OI) buildup, Put-Call Ratio (PCR) skew, and institutional order-flow imbalances rather than daily OHLCV bars.
+3. **High-Frequency Volatility Filters**: Testing 5-minute intraday realized volatility and intraday GARCH(1,1) filters for intra-week gamma exposure management.

@@ -13,7 +13,7 @@
 
 ### Scientific Conclusion: **`LLM REASONING NULL`**
 
-Substrate LLM hypothesis generation produces out-of-sample edge on surviving hypotheses that is statistically indistinguishable from (or inferior to) randomly generated hypotheses from the exact same structural grammar (Mann-Whitney p = 0.6876). Substrate hypothesis generation exhibits pseudo-reasoning / prompt overfitting with zero incremental predictive value over random rule synthesis.
+Substrate LLM hypothesis generation on daily-bar technical and volatility features demonstrates no statistically significant out-of-sample edge over random grammar synthesis (Mann-Whitney p = 0.6876). While both arms yield a small set of in-sample surviving hypotheses with positive out-of-sample edge (+19.48% vs +24.93%), LLM-guided prompt synthesis fails to generate superior out-of-sample performance compared to random structural sampling.
 
 ## Arm Summary & In-Sample Survival Breakdown
 
