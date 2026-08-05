@@ -85,7 +85,7 @@ def test_random_generator_reproducibility():
 def test_llm_generator_conformity_to_grammar():
     """Test that SubstrateLLMHypothesisGenerator produces valid HypothesisAST instances."""
     gen = SubstrateLLMHypothesisGenerator(seed=42)
-    hyps = gen.generate_llm_hypotheses(count=10)
+    hyps, log = gen.generate_llm_arm(target_count=10, max_attempts=20)
 
     assert len(hyps) == 10
     for h in hyps:
