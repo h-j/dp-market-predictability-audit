@@ -98,3 +98,18 @@ To overturn the current NO-GO / FAILED verdicts, future substrate research must 
 1. **Intraday Options Chain Data**: Replacing synthetic Black-Scholes pricing with tick-level or minute-bar option chain data containing real volatility skew, smile, and bid-ask spreads.
 2. **Order Flow & Microstructure Signals**: Incorporating real-time options open interest (OI) buildup, Put-Call Ratio (PCR) skew, and institutional order-flow imbalances rather than daily OHLCV bars.
 3. **Volatility Clustering & GARCH Filters**: Testing short-term GARCH(1,1) or high-frequency realized volatility (5-minute intraday bars) for intra-week gamma exposure management.
+
+
+---
+
+## 6. Phase 2b: Cross-Sectional Ranking Study & Final Program Status
+
+**Status**: Completed  
+**Final Track Verdict**: **`CROSS-SECTIONAL NULL`**
+
+| Gate / Hypothesis | Subject | Pre-Registered Condition | Result | Verdict |
+| :--- | :--- | :--- | :---: | :---: |
+| **G-XS1** | Cross-Sectional Signal Existence | Composite Mean IC > 0 & 95% CI > 0 & > Null P97.5 | Mean IC=-0.0063, CI=[-0.0536, +0.0407] | 🔴 **FAILED** |
+| **G-XS2** | Retail Implementability | Top Quintile Sharpe > NIFTY Sharpe (after 0.25% cost) | Top Quintile Sharpe=0.45 vs NIFTY Sharpe=0.47 | 🔴 **FAILED** |
+
+> Backfilling current NIFTY 100 constituent tickers introduces survivorship bias, inflating long-side returns. Any passing verdict must be treated as upper-bound candidate edge pending historical constituent verification.
