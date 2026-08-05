@@ -54,7 +54,7 @@ def generate_volatility_report(results: dict[str, WalkForwardStudyResult]):
     )
 
     report.append("\n## Multi-Asset Summary Comparison (5-Day Realized Volatility Target)\n")
-    report.append("| Asset | Folds | HAR-RV R² (vs Pers) | HAR-RV QLIKE | HAR Spearman | HAR MCC | GBM R² (vs Pers) | GBM QLIKE | GBM Spearman | GBM MCC | Pers QLIKE | Pers Spearman |")
+    report.append("| Asset | Folds | HAR-RV R² (vs Pers) | HAR-RV QLIKE | HAR Spearman | HAR vol-rise MCC | GBM R² (vs Pers) | GBM QLIKE | GBM Spearman | GBM vol-rise MCC | Pers QLIKE | Pers Spearman |")
     report.append("| :--- | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: | :---: |")
 
     for asset in ["RELIANCE", "NIFTY", "TCS"]:

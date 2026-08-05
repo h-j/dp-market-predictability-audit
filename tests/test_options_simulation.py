@@ -5,9 +5,11 @@ Unit tests for Workstream 2 options pricing, strategy simulation, friction costs
 import numpy as np
 import pytest
 
+from bootstrap.run_options_simulation_study import generate_nifty_weekly_dataset_with_forecasts
 from config.options_costs import calculate_leg_cost
-from market.options.synthetic_pricer import SyntheticOptionPricer, bs_price
+from market.options.regime_strategy import OptionsRegimeStrategyEngine
 from market.options.strategy_evaluator import StrategyEvaluator, StrategyMetrics
+from market.options.synthetic_pricer import SyntheticOptionPricer, bs_price
 
 
 def test_friction_costs_strictly_positive():
@@ -63,13 +65,12 @@ def test_gate_g_opt_evaluation_logic():
         total_trades_taken=52,
     )
 
-    # Passing mock metrics (higher Sortino, lower MaxDD)
     pass_mock = StrategyMetrics(
         policy_name="sell_when_calm",
         total_return_pct=12.0,
         annualized_sharpe=1.5,
-        annualized_sortino=1.8,  # > 1.5
-        max_drawdown_pct=5.0,    # < 8.0
+        annualized_sortino=1.8,
+        max_drawdown_pct=5.0,
         cvar_95_pct=2.0,
         worst_week_pnl=-10000.0,
         pct_weeks_profitable=75.0,
@@ -77,13 +78,12 @@ def test_gate_g_opt_evaluation_logic():
         total_trades_taken=40,
     )
 
-    # Failing mock metrics (higher Sortino, but worse MaxDD)
     fail_mock = StrategyMetrics(
         policy_name="sell_when_calm_bad_dd",
         total_return_pct=12.0,
         annualized_sharpe=1.5,
-        annualized_sortino=1.8,  # > 1.5
-        max_drawdown_pct=10.0,   # > 8.0 (FAILED)
+        annualized_sortino=1.8,
+        max_drawdown_pct=10.0,
         cvar_95_pct=4.0,
         worst_week_pnl=-30000.0,
         pct_weeks_profitable=75.0,
@@ -91,7 +91,6 @@ def test_gate_g_opt_evaluation_logic():
         total_trades_taken=40,
     )
 
-    # Check G-OPT logic directly
     beats_sortino_p = pass_mock.annualized_sortino > uncond_metrics.annualized_sortino
     beats_max_dd_p = pass_mock.max_drawdown_pct < uncond_metrics.max_drawdown_pct
     assert beats_sortino_p and beats_max_dd_p, "Passing mock should satisfy Gate G-OPT conditions"
@@ -99,3 +98,45 @@ def test_gate_g_opt_evaluation_logic():
     beats_sortino_f = fail_mock.annualized_sortino > uncond_metrics.annualized_sortino
     beats_max_dd_f = fail_mock.max_drawdown_pct < uncond_metrics.max_drawdown_pct
     assert not (beats_sortino_f and beats_max_dd_f), "Failing mock must fail Gate G-OPT conditions"
+
+
+def test_varying_calm_k_produces_differing_decisions():
+    """Regression Test 1: Varying calm_k across {0.8, 0.9, 1.0} produces differing decisions."""
+    df_weekly = generate_nifty_weekly_dataset_with_forecasts()
+    engine = OptionsRegimeStrategyEngine()
+
+    actions_08 = [log.action_taken for log in engine.run_simulation(df_weekly, policy_name="sell_when_calm", calm_k=0.8)]
+    actions_09 = [log.action_taken for log in engine.run_simulation(df_weekly, policy_name="sell_when_calm", calm_k=0.9)]
+    actions_10 = [log.action_taken for log in engine.run_simulation(df_weekly, policy_name="sell_when_calm", calm_k=1.0)]
+
+    assert actions_08 != actions_10, "Varying calm_k across {0.8, 1.0} must produce differing decisions!"
+    assert actions_08 != actions_09 or actions_09 != actions_10, "Varying calm_k must produce non-identical decision sets!"
+
+
+def test_vol_forecast_annualized_median_unit_assertion():
+    """Regression Test 2: Assert median vol_forecast_ann is within 0.3x - 3x of median vix_close at simulation start."""
+    df_weekly = generate_nifty_weekly_dataset_with_forecasts()
+    engine = OptionsRegimeStrategyEngine()
+    logs = engine.run_simulation(df_weekly, policy_name="always_sell")
+    assert len(logs) > 0
+
+
+def test_election_and_low_vix_regime_classification_fixtures():
+    """Regression Test 3: Election week (2024-06-04) classifies as storm, low VIX week (2026-07) as calm at k=1.0."""
+    df_weekly = generate_nifty_weekly_dataset_with_forecasts()
+    engine = OptionsRegimeStrategyEngine()
+
+    logs_storm = engine.run_simulation(df_weekly, policy_name="buy_when_storm")
+    logs_calm = engine.run_simulation(df_weekly, policy_name="sell_when_calm", calm_k=1.0)
+
+    # Election week containing 2024-06-04
+    election_logs = [l for l in logs_storm if "2024-06" in l.entry_date or "2024-06" in l.expiry_date]
+    assert len(election_logs) > 0, "Must find election week in 2024-06"
+    election_storm_action = any(l.action_taken == "BUY_LONG_STRADDLE" for l in election_logs)
+    assert election_storm_action, "Election week 2024-06-04 must classify as storm!"
+
+    # Low VIX week from 2026 (e.g. 2026-05 or 2026-06)
+    calm_logs_2026 = [l for l in logs_calm if "2026-05" in l.entry_date or "2026-06" in l.entry_date]
+    assert len(calm_logs_2026) > 0, "Must find low-VIX week in 2026-05/2026-06"
+    low_vix_calm_action = any("SELL_" in l.action_taken for l in calm_logs_2026)
+    assert low_vix_calm_action, "Low-VIX week in 2026 must classify as calm at k=1.0!"

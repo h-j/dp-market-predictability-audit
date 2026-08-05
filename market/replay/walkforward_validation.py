@@ -514,6 +514,11 @@ class WalkForwardValidator:
         pers_vol = self.df["rv_5d"].values
         dates = self.df["date"].values
 
+        all_y_vol = []
+        all_pred_har = []
+        all_pred_gbm = []
+        all_pred_pers = []
+
         for k, (train_idx, test_idx) in enumerate(folds):
             # Stride-5 non-overlapping evaluation for 5-day vol targets
             test_stride_subidx = np.arange(0, len(test_idx), 5)
@@ -544,7 +549,12 @@ class WalkForwardValidator:
             # Persistence Baseline
             pred_pers = pers_test_stride
 
-            # Metrics
+            all_y_vol.extend(y_test_vol_stride)
+            all_pred_har.extend(pred_har)
+            all_pred_gbm.extend(pred_gbm)
+            all_pred_pers.extend(pred_pers)
+
+            # Per-fold metrics
             har_r2 = compute_r2_vs_persistence(y_test_vol_stride, pred_har, pred_pers)
             har_qlike = compute_qlike(y_test_vol_stride, pred_har)
             har_spearman = compute_spearman_rank(y_test_vol_stride, pred_har)
@@ -579,6 +589,11 @@ class WalkForwardValidator:
             )
 
         n_folds = len(fold_results)
+        # Pooled Spearman rank correlation across all fold test points
+        pooled_har_spearman = compute_spearman_rank(np.array(all_y_vol), np.array(all_pred_har))
+        pooled_gbm_spearman = compute_spearman_rank(np.array(all_y_vol), np.array(all_pred_gbm))
+        pooled_pers_spearman = compute_spearman_rank(np.array(all_y_vol), np.array(all_pred_pers))
+
         res = WalkForwardStudyResult(
             asset_name=self.asset_name,
             target_horizon="5d",
@@ -588,14 +603,14 @@ class WalkForwardValidator:
             fold_results=fold_results,
             avg_har_r2_vs_pers=round(float(np.mean([r.har_r2_vs_pers for r in fold_results])), 4),
             avg_har_qlike=round(float(np.mean([r.har_qlike for r in fold_results])), 4),
-            avg_har_spearman=round(float(np.mean([r.har_spearman for r in fold_results])), 4),
+            avg_har_spearman=round(float(pooled_har_spearman), 4),
             avg_har_mcc=round(float(np.mean([r.har_mcc for r in fold_results])), 4),
             avg_gbm_r2_vs_pers=round(float(np.mean([r.gbm_r2_vs_pers for r in fold_results])), 4),
             avg_gbm_qlike=round(float(np.mean([r.gbm_qlike for r in fold_results])), 4),
-            avg_gbm_spearman=round(float(np.mean([r.gbm_spearman for r in fold_results])), 4),
+            avg_gbm_spearman=round(float(pooled_gbm_spearman), 4),
             avg_gbm_mcc=round(float(np.mean([r.gbm_mcc for r in fold_results])), 4),
             avg_pers_qlike=round(float(np.mean([r.pers_qlike for r in fold_results])), 4),
-            avg_pers_spearman=round(float(np.mean([r.pers_spearman for r in fold_results])), 4),
+            avg_pers_spearman=round(float(pooled_pers_spearman), 4),
         )
         res.consistent_edge_found = (res.avg_har_r2_vs_pers > 0.20) or (res.avg_gbm_r2_vs_pers > 0.20)
         return res
