@@ -4,7 +4,7 @@
 
 ### 1. Install Dependencies
 ```bash
-cd dp-core-phase1-substrate-v3
+cd dp-market-predictability-audit
 poetry lock
 poetry install
 ```

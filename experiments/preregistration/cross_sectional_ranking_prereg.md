@@ -1,7 +1,7 @@
 # Pre-Registration: Cross-Sectional Ranking Study (Phase 2b)
 
 **Date**: 2026-08-05  
-**Repository Substrate**: `dp-core-phase1-substrate-v3`  
+**Repository Substrate**: `dp-market-predictability-audit`  
 **Study Scope**: Cross-Sectional Ranking Signal & Portfolio Evaluation  
 **Status**: PRE-REGISTERED (FROZEN PRIOR TO STUDY RUN)
 

@@ -142,7 +142,7 @@ def generate_markdown_reports(
     report_lines = []
     report_lines.append("# Cross-Sectional Ranking Study Report (Phase 2b)")
     report_lines.append("\n**Date**: 2026-08-05  ")
-    report_lines.append("**Substrate**: `dp-core-phase1-substrate-v3`  ")
+    report_lines.append("**Substrate**: `dp-market-predictability-audit`  ")
     report_lines.append(f"**Evaluation Window**: {total_months} Rebalance Months  ")
     report_lines.append(f"**Final Track Verdict**: **`{final_verdict}`**\n")
 

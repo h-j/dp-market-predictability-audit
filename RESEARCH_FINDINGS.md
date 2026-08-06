@@ -1,6 +1,6 @@
 # Reflective Cognition Substrate — Empirical Research Program Findings
 
-**Repository**: `dp-core-phase1-substrate-v3`  
+**Repository**: `dp-market-predictability-audit`  
 **Git Tag**: `v1.0-research-complete`  
 **Date**: 2026-08-05  
 **Audience**: Executive & Technical Reviewers (5-Minute Overview)

@@ -1,7 +1,7 @@
 # Pre-Registration: Phase 3 Rebuild — Substrate LLM Reasoning Survival Study
 
 **Date**: 2026-08-05  
-**Repository Substrate**: `dp-core-phase1-substrate-v3`  
+**Repository Substrate**: `dp-market-predictability-audit`  
 **Study Scope**: LLM Hypothesis Generation vs. Random Grammar Baseline  
 **Status**: PRE-REGISTERED (FROZEN PRIOR TO GENERATION AUDIT AND EVALUATION)
 

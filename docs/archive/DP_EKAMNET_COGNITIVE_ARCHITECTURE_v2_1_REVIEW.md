@@ -6,7 +6,7 @@
 
 ## Executive Summary
 
-This architectural review evaluates the correctness, internal consistency, and scientific roadmapping of the newly consolidated **DP/EkamNet Cognitive Architecture v2.0** reference document ([DP_EKAMNET_COGNITIVE_ARCHITECTURE_v2.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/DP_EKAMNET_COGNITIVE_ARCHITECTURE_v2.md)). 
+This architectural review evaluates the correctness, internal consistency, and scientific roadmapping of the newly consolidated **DP/EkamNet Cognitive Architecture v2.0** reference document ([DP_EKAMNET_COGNITIVE_ARCHITECTURE_v2.md](DP_EKAMNET_COGNITIVE_ARCHITECTURE_v2.md)). 
 
 The review confirms that the v2.0 document succeeds in mapping the core structural layers (specifically the Theory $\rightarrow$ Proposition compilation boundary, the P1–P6 scientific validators, and the longitudinal belief lifecycle). However, to serve as an unambiguous canonical reference for future implementation, the architecture requires a clearer demarcation between current production capabilities and target milestone features, a more precise cognitive object inventory, and explicit definitions of its feedback loops.
 

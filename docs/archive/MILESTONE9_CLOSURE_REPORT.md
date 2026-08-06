@@ -65,8 +65,8 @@ During the live daily simulation loop, validation stats printed:
 
 ### 5.2 Retrospective Coverage Demonstration
 To exercise the logic gates, we created:
-*   [milestone9_coverage_experiment.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/milestone9_coverage_experiment.py): Re-runs validation retrospectively against the full 30-day dataset.
-*   [milestone9_coverage_demo.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/milestone9_coverage_demo.py): Programmatically constructs valid propositions and evaluates them against the actual RELIANCE history dataset.
+*   [milestone9_coverage_experiment.py](bootstrap/milestone9_coverage_experiment.py): Re-runs validation retrospectively against the full 30-day dataset.
+*   [milestone9_coverage_demo.py](bootstrap/milestone9_coverage_demo.py): Programmatically constructs valid propositions and evaluates them against the actual RELIANCE history dataset.
 
 Running the demo script successfully exercises the terminal validation logic gates, producing:
 *   **SUPPORTED STATE**: Resolves when a trigger condition (`close[t] > close[t-1]`) and target condition (`outcome == 'up'`) are both met on step 4.
@@ -89,7 +89,7 @@ The **EkamNet Evidence Ledger** and **Decision Ledger** have been updated:
 ## 7. Remaining Scientific Debt
 
 All outstanding scientific and methodological debts have been cataloged in:
-[SCIENTIFIC_DEBT_REGISTER.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/SCIENTIFIC_DEBT_REGISTER.md)
+[SCIENTIFIC_DEBT_REGISTER.md](SCIENTIFIC_DEBT_REGISTER.md)
 Key items include:
 *   **SD-002**: Live Validation Loop Target Boundary (Belief update engine must wait for subsequent step progression to resolve pending records).
 *   **SD-004**: LLM Variable Hallucination (Variables like `volatility_regime` and `liquidity_absorption_rate` causing KeyErrors and `GROUNDED` states).

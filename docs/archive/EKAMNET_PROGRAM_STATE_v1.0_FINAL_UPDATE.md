@@ -5,7 +5,7 @@
 
 ### 1. Added Program Evidence Debt Section
 
-We added the top-level section `## Program Evidence Debt` to [EKAMNET_PROGRAM_STATE.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_PROGRAM_STATE.md). 
+We added the top-level section `## Program Evidence Debt` to [EKAMNET_PROGRAM_STATE.md](EKAMNET_PROGRAM_STATE.md). 
 
 This section explicitly lists the demonstrated evidence bounds alongside the remaining empirical gaps for the three findings:
 * **EF-001 (Candidate F)**: Current L3 evidence (local suppression / routing shift under bounded conditions) is contrasted with the debt (cross-regime, cross-asset, longer replay, and temperature characterization). Priority: HIGH. Status: OPEN.
@@ -26,9 +26,9 @@ We adopted the refined Milestone 7 descriptor:
 ### 3. Consistency Verification
 
 We verified that the newly added Program Evidence Debt section matches the details, terminology, and Evidence Levels within:
-* [EKAMNET_EXPERIMENTAL_FINDINGS.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_EXPERIMENTAL_FINDINGS.md) (both documents align on `EF-001` at Level `L3`).
-* [EKAMNET_EVIDENCE_LADDER.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_EVIDENCE_LADDER.md) (L3 matches the "reproduced under bounded replay conditions" definition).
-* [EKAMNET_CAPABILITY_MAP.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_CAPABILITY_MAP.md) (evidence levels match L3).
+* [EKAMNET_EXPERIMENTAL_FINDINGS.md](EKAMNET_EXPERIMENTAL_FINDINGS.md) (both documents align on `EF-001` at Level `L3`).
+* [EKAMNET_EVIDENCE_LADDER.md](EKAMNET_EVIDENCE_LADDER.md) (L3 matches the "reproduced under bounded replay conditions" definition).
+* [EKAMNET_CAPABILITY_MAP.md](EKAMNET_CAPABILITY_MAP.md) (evidence levels match L3).
 
 ---
 

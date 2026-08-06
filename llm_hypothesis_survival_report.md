@@ -1,7 +1,7 @@
 # Substrate LLM Hypothesis Survival Study Report (Phase 3 Rebuild)
 
 **Date**: 2026-08-05  
-**Substrate**: `dp-core-phase1-substrate-v3`  
+**Substrate**: `dp-market-predictability-audit`  
 **Sample Size**: N=150 Substrate LLM Hypotheses vs N=150 Control Random Grammar Hypotheses  
 **Final Track Verdict**: **`LLM REASONING NULL`**
 

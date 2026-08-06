@@ -21,15 +21,15 @@
 
 A sweep was conducted for all legacy, pre-v0.5 validators in the codebase:
 
-1. **`evaluate_false_admission_reduction`** ([flows/minimal_learning_cycle/completion_gates.py:276](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/completion_gates.py#L276))
+1. **`evaluate_false_admission_reduction`** ([flows/minimal_learning_cycle/completion_gates.py:276](flows/minimal_learning_cycle/completion_gates.py#L276))
    * *Milestone Gated*: Milestone 5 (false admission reduction claim).
    * *Defect*: Suffixes the same sign-only blindness as the original gate design. It only asserts `treatment_rate < baseline_rate` and completely ignores sample size adequacy/power.
    * *Classification*: `GATE_DEFINED_BUT_NOT_INVOKED` (except in tests).
-2. **`evaluate_order_sensitivity`** ([flows/minimal_learning_cycle/completion_gates.py:304](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/completion_gates.py#L304))
+2. **`evaluate_order_sensitivity`** ([flows/minimal_learning_cycle/completion_gates.py:304](flows/minimal_learning_cycle/completion_gates.py#L304))
    * *Milestone Gated*: Milestone 6 (belief evolution order sensitivity and retirement claims).
    * *Defect*: Sign-only check verifying that states differ or match a retired string. Ignores sample size/power.
    * *Classification*: `GATE_DEFINED_BUT_NOT_INVOKED` (except in tests).
-3. **`evaluate_minimal_causal_learning`** ([flows/minimal_learning_cycle/completion_gates.py:337](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/completion_gates.py#L337))
+3. **`evaluate_minimal_causal_learning`** ([flows/minimal_learning_cycle/completion_gates.py:337](flows/minimal_learning_cycle/completion_gates.py#L337))
    * *Milestone Gated*: Milestone 7 (causal learning loop claim).
    * *Defect*: Pre-v0.5 validator. Merely checks that the diff is positive, ignoring power checks.
    * *Classification*: `GATE_DEFINED_BUT_NOT_INVOKED` (except in tests).

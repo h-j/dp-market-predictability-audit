@@ -83,10 +83,10 @@ This implementation was strictly bounded to Defect 3.
   },
   "lineage_state": {
     "exists": false,
-    "path": "/Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/data/replay_snapshots/reliance/theory_lineage.json"
+    "path": "/Users/hemantj/Proj/dp_core/dp-market-predictability-audit/data/replay_snapshots/reliance/theory_lineage.json"
   },
   "input_data": {
-    "path": "/Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/data/reliance_daily_3y.csv",
+    "path": "/Users/hemantj/Proj/dp_core/dp-market-predictability-audit/data/reliance_daily_3y.csv",
     "md5_checksum": "9d44a48f935e2181ee35826907e3a377"
   },
   "replay_command": "POSTGRES_HOST=127.0.0.1 poetry run python -m market.replay.run --days 10 --restart --reset"
@@ -168,10 +168,10 @@ The repair adds `"SECTOR_ZSCORE"` directly to the ontology whitelist:
   },
   "lineage_state": {
     "exists": false,
-    "path": "/Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/data/replay_snapshots/reliance/theory_lineage.json"
+    "path": "/Users/hemantj/Proj/dp_core/dp-market-predictability-audit/data/replay_snapshots/reliance/theory_lineage.json"
   },
   "input_data": {
-    "path": "/Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/data/reliance_daily_3y.csv",
+    "path": "/Users/hemantj/Proj/dp_core/dp-market-predictability-audit/data/reliance_daily_3y.csv",
     "md5_checksum": "9d44a48f935e2181ee35826907e3a377"
   },
   "replay_command": "POSTGRES_HOST=127.0.0.1 poetry run python -m market.replay.run --days 10 --restart --reset"

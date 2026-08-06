@@ -66,7 +66,7 @@ We backtest the v0.3 gate design on paper against every claim in our historical 
 To prevent bypassing gate verification, gate checks must be integrated directly into the serialization pathway of the experiment runner:
 
 ### 1. Specific Integration Point:
-* The integration point is in [flows/minimal_learning_cycle/experiment.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/experiment.py) inside the `MLCExperimentRunner` class.
+* The integration point is in [flows/minimal_learning_cycle/experiment.py](flows/minimal_learning_cycle/experiment.py) inside the `MLCExperimentRunner` class.
 * We hook into the method where experimental suites are compiled and results are exported. A natural hook is at the completion of a batch run, immediately before writing output files.
 
 ### 2. Enforcement Mechanism:

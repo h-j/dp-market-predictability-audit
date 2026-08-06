@@ -292,7 +292,7 @@ date,open,high,low,close,volume,daily_return_pct,rolling_volatility_10d,rolling_
 ## Project Structure
 
 ```
-dp-core-phase1-substrate-v3/
+dp-market-predictability-audit/
 ├── bootstrap/
 │   ├── replay_demo.py              # Demonstration runner
 │   ├── replay_validation_runner.py  # Full validation suite

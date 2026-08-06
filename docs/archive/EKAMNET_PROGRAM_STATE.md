@@ -144,9 +144,9 @@
 ## 13. Scientific Findings Ledger
 
 All completed validation experiments are referenced in the canonical Findings Ledger:
-* **EF-001 (Provenance-Driven Novelty Routing)**: Causal effect of suppression intervention evaluated over 3 replication runs. Results show local routing shift at Step 3 followed by downstream cognitive convergence. Evidence Level: `L3 (Reproduced)`. See [EKAMNET_EXPERIMENTAL_FINDINGS.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_EXPERIMENTAL_FINDINGS.md).
-* **EF-002 (Lineage and Nested Identity Remediation)**: Restored relational lineage SQL ↔ JSON consistency and nested identity regeneration under REVISE. Evidence Level: `L3 (Demonstrated)`. See [EKAMNET_EXPERIMENTAL_FINDINGS.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_EXPERIMENTAL_FINDINGS.md).
-* **EF-003 (Ontology registry contract remediation)**: Corrected `SECTOR_ZSCORE` registry omission, demonstrating localized cognitive trajectory shifts. Evidence Level: `L3 (Demonstrated)`. See [EKAMNET_EXPERIMENTAL_FINDINGS.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_EXPERIMENTAL_FINDINGS.md).
+* **EF-001 (Provenance-Driven Novelty Routing)**: Causal effect of suppression intervention evaluated over 3 replication runs. Results show local routing shift at Step 3 followed by downstream cognitive convergence. Evidence Level: `L3 (Reproduced)`. See [EKAMNET_EXPERIMENTAL_FINDINGS.md](EKAMNET_EXPERIMENTAL_FINDINGS.md).
+* **EF-002 (Lineage and Nested Identity Remediation)**: Restored relational lineage SQL ↔ JSON consistency and nested identity regeneration under REVISE. Evidence Level: `L3 (Demonstrated)`. See [EKAMNET_EXPERIMENTAL_FINDINGS.md](EKAMNET_EXPERIMENTAL_FINDINGS.md).
+* **EF-003 (Ontology registry contract remediation)**: Corrected `SECTOR_ZSCORE` registry omission, demonstrating localized cognitive trajectory shifts. Evidence Level: `L3 (Demonstrated)`. See [EKAMNET_EXPERIMENTAL_FINDINGS.md](EKAMNET_EXPERIMENTAL_FINDINGS.md).
 * **EF-005 (Two-Stage Proposition Compilation)**: Decoupled semantic compilation (LLM) from parameter grounding (code), resolving relative references and eliminating threshold hallucinations. Evidence Level: `L3 (Demonstrated)`.
 
 ---

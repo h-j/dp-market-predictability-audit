@@ -1,7 +1,7 @@
 # Consolidated Volatility & Options-Flow Research Track Report
 
 **Date**: 2026-08-05  
-**Repository Substrate**: `dp-core-phase1-substrate-v3`  
+**Repository Substrate**: `dp-market-predictability-audit`  
 **Research Program**: Consolidated Substrate Empirical Research Program (Phases 1B – 4)  
 **Git Tag**: `v1.0-research-complete`
 
@@ -20,13 +20,13 @@ This consolidated report synthesizes the empirical findings of the **Reflective 
 
 | # | Research Track / Study | Pre-Registered Gate | Pre-Registered Condition | Empirical Result | Final Verdict | Study Report Link |
 | :-: | :--- | :--- | :--- | :---: | :---: | :--- |
-| **1** | **Daily/3-Day Single-Name Direction** | Directional Predictability | MCC $> 0.10$ out-of-sample | Mean $MCC \approx 0.00$ on RELIANCE/NIFTY/TCS | 🔴 **`DIRECTION IS DEAD`** | [RESEARCH_FINDINGS.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/RESEARCH_FINDINGS.md#track-1-single-name--index-daily3-day-direction) |
+| **1** | **Daily/3-Day Single-Name Direction** | Directional Predictability | MCC $> 0.10$ out-of-sample | Mean $MCC \approx 0.00$ on RELIANCE/NIFTY/TCS | 🔴 **`DIRECTION IS DEAD`** | [RESEARCH_FINDINGS.md](RESEARCH_FINDINGS.md#track-1-single-name--index-daily3-day-direction) |
 | **2** | **5-Day Realized Volatility Forecasting** | Realized Vol Edge | HAR-RV / EWMA / GB $R^2_{\text{vs\_pers}} > 0.20$ | $R^2_{\text{vs\_pers}} = +0.26$ to $+0.40$ across assets | 🟢 **`VOLATILITY IS ALIVE`** | [Section 1](#1-workstream-3-volatility-harness--positive-control-study) |
 | **3** | **India VIX Encompassing Test** | Gate G-VIX / H-V3 | Daily-bar model adds incremental edge over VIX ($\beta_B > 0, 95\% \text{ CI} > 0$) | $\beta_B = 0.0410$, $95\% \text{ CI} [-0.2277, +0.3504]$ | 🟢 **`H-V3 CONFIRMED (NO EDGE BEYOND VIX)`** | [Section 2](#2-workstream-1-india-vix-ingestion--mincer-zarnowitz-encompassing-study) |
 | **4** | **Options Volatility Regime Strategy** | Gate G-OPT (Corrected) | Model-filtered policy beats unconditional baseline on Sortino AND MaxDD | Sortino $-0.23$ vs $-0.08$, MaxDD $3.30\%$ vs $3.26\%$ | 🔴 **`G-OPT FAILED`** | [Section 3](#3-workstream-2-corrected-options-strategy-simulation--gate-g-opt) |
-| **5** | **Cross-Sectional Ranking Study** | Gate G-XS1 & G-XS2 | Composite IC $> 0$ & Top Quintile Sharpe $>$ NIFTY/Equal-Weight Benchmark | Mean IC = $-0.0063$, Q5 Sharpe = $0.45$ vs Equal-Weight $0.72$ | 🔴 **`CROSS-SECTIONAL NULL`** | [cross_sectional_ranking_report.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/cross_sectional_ranking_report.md) |
-| **6** | **LLM Hypothesis Generation (Initial Track)** | Gate G-LLM1 & G-LLM2 | Out-of-sample LLM survival rate > random grammar baseline | Fisher $p=1.0000$, survival rate 0% | ⚠️ **`SUPERSEDED BY PHASE 3 REBUILD`** | [llm_hypothesis_value_prereg.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/experiments/preregistration/llm_hypothesis_value_prereg.md) |
-| **7** | **Substrate LLM Hypothesis Survival (Phase 3 Rebuild)** | Gate G-P3 | Pooled one-sided Mann-Whitney $p < 0.05$ on survivor OOS edge | LLM Survivor Edge = $+0.1948$ vs Random = $+0.2493$ ($p = 0.6876$) | 🔴 **`LLM REASONING NULL`** | [llm_hypothesis_survival_report.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/llm_hypothesis_survival_report.md) |
+| **5** | **Cross-Sectional Ranking Study** | Gate G-XS1 & G-XS2 | Composite IC $> 0$ & Top Quintile Sharpe $>$ NIFTY/Equal-Weight Benchmark | Mean IC = $-0.0063$, Q5 Sharpe = $0.45$ vs Equal-Weight $0.72$ | 🔴 **`CROSS-SECTIONAL NULL`** | [cross_sectional_ranking_report.md](cross_sectional_ranking_report.md) |
+| **6** | **LLM Hypothesis Generation (Initial Track)** | Gate G-LLM1 & G-LLM2 | Out-of-sample LLM survival rate > random grammar baseline | Fisher $p=1.0000$, survival rate 0% | ⚠️ **`SUPERSEDED BY PHASE 3 REBUILD`** | [experiments/preregistration/llm_hypothesis_value_prereg.md](experiments/preregistration/llm_hypothesis_value_prereg.md) |
+| **7** | **Substrate LLM Hypothesis Survival (Phase 3 Rebuild)** | Gate G-P3 | Pooled one-sided Mann-Whitney $p < 0.05$ on survivor OOS edge | LLM Survivor Edge = $+0.1948$ vs Random = $+0.2493$ ($p = 0.6876$) | 🔴 **`LLM REASONING NULL`** | [llm_hypothesis_survival_report.md](llm_hypothesis_survival_report.md) |
 
 ---
 

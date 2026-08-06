@@ -39,7 +39,7 @@ We audited all v1.0 governance documents for over-claiming terminology. The foll
 
 To prevent duplication and maintain the role of `EKAMNET_PROGRAM_STATE.md` as a high-level program summary:
 * The detailed cognitive delta descriptions of `EF-001`, `EF-002`, and `EF-003` are removed from the Program State file.
-* They are replaced by concise 1-sentence summaries pointing to [EKAMNET_EXPERIMENTAL_FINDINGS.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_EXPERIMENTAL_FINDINGS.md) as the single source of truth.
+* They are replaced by concise 1-sentence summaries pointing to [EKAMNET_EXPERIMENTAL_FINDINGS.md](EKAMNET_EXPERIMENTAL_FINDINGS.md) as the single source of truth.
 
 ---
 

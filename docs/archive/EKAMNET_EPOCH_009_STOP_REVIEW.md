@@ -54,7 +54,7 @@ The table below documents the pre-registered parameters for Family A and Family 
 ---
 
 ## 6. RAW COUNTS RECONSTRUCTION
-Raw counts are read directly from [data/epistemic_effect_validation_results.json](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/data/epistemic_effect_validation_results.json):
+Raw counts are read directly from [data/epistemic_effect_validation_results.json](data/epistemic_effect_validation_results.json):
 - **Family A — Stable Confounder**:
   - **Condition C (Influence Blocked Control)**: **`2 / 13`** runs selected the correct candidate.
   - **Condition D (Influence Enabled Treatment)**: **`9 / 13`** runs selected the correct candidate.

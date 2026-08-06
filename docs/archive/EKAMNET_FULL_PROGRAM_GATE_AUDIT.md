@@ -8,25 +8,25 @@
 
 The following is an exhaustive inventory of all gate-like, validation, or compliance-checking mechanisms found in the repository:
 
-1. **`MLCValidityGates`** ([flows/minimal_learning_cycle/validity_gates.py:9](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/validity_gates.py#L9))
+1. **`MLCValidityGates`** ([flows/minimal_learning_cycle/validity_gates.py:9](flows/minimal_learning_cycle/validity_gates.py#L9))
    * *Description*: Evaluates the original MLC v0.1 validity gates (Gates 1-10: Temporal Isolation, Ground Truth Consistency, Threshold Freeze, etc.).
-2. **`MLCPilotValidityGates`** ([flows/minimal_learning_cycle/pilot.py:491](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/pilot.py#L491))
+2. **`MLCPilotValidityGates`** ([flows/minimal_learning_cycle/pilot.py:491](flows/minimal_learning_cycle/pilot.py#L491))
    * *Description*: Evaluates the 12 pilot-specific validity gates for the MLC v0.1 Pilot (World Count, Zone Composition, Boundary Mapping, etc.).
-3. **`ERCController`** ([flows/minimal_learning_cycle/erc.py:9](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/erc.py#L9))
+3. **`ERCController`** ([flows/minimal_learning_cycle/erc.py:9](flows/minimal_learning_cycle/erc.py#L9))
    * *Description*: Performs authoritative budget checks and deductions (`check_and_deduct()`) for compilation, evidence, and validation.
-4. **`MLCReadiness`** ([flows/minimal_learning_cycle/readiness.py:7](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/readiness.py#L7))
+4. **`MLCReadiness`** ([flows/minimal_learning_cycle/readiness.py:7](flows/minimal_learning_cycle/readiness.py#L7))
    * *Description*: Verifies specificity, sample adequacy, and minimum coverage constraints before candidate selection.
-5. **`MLCProspectiveValidation`** ([flows/minimal_learning_cycle/prospective_validation.py:8](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/prospective_validation.py#L8))
+5. **`MLCProspectiveValidation`** ([flows/minimal_learning_cycle/prospective_validation.py:8](flows/minimal_learning_cycle/prospective_validation.py#L8))
    * *Description*: Performs prospective validation using Window 3 data (adequacy and coverage).
-6. **`NoveltyDetectionGate`** ([flows/knowledge_flow/novelty_detection_gate.py:7](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/knowledge_flow/novelty_detection_gate.py#L7))
+6. **`NoveltyDetectionGate`** ([flows/knowledge_flow/novelty_detection_gate.py:7](flows/knowledge_flow/novelty_detection_gate.py#L7))
    * *Description*: Determines whether incoming observations are sufficiently novel to trigger theory mutation vs. reinforcement.
-7. **`MilestoneCompletionGates`** ([flows/minimal_learning_cycle/completion_gates.py:47](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/completion_gates.py#L47))
+7. **`MilestoneCompletionGates`** ([flows/minimal_learning_cycle/completion_gates.py:47](flows/minimal_learning_cycle/completion_gates.py#L47))
    * *Description*: Encapsulates the checklist of methodology completion statuses for Milestones 5, 6, and 7.
-8. **`ClaimEvidenceConsistencyGate`** ([flows/minimal_learning_cycle/completion_gates.py:127](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/completion_gates.py#L127))
+8. **`ClaimEvidenceConsistencyGate`** ([flows/minimal_learning_cycle/completion_gates.py:127](flows/minimal_learning_cycle/completion_gates.py#L127))
    * *Description*: Validates claims against experimental results using descriptive confidence intervals and pre-registered MMEs.
-9. **`MilestoneScientificClosure`** ([flows/minimal_learning_cycle/completion_gates.py:372](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/completion_gates.py#L372))
+9. **`MilestoneScientificClosure`** ([flows/minimal_learning_cycle/completion_gates.py:372](flows/minimal_learning_cycle/completion_gates.py#L372))
    * *Description*: Validates that milestone closures meet structural and claim-level verification requirements.
-10. **`EpistemicValidationManifestReader`** ([flows/minimal_learning_cycle/completion_gates.py:456](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/completion_gates.py#L456))
+10. **`EpistemicValidationManifestReader`** ([flows/minimal_learning_cycle/completion_gates.py:456](flows/minimal_learning_cycle/completion_gates.py#L456))
     * *Description*: Consumption-side gate preventing downstream usage of manifests containing failed or underpowered claims.
 
 ---

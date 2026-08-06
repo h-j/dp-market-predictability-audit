@@ -65,7 +65,7 @@ Since the ontology fix allows previously rejected components to survive on first
 A complete codebase audit was conducted to verify whether resetting the inner `summary_structured.created_at` timestamp on `REVISE` mutations (Defect 2 fix) would affect theory retirement timing or routing.
 
 * **Audit Findings**:
-  - The theory retirement logic resides in [TheoryLineageEngine.retire_stale_theories](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/memory/lineage/theory_lineage.py#L486-L530).
+  - The theory retirement logic resides in [TheoryLineageEngine.retire_stale_theories](memory/lineage/theory_lineage.py#L486-L530).
   - In `retire_stale_theories()`, staleness is calculated as:
     ```python
     stale_age = step - rec.last_seen_step
@@ -82,7 +82,7 @@ A complete codebase audit was conducted to verify whether resetting the inner `s
 
 ### 5. P1-P6 Gate Scope Classification
 
-Row 38 of the Master Capability Traceability Table notes that the P1-P6 boundary contracts are hardcoded to `PASS` in [verify_scientific_closures.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/verify_scientific_closures.py#L16).
+Row 38 of the Master Capability Traceability Table notes that the P1-P6 boundary contracts are hardcoded to `PASS` in [verify_scientific_closures.py](bootstrap/verify_scientific_closures.py#L16).
 
 * **Scope Classification**: **(b) Explicitly out of scope and deferred.**
 * **Justification**:

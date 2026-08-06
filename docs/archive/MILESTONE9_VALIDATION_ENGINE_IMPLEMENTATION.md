@@ -29,17 +29,17 @@ We implemented a deterministic, non-LLM validation flow integrated within the ex
 ```
 
 ### Files Added:
-*   [validation_record.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/cognition/schemas/proposition/validation_record.py): Pydantic schema class specifying the validation attributes.
-*   [validation_record_model.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/memory/relational/models/validation_record_model.py): SQLAlchemy mapping class for relational persistence in the `validation_records` table.
-*   [validation_record_repository.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/memory/relational/repositories/validation_record_repository.py): DB repository enforcing the immutability constraint.
-*   [validation_engine.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/proposition_flow/validation_engine.py): Deterministic evaluation engine mapping conditions, offsets, and rolling averages.
-*   [milestone9_validation_test.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/milestone9_validation_test.py): Unit test suite verifying logic gates, repository queries, and immutability.
+*   [validation_record.py](cognition/schemas/proposition/validation_record.py): Pydantic schema class specifying the validation attributes.
+*   [validation_record_model.py](memory/relational/models/validation_record_model.py): SQLAlchemy mapping class for relational persistence in the `validation_records` table.
+*   [validation_record_repository.py](memory/relational/repositories/validation_record_repository.py): DB repository enforcing the immutability constraint.
+*   [validation_engine.py](flows/proposition_flow/validation_engine.py): Deterministic evaluation engine mapping conditions, offsets, and rolling averages.
+*   [milestone9_validation_test.py](bootstrap/milestone9_validation_test.py): Unit test suite verifying logic gates, repository queries, and immutability.
 
 ### Files Modified:
-*   [models/__init__.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/memory/relational/models/__init__.py) / [repositories/__init__.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/memory/relational/repositories/__init__.py): Registered new ORM models and repository classes.
-*   [replay_engine.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/market/replay/replay_engine.py): Instantiated repository and engine, created output subdirectories, and integrated daily validation execution.
-*   [report_renderer.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/market/replay/report_renderer.py): Extended fallback dictionary with validation properties.
-*   [replay_analysis_reporting.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/market/replay/replay_analysis_reporting.py): Added print scorecard blocks for the Validation stage.
+*   [models/__init__.py](memory/relational/models/__init__.py) / [repositories/__init__.py](memory/relational/repositories/__init__.py): Registered new ORM models and repository classes.
+*   [replay_engine.py](market/replay/replay_engine.py): Instantiated repository and engine, created output subdirectories, and integrated daily validation execution.
+*   [report_renderer.py](market/replay/report_renderer.py): Extended fallback dictionary with validation properties.
+*   [replay_analysis_reporting.py](market/replay/replay_analysis_reporting.py): Added print scorecard blocks for the Validation stage.
 
 ---
 

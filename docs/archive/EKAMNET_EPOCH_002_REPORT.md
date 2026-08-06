@@ -61,8 +61,8 @@ This report details the outcomes of **Autonomous Research-Engineering Epoch 2**.
 ---
 
 ## 9. Strategy B Spike Design
-- Added 10 optional target fields to `TheoryStructured` in [theory.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/cognition/schemas/theory/theory.py).
-- Modified the generation prompt in [theory_generation_flow.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/theory_flow/theory_generation_flow.py) to request these structured fields when `os.environ["EKAMNET_STRATEGY_B_SPIKE"] == "1"`.
+- Added 10 optional target fields to `TheoryStructured` in [theory.py](cognition/schemas/theory/theory.py).
+- Modified the generation prompt in [theory_generation_flow.py](flows/theory_flow/theory_generation_flow.py) to request these structured fields when `os.environ["EKAMNET_STRATEGY_B_SPIKE"] == "1"`.
 - Bounded logic using a standard environment variable flag, allowing full rollback.
 
 ---

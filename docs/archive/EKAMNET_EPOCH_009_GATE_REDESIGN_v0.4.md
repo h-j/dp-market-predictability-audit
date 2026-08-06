@@ -23,7 +23,7 @@ No other logic path in the v0.3 design outputs `CLAIM_CONTRADICTED`. In v0.3, a 
 ## 2. MLC v0.1 MME Inheritance Audit & Updated Backtest
 
 ### Audit Findings:
-1. **Pilot Configuration**: The MLC v0.1 pilot execution script ([bootstrap/run_mlc_v0_1_pilot.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/run_mlc_v0_1_pilot.py)) did define a provisional MME:
+1. **Pilot Configuration**: The MLC v0.1 pilot execution script ([bootstrap/run_mlc_v0_1_pilot.py](bootstrap/run_mlc_v0_1_pilot.py)) did define a provisional MME:
    * `minimum_meaningful_effect_percentage_points = 5.0`
    * `minimum_meaningful_effect_absolute = 0.05`
 2. **Inheritance Status**: **NO**. The Milestone 5-9 lineage never imported, referenced, or inherited this value in its code, protocols, or reports. It remained isolated in the MLC v0.1 pilot configurations.

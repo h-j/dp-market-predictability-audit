@@ -150,7 +150,7 @@ def generate_reports(
     lines = []
     lines.append("# Substrate LLM Hypothesis Survival Study Report (Phase 3 Rebuild)")
     lines.append("\n**Date**: 2026-08-05  ")
-    lines.append("**Substrate**: `dp-core-phase1-substrate-v3`  ")
+    lines.append("**Substrate**: `dp-market-predictability-audit`  ")
     lines.append(f"**Sample Size**: N=150 Substrate LLM Hypotheses vs N=150 Control Random Grammar Hypotheses  ")
     lines.append(f"**Final Track Verdict**: **`{gate_p3.final_verdict}`**\n")
 

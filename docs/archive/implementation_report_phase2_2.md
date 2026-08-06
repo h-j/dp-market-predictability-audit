@@ -406,13 +406,13 @@ The substrate now:
 
 **Full Cognition Loop** (requires Ollama):
 ```bash
-cd dp-core-phase1-substrate-v3
+cd dp-market-predictability-audit
 poetry run python -m bootstrap.run_cognition_loop
 ```
 
 **Component Validation** (no external dependencies):
 ```bash
-cd dp-core-phase1-substrate-v3
+cd dp-market-predictability-audit
 poetry run python -m bootstrap.validation_test
 ```
 

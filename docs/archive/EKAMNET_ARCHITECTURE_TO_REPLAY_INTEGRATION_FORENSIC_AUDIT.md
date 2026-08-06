@@ -24,7 +24,7 @@ Furthermore, the audit revealed that the pre-registered scientific closures for 
 ### 2. Audit Scope
 
 The scope of this audit is strictly read-only and covers:
-- All source files in the active package `dp-core-phase1-substrate-v3/` (including `flows/`, `memory/`, `market/`, and `bootstrap/`).
+- All source files in the active package `dp-market-predictability-audit/` (including `flows/`, `memory/`, `market/`, and `bootstrap/`).
 - Database schema validation of all 13 PostgreSQL tables.
 - Verification of experimental runners (`milestone5_experiment_runner.py`, `milestone7_learning_experiment.py`, etc.) and gate checkers (`verify_scientific_closures.py`).
 - Logs and reports from the recent 10-day diagnostic replay.

@@ -38,6 +38,6 @@ The table below maps all completed experiments to their highest verified evidenc
 
 | Experiment ID | Experiment Name | Highest Level Achieved | Supporting Artifacts |
 | :--- | :--- | :--- | :--- |
-| **EX-001** | Candidate F Controlled Counterfactual Experiment | **L4 (Validated)** | [all_results.json](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/data/archive/counterfactual_experiment/all_results.json) |
-| **EX-002** | Phase 1 Lineage and Nested ID Remediation | **L3 (Demonstrated)** | [Phase 1 Results](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_REPLAY_REMEDIATION_PHASE1_RESULTS.md) |
-| **EX-003** | Phase 2 Registry Contract Remediation | **L3 (Demonstrated)** | [Phase 2 Results](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_REPLAY_REMEDIATION_PHASE2_ONTOLOGY_RESULTS.md) |
+| **EX-001** | Candidate F Controlled Counterfactual Experiment | **L4 (Validated)** | [all_results.json](data/archive/counterfactual_experiment/all_results.json) |
+| **EX-002** | Phase 1 Lineage and Nested ID Remediation | **L3 (Demonstrated)** | [Phase 1 Results](EKAMNET_REPLAY_REMEDIATION_PHASE1_RESULTS.md) |
+| **EX-003** | Phase 2 Registry Contract Remediation | **L3 (Demonstrated)** | [Phase 2 Results](EKAMNET_REPLAY_REMEDIATION_PHASE2_ONTOLOGY_RESULTS.md) |

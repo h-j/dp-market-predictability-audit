@@ -2,7 +2,7 @@
 
 ## 1. EXACT BYPASS LOCATION
 The manual instantiation of `ClaimEvidenceConsistencyGate` for Family B occurs in:
-* **File Path**: [bootstrap/verify_scientific_closures.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/verify_scientific_closures.py)
+* **File Path**: [bootstrap/verify_scientific_closures.py](bootstrap/verify_scientific_closures.py)
 * **Lines**: 99-103
 
 ### Verbatim Code Block with Context (Lines 81-118):
@@ -56,7 +56,7 @@ The manual instantiation of `ClaimEvidenceConsistencyGate` for Family B occurs i
 ---
 
 ## 3. GIT HISTORY OF REAL VALIDATOR AVAILABILITY
-* **Real Validator**: `evaluate_minimal_causal_learning()` in [flows/minimal_learning_cycle/completion_gates.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/completion_gates.py).
+* **Real Validator**: `evaluate_minimal_causal_learning()` in [flows/minimal_learning_cycle/completion_gates.py](flows/minimal_learning_cycle/completion_gates.py).
 * **Transcript Log Origin**: The validator function was introduced/updated in **Step 1645**.
 * **Timestamp**: **`2026-07-11T14:30:14Z`** of Epoch 9.
 * **Availability**: The standard validator function existed and was fully available for use when the Family B bypass code was written in Step 1726 (3 minutes later).
@@ -83,7 +83,7 @@ The manual instantiation of `ClaimEvidenceConsistencyGate` for Family B occurs i
 
 ## 6. SCOPE OF BYPASS PATTERN ACROSS CODEBASE
 * **ClaimEvidenceConsistencyGate**: This is the only manual instantiation of `ClaimEvidenceConsistencyGate` with a pre-set status in the active codebase or verification scripts.
-* **MilestoneCompletionGates**: In [bootstrap/verify_scientific_closures.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/verify_scientific_closures.py), the completion gates for **Milestone 5** and **Milestone 6** are instantiated with hardcoded `GateStatus.PASS` parameters directly, and no claims list is evaluated for them.
+* **MilestoneCompletionGates**: In [bootstrap/verify_scientific_closures.py](bootstrap/verify_scientific_closures.py), the completion gates for **Milestone 5** and **Milestone 6** are instantiated with hardcoded `GateStatus.PASS` parameters directly, and no claims list is evaluated for them.
 
 ---
 

@@ -1,7 +1,7 @@
 # Cross-Sectional Ranking Study Report (Phase 2b)
 
 **Date**: 2026-08-05  
-**Substrate**: `dp-core-phase1-substrate-v3`  
+**Substrate**: `dp-market-predictability-audit`  
 **Evaluation Window**: 35 Rebalance Months  
 **Final Track Verdict**: **`CROSS-SECTIONAL NULL`**
 

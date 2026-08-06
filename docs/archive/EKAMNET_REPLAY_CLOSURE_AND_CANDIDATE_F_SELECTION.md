@@ -49,13 +49,13 @@ The Phase 2 results claim boundary is canonically recorded as:
 
 ### 5. Canonical Program-State Update
 
-The canonical program-state artifact, [EKAMNET_PROGRAM_STATE.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_PROGRAM_STATE.md), has been updated under Section 12 to record the status `REPLAY_INTEGRITY_REMEDIATION_COMPLETE`, alongside the repaired defects list, claim boundaries, and next steps.
+The canonical program-state artifact, [EKAMNET_PROGRAM_STATE.md](EKAMNET_PROGRAM_STATE.md), has been updated under Section 12 to record the status `REPLAY_INTEGRITY_REMEDIATION_COMPLETE`, alongside the repaired defects list, claim boundaries, and next steps.
 
 ---
 
 ### 6. Prior Neutral-Candidate Artifact Provenance
 
-* **Artifact File**: [EKAMNET_MINIMUM_COGNITIVELY_MEANINGFUL_CAUSAL_INFLUENCE_AUDIT.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_MINIMUM_COGNITIVELY_MEANINGFUL_CAUSAL_INFLUENCE_AUDIT.md)
+* **Artifact File**: [EKAMNET_MINIMUM_COGNITIVELY_MEANINGFUL_CAUSAL_INFLUENCE_AUDIT.md](EKAMNET_MINIMUM_COGNITIVELY_MEANINGFUL_CAUSAL_INFLUENCE_AUDIT.md)
 * **Provenance**: Originally generated under Epoch 9 / Iteration 1 to inventory and classify native candidate mechanisms (Sections 6–13, 20).
 * **Identified Neutral Candidates**: 
   - **Candidate A (Lineage Revisit)**: Classifying a new related theory as a lineage revisit rather than a new object.

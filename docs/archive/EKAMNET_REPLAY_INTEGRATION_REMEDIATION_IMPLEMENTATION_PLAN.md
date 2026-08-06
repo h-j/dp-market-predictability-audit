@@ -63,7 +63,7 @@ The remediation must NOT alter:
 
 - **Minimum Code Change**:
   In `market/replay/replay_engine.py`, assign `theory.lineage_id = lineage_id_val` immediately after calling `evolve_theory()`.
-- **Affected Files**: [replay_engine.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/market/replay/replay_engine.py).
+- **Affected Files**: [replay_engine.py](market/replay/replay_engine.py).
 - **Affected Functions**: `execute()`.
 - **Schema / Migration Required**: NO.
 - **Backfill Required**: NO.
@@ -97,7 +97,7 @@ The remediation must NOT alter:
   theory.summary_structured.created_at = datetime.now(timezone.utc)
   ```
   Leave `REINFORCE` to preserve the original ID/timestamp to represent belief reinforcement.
-- **Affected Files**: [replay_engine.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/market/replay/replay_engine.py).
+- **Affected Files**: [replay_engine.py](market/replay/replay_engine.py).
 - **Affected Functions**: `execute()`.
 - **Schema / Migration Required**: NO.
 - **Backfill Required**: NO.
@@ -119,7 +119,7 @@ The remediation must NOT alter:
 
 - **Minimum Code Change**:
   Update `OntologyRegistry` by adding `"SECTOR_ZSCORE"` to `CORE_CONCEPTS`.
-- **Affected Files**: [ontology.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/cognition/schemas/knowledge/ontology.py).
+- **Affected Files**: [ontology.py](cognition/schemas/knowledge/ontology.py).
 - **Schema / Migration Required**: NO.
 
 ---

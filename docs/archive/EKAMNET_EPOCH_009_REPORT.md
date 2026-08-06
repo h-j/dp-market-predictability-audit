@@ -14,7 +14,7 @@ In this epoch, we successfully resolved the governing scientific question by mea
 ---
 
 ## 3. Canonical Wording Corrections
-- Corrected [EKAMNET_PROGRAM_STATE.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_PROGRAM_STATE.md#L94-L101) status from `MILESTONE_7_MINIMAL_CAUSAL_LEARNING_DEMONSTRATED_WITH_POSITIVE_EPISTEMIC_EFFECT` to `MILESTONE_7_PAST_EPISTEMIC_MEMORY_CAUSALLY_CHANGED_FUTURE_COMPILATION_BEHAVIOR` prior to the new experiment.
+- Corrected [EKAMNET_PROGRAM_STATE.md](EKAMNET_PROGRAM_STATE.md#L94-L101) status from `MILESTONE_7_MINIMAL_CAUSAL_LEARNING_DEMONSTRATED_WITH_POSITIVE_EPISTEMIC_EFFECT` to `MILESTONE_7_PAST_EPISTEMIC_MEMORY_CAUSALLY_CHANGED_FUTURE_COMPILATION_BEHAVIOR` prior to the new experiment.
 - Corrected capability map known risks to reflect overgeneralization.
 
 ---

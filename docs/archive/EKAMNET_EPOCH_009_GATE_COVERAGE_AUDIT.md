@@ -4,9 +4,9 @@
 A review of the active repository's git status reveals a critical version-control hygiene finding:
 * **All gate evaluation and milestone closure files are currently UNTRACKED** in git.
 * List of untracked gate-relevant files:
-  * [flows/minimal_learning_cycle/completion_gates.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/completion_gates.py) — **`UNTRACKED`**
-  * [bootstrap/verify_scientific_closures.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/verify_scientific_closures.py) — **`UNTRACKED`**
-  * [bootstrap/executable_gates_test.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/executable_gates_test.py) — **`UNTRACKED`**
+  * [flows/minimal_learning_cycle/completion_gates.py](flows/minimal_learning_cycle/completion_gates.py) — **`UNTRACKED`**
+  * [bootstrap/verify_scientific_closures.py](bootstrap/verify_scientific_closures.py) — **`UNTRACKED`**
+  * [bootstrap/executable_gates_test.py](bootstrap/executable_gates_test.py) — **`UNTRACKED`**
   * `data/scientific_closures_manifest.json` — **`UNTRACKED`**
   * `data/epistemic_effect_validation_results.json` — **`UNTRACKED`**
 

@@ -7,7 +7,7 @@ We have successfully implemented the Completion Gate Redesign v0.5, integrated s
 ## 1. Summary of Changes
 
 ### Completion Gate Schema & Validation Engine
-* [flows/minimal_learning_cycle/completion_gates.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/flows/minimal_learning_cycle/completion_gates.py):
+* [flows/minimal_learning_cycle/completion_gates.py](flows/minimal_learning_cycle/completion_gates.py):
   * Defined `ClaimType` and `ClaimSpecification` Pydantic models. Added `expected_baseline_proportion` override to prevent variance peeking.
   * Added Beasley-Springer-Moro rational approximation for the inverse normal CDF (`probit()`) to calculate dynamic critical values.
   * Reimplemented `evaluate_claim_consistency()` to perform descriptive confidence interval checks using observed rates, while calculating power requirements ($N_{\text{required}}$) independently using the pre-registered `expected_baseline_proportion` or the conservative $0.5$ baseline.
@@ -17,21 +17,21 @@ We have successfully implemented the Completion Gate Redesign v0.5, integrated s
   * Added `ValidationStorageManager` (write-side) and `EpistemicValidationManifestReader` (consumption-side) to secure the file persistence pipeline.
 
 ### Verification Harness
-* [bootstrap/verify_scientific_closures.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/verify_scientific_closures.py):
+* [bootstrap/verify_scientific_closures.py](bootstrap/verify_scientific_closures.py):
   * Modified verification script to define formal `ClaimSpecification` objects for Milestone 5, 6, and 7 claims.
   * Routed manifest persistence through `ValidationStorageManager.save_manifest` and manifest ingestion through `EpistemicValidationManifestReader.load_manifest`.
 
 ### Test Suite Extensions
-* [bootstrap/executable_gates_test.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/executable_gates_test.py):
+* [bootstrap/executable_gates_test.py](bootstrap/executable_gates_test.py):
   * Added `test_power_calculation_variance_source()` to verify observed-data independence.
   * Added `test_dynamic_critical_value_power_scaling()` to verify target power scaling.
   * Added `test_ondisk_artifacts_validation()` to verify on-disk file parsing.
   * Added `test_ondisk_artifacts_validation_rejects_invalid()` to verify adversarial rejection of schema violations or contradicted claims.
 
 ### Canonical File Annotations
-* [EKAMNET_PROGRAM_STATE.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_PROGRAM_STATE.md):
+* [EKAMNET_PROGRAM_STATE.md](EKAMNET_PROGRAM_STATE.md):
   * Appended `| GATE_UNVERIFIED_UNDER_v0.5_PENDING_MME_DEFINITION` to the statuses of Milestones 5, 6, and 7.
-* [EKAMNET_CAPABILITY_MAP.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_CAPABILITY_MAP.md):
+* [EKAMNET_CAPABILITY_MAP.md](EKAMNET_CAPABILITY_MAP.md):
   * Appended `(GATE_UNVERIFIED_UNDER_v0.5_PENDING_MME_DEFINITION)` to the scientific status fields of "Selection / Comparison", "Belief Evolution", and "Closed Learning Loop".
 
 ---

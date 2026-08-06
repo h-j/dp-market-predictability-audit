@@ -17,7 +17,7 @@ $$\mathbf{CLAIM\_CONTRADICTED}$$
 ## 2. MLC v0.1 MME Inheritance Audit & Backtest
 
 ### Audit Finding:
-The Milestone 5-9 lineage never inherited, imported, or referenced the provisional MME value of **5.0 percentage points (0.05 absolute)** defined in the MLC v0.1 pilot execution script ([bootstrap/run_mlc_v0_1_pilot.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/run_mlc_v0_1_pilot.py)). This constitutes a translation and wiring gap.
+The Milestone 5-9 lineage never inherited, imported, or referenced the provisional MME value of **5.0 percentage points (0.05 absolute)** defined in the MLC v0.1 pilot execution script ([bootstrap/run_mlc_v0_1_pilot.py](bootstrap/run_mlc_v0_1_pilot.py)). This constitutes a translation and wiring gap.
 
 ### A. PRIMARY BACKTEST TABLE (ACTUAL CURRENT BEHAVIOR)
 This table shows the actual current gate output under the v0.5 design, reflecting that no MME is currently wired into the Milestone 5-9 lineage:
@@ -82,6 +82,6 @@ class EpistemicValidationManifestReader:
 ```
 
 ### Read-Side Wiring (Wired to Canonical Manifests):
-* **Verification Runner**: In [bootstrap/verify_scientific_closures.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/verify_scientific_closures.py), loading `epistemic_effect_validation_results.json` must be wired through `EpistemicValidationManifestReader.load_manifest()`. If a developer attempts to write a manual bypass or bypasses the gate during compilation, this reader crashes immediately upon execution.
+* **Verification Runner**: In [bootstrap/verify_scientific_closures.py](bootstrap/verify_scientific_closures.py), loading `epistemic_effect_validation_results.json` must be wired through `EpistemicValidationManifestReader.load_manifest()`. If a developer attempts to write a manual bypass or bypasses the gate during compilation, this reader crashes immediately upon execution.
 * **Test Suite Verification**: The automated test suite (`poetry run pytest`) contains a regression test that runs `load_manifest()` on all current closure artifacts on disk. Any manual bypass or state file tampering will cause the test suite to fail, blocking the CI/CD pipeline.
-* **State Generation Integration**: Any future automated tool that updates [EKAMNET_PROGRAM_STATE.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_PROGRAM_STATE.md) from validation results is wired exclusively to this reader, preventing direct file readings.
+* **State Generation Integration**: Any future automated tool that updates [EKAMNET_PROGRAM_STATE.md](EKAMNET_PROGRAM_STATE.md) from validation results is wired exclusively to this reader, preventing direct file readings.

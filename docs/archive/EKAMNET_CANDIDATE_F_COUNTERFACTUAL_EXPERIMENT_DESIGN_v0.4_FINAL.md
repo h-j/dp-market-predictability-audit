@@ -295,7 +295,7 @@ Epistemic suppression active. Retirement transition is blocked at runtime for th
 Lineage family ID `"5f33fb88966dd952"` created on Step 1 (2026-07-01), target retirement event at the end of Step 2 (2026-07-02) due to contradiction score `0.78`.
 
 #### 4. Intervention Location
-`TheoryLineageEngine.retire_stale_theories` or `record_contradictions` in [theory_lineage.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/memory/lineage/theory_lineage.py#L606) dynamically patched in `bootstrap/run_counterfactual_experiment.py`.
+`TheoryLineageEngine.retire_stale_theories` or `record_contradictions` in [theory_lineage.py](memory/lineage/theory_lineage.py#L606) dynamically patched in `bootstrap/run_counterfactual_experiment.py`.
 
 #### 5. Matched-State Manifest Requirements
 * Output manifests `matched_state_baseline_manifest.json` and `matched_state_treatment_manifest.json`.

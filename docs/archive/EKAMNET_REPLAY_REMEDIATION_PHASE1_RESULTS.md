@@ -7,7 +7,7 @@ This report documents the results of implementing Phase 1 (Defects 1 and 2 only)
 
 ### 1. P1-P6 Gate Isolation Verification
 
-A comprehensive audit was performed to verify that [verify_scientific_closures.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/verify_scientific_closures.py) (which contains the hardcoded Milestone 5/6/7 completion gates) is completely isolated from the native replay components and active Candidate F production mechanisms.
+A comprehensive audit was performed to verify that [verify_scientific_closures.py](bootstrap/verify_scientific_closures.py) (which contains the hardcoded Milestone 5/6/7 completion gates) is completely isolated from the native replay components and active Candidate F production mechanisms.
 
 * **Audit Evidence**:
   - A workspace search for imports of `verify_scientific_closures` returned zero matches, indicating that no other file in the repository imports or calls this script.
@@ -18,7 +18,7 @@ A comprehensive audit was performed to verify that [verify_scientific_closures.p
 
 ### 2. Program-State Tracking for P1-P6 Gate Gap
 
-As requested, the P1-P6 gate bypass gap has been explicitly recorded in [EKAMNET_PROGRAM_STATE.md](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/EKAMNET_PROGRAM_STATE.md#L110) under Section 10 (Program Risk Register):
+As requested, the P1-P6 gate bypass gap has been explicitly recorded in [EKAMNET_PROGRAM_STATE.md](EKAMNET_PROGRAM_STATE.md#L110) under Section 10 (Program Risk Register):
 
 > **Exact Entry added in Section 10**:
 > `4. **P1-P6_BOUNDARY_CONTRACTS_BYPASS**: Milestone 5, 6, and 7 verification completion check gates are bypassed (hardcoded to PASS) in the validator script verify_scientific_closures.py, rendering the scientific closures unverified in automated checks.`
@@ -91,7 +91,7 @@ The novelty gate routing decisions (`GENERATE`, `REVISE`, `REINFORCE`) and the p
 
 * **Baseline Test Run**: 199 passed, 0 failed, 48 warnings.
 * **Post-remediation Test Run**: 201 passed, 0 failed, 42 warnings.
-  - Successfully added two new targeted unit tests in [bootstrap/replay_integrity_remediation_test.py](file:///Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/bootstrap/replay_integrity_remediation_test.py):
+  - Successfully added two new targeted unit tests in [bootstrap/replay_integrity_remediation_test.py](bootstrap/replay_integrity_remediation_test.py):
     1. `test_lineage_propagation`: verifies correctness of writing back lineage results.
     2. `test_nested_id_regeneration`: verifies correct regeneration of inner structured IDs on deepcopy mutations.
 * **Status**: **PASS** (Zero regressions).
@@ -109,7 +109,7 @@ The novelty gate routing decisions (`GENERATE`, `REVISE`, `REINFORCE`) and the p
   1. Commit `706f58e293ca8c3ffa20dc81f7828d01d6b3121d`: `hotfix/lineage-propagation: resolve relational lineage ID drift`
   2. Commit `ff4b2bfc460d100b3c142bef6a28586ebcd0986c`: `test: add unit tests for lineage propagation and nested structured ID/timestamp regeneration` (includes Defect 2 fix).
 * **Archive Location**:
-  - Snapshot databases and JSON logs from pre-remediation diagnostic run have been archived inside: `/Users/hemantj/Proj/dp_core/dp-core-phase1-substrate-v3/data/archive/ARCHIVED_AS_UNTRUSTED_PRE_REMEDIATION_DIAGNOSTIC/`
+  - Snapshot databases and JSON logs from pre-remediation diagnostic run have been archived inside: `/Users/hemantj/Proj/dp_core/dp-market-predictability-audit/data/archive/ARCHIVED_AS_UNTRUSTED_PRE_REMEDIATION_DIAGNOSTIC/`
 
 ---
 
