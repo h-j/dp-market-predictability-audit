@@ -1,0 +1,3308 @@
+[
+  {
+    "hypothesis_id": "H_LLM_001",
+    "description": "High VIX Close and low RV 5D target high Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_002",
+    "description": "High VIX Rank and low Volume Ratio implies short-term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_003",
+    "description": "Delivery Pct Above Median and Norm Gap Below Q2 Quantile implies Directional 3D Movement",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_004",
+    "description": "rs_nifty_3m above a certain threshold combined with high vix_change_5d momentum implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_005",
+    "description": "High rv_1d volatility and low norm_gap implies regime expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_006",
+    "description": "High VIX Close and low Delivery Pct imply bearish market direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_007",
+    "description": "High Rs Nifty 3M and low Volume Ratio implies Short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_008",
+    "description": "VIX Close Low and RV 5D High imply short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_009",
+    "description": "High VIX Rank and low Volume Ratio implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_010",
+    "description": "High Delivery Pct and Low Norm Gap implies Short-Term Directional Compression",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_011",
+    "description": "Bearish Shift in NIFTY Returns Correlated with VIX Change",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_012",
+    "description": "Compression of High RV Volatility and Low Norm Gap implies Short-term Volatility Regime Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_013",
+    "description": "Low Volume Ratio and high RS NIFTY 3M implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_014",
+    "description": "High VIX Close and RV 5D with Low ATR Gap implies Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_015",
+    "description": "High VIX Rank and low Volume Ratio implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_016",
+    "description": "Institutional Delivery Volume Ratio and Normalized Open-to-Prev-Close Gap imply Bearish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_017",
+    "description": "High RsNifty3M return and low VIXChange5D momentum implies short-term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_018",
+    "description": "RV 1D High and Norm Gap Low during Vol Regime Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_019",
+    "description": "High VIX Close and low Delivery Pct imply Directional Bearishness",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_020",
+    "description": "Low Volume Ratio and High RS NIFTY Imply Short-term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_021",
+    "description": "High VIX Close and low RV 5D imply short-term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_022",
+    "description": "High VIX Rank and low Volume Ratio implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.2
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_023",
+    "description": "Increasing Rs NIFTY Return vs Volatility 5D",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_024",
+    "description": "High RV 1D and Low Norm Gap Implies Volatility Regime Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_025",
+    "description": "VIX Close Above 1st Percentile and Delivery Pct Below 35th Percentile Implies Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_026",
+    "description": "Low Volume Ratio and High RS NIFTY 3M Implies Short-Term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_027",
+    "description": "VIX Close High and RV 5D Low implies Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_028",
+    "description": "High Delivery Pct and Low Norm Gap Implies Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_029",
+    "description": "Increased Rs_NIFTY_3M Implicates Short-Term Volatility Expansion with VIX Change Momentum",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_030",
+    "description": "Institutional Delivery Dominates Daily VIX Closing Rate",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_031",
+    "description": "Low Rs Nifty 3M returns relative to benchmark and low Volume Ratio implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_032",
+    "description": "High VIX Close and high RV 5D implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_033",
+    "description": "Institutional Delivery Percentage above Average Normalized Open-to-Prev-Close Gap",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_034",
+    "description": "High RV 1-day and low Norm Gap signal short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_035",
+    "description": "Low Volume Ratio and Low Rs Nifty 3m Imply short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_036",
+    "description": "High VIX Close and High RV 5D Volatility Implies Short-Term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_037",
+    "description": "Institutional Delivery Volume Ratio above Threshold and Normalized Open-to-Prev-Close Gap below ATR Threshold",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_038",
+    "description": "High RS NIFTY 3M Return and Low VIX Change 5D implies Short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_039",
+    "description": "High rv_1d and low norm_gap implies regime shift expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_040",
+    "description": "VIX Close High and Delivery PCT Low implies Bearish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_041",
+    "description": "Low Volume Ratio and low RS NIFTY 3M imply Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_042",
+    "description": "Delivery Percentage Low and Normalized Open-to-Prev-Close Gap High implies directional Compression",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_043",
+    "description": "High NIFTY return relative to benchmark and low VIX momentum implies short-term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_044",
+    "description": "Low Rs Nifty 3M implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_045",
+    "description": "VIX Close High and RV 5D Low implies Short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_046",
+    "description": "Delivery Pct > Threshold and Norm Gap > ATR, implies Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_047",
+    "description": "High rs_nifty_3m return relative to NIFTY benchmark and increasing VIX change implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_048",
+    "description": "High RV 1D and Low Norm Gap Imply Regime Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_049",
+    "description": "High VIX Close and low Delivery Pct implies short-term directional trend toward compression",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_050",
+    "description": "Low Volume Ratio and Low Rs Nifty 3M Implies Short-Term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_051",
+    "description": "India VIX Close and 5-day Daily Return Volatility Magnitude imply short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_052",
+    "description": "RS NIFTY 3M Return Rank Compression with Increasing VIX Momentum",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_053",
+    "description": "VIX Close Higher than NIFTY RS_NIFTY_3M implies Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_054",
+    "description": "Low Volume Ratio and Low Rs Nifty 3M implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_055",
+    "description": "High Delivery Percentage and High Normalized Open-to-Prev-Close Gap implies Bearish/Compressive Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_056",
+    "description": "High Volume Ratio and low Rs Nifty 3M imply short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_057",
+    "description": "High VIX Close Value and High RV 5D Implies Short-Term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_058",
+    "description": "Delivery Pct High and Norm Gap Low implies Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_059",
+    "description": "rs_nifty_3m > vix_change_5d implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_060",
+    "description": "Volatility regime expansion under normalized open-to-prev-close gap compression",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_061",
+    "description": "Low VIX Close and High RV 5D imply Short-Term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_062",
+    "description": "Institutional Delivery Volume Ratio High and Normalized Open-to-Prev-Close Gap Low implies Short-Term Direction Compression",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_063",
+    "description": "Low RS NIFTY 3M Return and high VIX Change Momentum imply short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_064",
+    "description": "High rv_1d volatility implies regime expansion, while low norm_gap suggests compression",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_065",
+    "description": "High VIX Close and low Delivery PCT implies Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_066",
+    "description": "Delivery Pct Low and Norm Gap High implies Bearish Trend Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_067",
+    "description": "Higher Rs Nifty 3m Return relative to Benchmark and higher VIX Change 5D with Low VIX Rank",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_068",
+    "description": "Revisit risk aversion based on volatility decay pattern",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_069",
+    "description": "High VIX Close and low RV 5D imply short-term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_070",
+    "description": "Delivery Pct Below Average and Norm Gap High Implies Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_071",
+    "description": "rs_nifty_3m below -0.20 and vix_change_5d above 0.40 implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_072",
+    "description": "High VIX Close and low Delivery Pct implies Bearish Direction in NIFTY",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_073",
+    "description": "High Delivery Pct implies Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_074",
+    "description": "High Rs Nifty 3M Rank and high VIX Change implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_075",
+    "description": "Increased RV 1 day and Increased Normalized Open-to-Prev-Close Gap implies Regime Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_076",
+    "description": "Low Volume Ratio and low Rs NIFTY 3M suggests Short-Term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_077",
+    "description": "High VIX Close and low RV 5D imply short-term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_078",
+    "description": "High VIX Percentile 252D and low Volume Ratio implies long-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_079",
+    "description": "Delivery Percentage Below Average and Normalized Gap Above Average Implies Directional Compression",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_080",
+    "description": "High 1-day return volatility magnitude alongside low normalized open-to-prev-close gap promotes regime expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_081",
+    "description": "RS NIFTY 3M Return Low while VIX Change 5D High Implies Short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_082",
+    "description": "Increased RV 1D volatility and decreased Normalized Open-to-Prev-Close Gap indicate Bullish Momentum Extension",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_083",
+    "description": "Low Volume Ratio and High RS NIFTY implies Short-Term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_084",
+    "description": "VIX Close Above Average and RV 5D Below Average Imply Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_085",
+    "description": "Delivery Pct falls short of institutional norms while Normalized Open-to-Prev-Close Gap is high, indicating Bearish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_086",
+    "description": "Low Volume Ratio and High Rs Nifty 3M imply Short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_087",
+    "description": "High Rs Nifty 3M returns and low VIX Change imply short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_088",
+    "description": "High daily return volatility (rv_1d) and normalized open-to-prev-close gap (norm_gap) imply regime expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_089",
+    "description": "High VIX Close and low Delivery Pct implies long-term Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_090",
+    "description": "High VIX Close and low daily return volatility magnitude implies short-term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_091",
+    "description": "High RV 1D and Low Norm Gap Implies Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_092",
+    "description": "High VIX Close and low Delivery Pct imply bearish Trend",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_093",
+    "description": "High Delivery Pct and Low Norm Gap implies Long-Term Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_094",
+    "description": "High VIX Close and low Delivery Pct imply downward Trend",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_095",
+    "description": "High VIX Close and low RV 5D imply short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_096",
+    "description": "Institutional Delivery Growth and Gap Contraction Implies Short-Term Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_097",
+    "description": "RS NIFTY 3-month return relative to benchmark negatively correlated with VIX change 5-day momentum",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_098",
+    "description": "High VIX Close level implies Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_099",
+    "description": "High VIX Close and Low RV 5D Imply Short-Term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_100",
+    "description": "VIX ranking above 0.80 with low volume ratio during regime expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_101",
+    "description": "Institutional Delivery Volume Ratio impact on Normalized Open-to-Prev-Close Gap",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_102",
+    "description": "Significant Normalized Open-to-Prev-Close Gap implies Volatility Regime Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_103",
+    "description": "High VIX Close and low Delivery Pct imply bearish trend",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_104",
+    "description": "High RS NIFTY 3M Return and High VIX Change 5D Momentum implies Short-Term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_105",
+    "description": "High rv_1d and low norm_gap imply Volatility Regime Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_106",
+    "description": "VIX Close and Delivery Pct Imply Bearish Market Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_107",
+    "description": "Low NIFTY 3-month return relative to benchmark and high VIX momentum",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_108",
+    "description": "Institutional Delivery Volume Ratio High and VIX Close Low implies Bearish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_109",
+    "description": "Hypothesis Proposal #183",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_110",
+    "description": "Delivery Pct High and Norm Gap Low implies Long-term Directional Trend",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_111",
+    "description": "High Rs Nifty 3M & low VIX Change Momentum imply short-term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_112",
+    "description": "High VIX Close and low Delivery Pct imply Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_113",
+    "description": "Low Rs Nifty 3 Month Return Relative to Benchmark and High VIX Change 5D Imply Short-Term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_114",
+    "description": "Unique Hypothesis Proposal #194",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_115",
+    "description": "India VIX Closing Price in descending order with decreasing Delivery Percentage",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_116",
+    "description": "Low Volume Ratio and Low RS NIFTY 3M imply short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_117",
+    "description": "High VIX Close and low RV 5D implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_118",
+    "description": "Delivery PCT below 25% and Norm Gaps greater than -0.40 implies bearish momentum",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_119",
+    "description": "Low NIFTY 3-month Return and increasing VIX Change implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_120",
+    "description": "VIX Close High and RV 5D High implies Short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_121",
+    "description": "VIX Close High and Delivery Pct Low implies Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_122",
+    "description": "Weak NIFTY return relative to 3-month benchmark and high 5-day VIX momentum indicates short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_123",
+    "description": "High VIX Close and low Delivery Pct Targeting Short-term Volatility Compression in Directional Market",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_124",
+    "description": "Low Volume Ratio and High RS NIFTY 3M implies Short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_125",
+    "description": "High VIX percentile and low Volume Ratio signals regime expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_126",
+    "description": "Delivery Pct Below Average and Norm Gap Above Threshold Suggests Bearish Trend",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_127",
+    "description": "",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_128",
+    "description": "VIX Close High and Delivery Pct Low suggests Bearish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_129",
+    "description": "High VIX Close and low RV 5D imply short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_130",
+    "description": "High VIX Rank and low Volume Ratio implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_percentile_252d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_131",
+    "description": "NIFTY 3-month return negatively correlated with India VIX momentum implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_132",
+    "description": "Delivery Pct High and Norm Gap Low implies Short-term Directional Sell Signal",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.2
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_133",
+    "description": "Low Rs Nifty 3M return relative to benchmark and high VIX change 5D implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_134",
+    "description": "rv_1d low and norm_gap high implies market expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_135",
+    "description": "Delivery Pct Above Average Gap",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_136",
+    "description": "rs_nifty_3m above NIFTY threshold with vix_change_5d below VIX momentum threshold",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_137",
+    "description": "High RV 1D daily return volatility magnitude and normalized open-to-prev-close gap implies regime expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.35,
+        "threshold_q2": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_138",
+    "description": "High VIX Close and low Delivery Pct implies short-term Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_139",
+    "description": "Low Volume Ratio and high Rs Nifty 3M Return implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.8,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_140",
+    "description": "Delivery PCT and Norm Gap suggests Bearish Trend",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_141",
+    "description": "High Rs Nifty 3M Return and low VIX Change 5D implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_142",
+    "description": "Iterated Over Random Seed 7726: rv_1d and norm_gap imply Volatility Regime Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rv_1d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_143",
+    "description": "Short VIX Close and Low Delivery Pct implies Bearish Direction in 3D",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_144",
+    "description": "Delivery Pct Below Average Threshold and Norm Gap Above Positive Trend Implies Bullish Direction",
+    "source": "LLM",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "norm_gap",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_145",
+    "description": "rs_nifty_3m returns higher than benchmark over the last 3 months, coupled with a rising India VIX momentum (increasing by more than 70% in the last five days), are indicative of impending volatility expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "OR",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "BETWEEN",
+        "threshold_q1": 0.2,
+        "threshold_q2": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_146",
+    "description": "High Normalized Open-to-Prev-Close Gap implies Volatility Regime Expansion",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "OR",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_147",
+    "description": "Low Volume Ratio and Low Rs Nifty 3M imply short-term Volatility Compression",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_148",
+    "description": "VIX Close and RV 5D High Implies Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "vix_close",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.35,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_149",
+    "description": "rs_nifty_3m above 0.04 and vix_change_5d below -0.02 implies short-term Volatility Expansion",
+    "source": "LLM",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_LLM_150",
+    "description": "Large Normalized Open-to-Prev-Close Gap implies expanding Volatility Regime",
+    "source": "LLM",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": -1.0,
+    "clauses": [
+      {
+        "feature": "norm_gap",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65,
+        "threshold_q2": null
+      },
+      {
+        "feature": "rv_1d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2,
+        "threshold_q2": null
+      }
+    ]
+  }
+]

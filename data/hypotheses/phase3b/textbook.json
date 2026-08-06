@@ -1,0 +1,3002 @@
+[
+  {
+    "hypothesis_id": "H_TEXTBOOK_001",
+    "description": "Textbook Momentum rule 1: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_002",
+    "description": "Textbook Momentum rule 2: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_003",
+    "description": "Textbook Momentum rule 3: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_004",
+    "description": "Textbook Momentum rule 4: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_005",
+    "description": "Textbook Momentum rule 5: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_006",
+    "description": "Textbook Momentum rule 6: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_007",
+    "description": "Textbook Momentum rule 7: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_008",
+    "description": "Textbook Momentum rule 8: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_009",
+    "description": "Textbook Momentum rule 9: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_010",
+    "description": "Textbook Momentum rule 10: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_011",
+    "description": "Textbook Momentum rule 11: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_012",
+    "description": "Textbook Momentum rule 12: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_013",
+    "description": "Textbook Momentum rule 13: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_014",
+    "description": "Textbook Momentum rule 14: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_015",
+    "description": "Textbook Momentum rule 15: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_016",
+    "description": "Textbook Momentum rule 16: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_017",
+    "description": "Textbook Momentum rule 17: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_018",
+    "description": "Textbook Momentum rule 18: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_019",
+    "description": "Textbook Momentum rule 19: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_020",
+    "description": "Textbook Momentum rule 20: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_021",
+    "description": "Textbook Momentum rule 21: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_022",
+    "description": "Textbook Momentum rule 22: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_023",
+    "description": "Textbook Momentum rule 23: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_024",
+    "description": "Textbook Momentum rule 24: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_025",
+    "description": "Textbook Momentum rule 25: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_026",
+    "description": "Textbook Momentum rule 26: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_027",
+    "description": "Textbook Momentum rule 27: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_028",
+    "description": "Textbook Momentum rule 28: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_029",
+    "description": "Textbook Momentum rule 29: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_030",
+    "description": "Textbook Momentum rule 30: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_031",
+    "description": "Textbook Momentum rule 31: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_032",
+    "description": "Textbook Momentum rule 32: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_033",
+    "description": "Textbook Momentum rule 33: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_034",
+    "description": "Textbook Momentum rule 34: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_035",
+    "description": "Textbook Momentum rule 35: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_036",
+    "description": "Textbook Momentum rule 36: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_037",
+    "description": "Textbook Momentum rule 37: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_038",
+    "description": "Textbook Momentum rule 38: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_039",
+    "description": "Textbook Momentum rule 39: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_040",
+    "description": "Textbook Momentum rule 40: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_041",
+    "description": "Textbook Momentum rule 41: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_042",
+    "description": "Textbook Momentum rule 42: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_043",
+    "description": "Textbook Momentum rule 43: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_044",
+    "description": "Textbook Momentum rule 44: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_045",
+    "description": "Textbook Momentum rule 45: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_046",
+    "description": "Textbook Momentum rule 46: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_047",
+    "description": "Textbook Momentum rule 47: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_048",
+    "description": "Textbook Momentum rule 48: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_049",
+    "description": "Textbook Momentum rule 49: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_050",
+    "description": "Textbook Momentum rule 50: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_051",
+    "description": "Textbook Momentum rule 51: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_052",
+    "description": "Textbook Momentum rule 52: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_053",
+    "description": "Textbook Momentum rule 53: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_054",
+    "description": "Textbook Momentum rule 54: Gap/RS continuation with volume confirmation.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rs_nifty_3m",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "volume_ratio_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_055",
+    "description": "Textbook Delivery Accumulation rule 55: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_056",
+    "description": "Textbook Delivery Accumulation rule 56: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_057",
+    "description": "Textbook Delivery Accumulation rule 57: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_058",
+    "description": "Textbook Delivery Accumulation rule 58: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_059",
+    "description": "Textbook Delivery Accumulation rule 59: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_060",
+    "description": "Textbook Delivery Accumulation rule 60: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_061",
+    "description": "Textbook Delivery Accumulation rule 61: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_062",
+    "description": "Textbook Delivery Accumulation rule 62: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_063",
+    "description": "Textbook Delivery Accumulation rule 63: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_064",
+    "description": "Textbook Delivery Accumulation rule 64: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_065",
+    "description": "Textbook Delivery Accumulation rule 65: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_066",
+    "description": "Textbook Delivery Accumulation rule 66: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_067",
+    "description": "Textbook Delivery Accumulation rule 67: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_068",
+    "description": "Textbook Delivery Accumulation rule 68: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_069",
+    "description": "Textbook Delivery Accumulation rule 69: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_070",
+    "description": "Textbook Delivery Accumulation rule 70: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_071",
+    "description": "Textbook Delivery Accumulation rule 71: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_072",
+    "description": "Textbook Delivery Accumulation rule 72: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_073",
+    "description": "Textbook Delivery Accumulation rule 73: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_074",
+    "description": "Textbook Delivery Accumulation rule 74: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_075",
+    "description": "Textbook Delivery Accumulation rule 75: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_076",
+    "description": "Textbook Delivery Accumulation rule 76: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_077",
+    "description": "Textbook Delivery Accumulation rule 77: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_078",
+    "description": "Textbook Delivery Accumulation rule 78: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_079",
+    "description": "Textbook Delivery Accumulation rule 79: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_080",
+    "description": "Textbook Delivery Accumulation rule 80: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_081",
+    "description": "Textbook Delivery Accumulation rule 81: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_082",
+    "description": "Textbook Delivery Accumulation rule 82: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_083",
+    "description": "Textbook Delivery Accumulation rule 83: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_084",
+    "description": "Textbook Delivery Accumulation rule 84: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_085",
+    "description": "Textbook Delivery Accumulation rule 85: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_086",
+    "description": "Textbook Delivery Accumulation rule 86: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_087",
+    "description": "Textbook Delivery Accumulation rule 87: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_088",
+    "description": "Textbook Delivery Accumulation rule 88: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_089",
+    "description": "Textbook Delivery Accumulation rule 89: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_090",
+    "description": "Textbook Delivery Accumulation rule 90: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_091",
+    "description": "Textbook Delivery Accumulation rule 91: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_092",
+    "description": "Textbook Delivery Accumulation rule 92: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_093",
+    "description": "Textbook Delivery Accumulation rule 93: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_094",
+    "description": "Textbook Delivery Accumulation rule 94: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_095",
+    "description": "Textbook Delivery Accumulation rule 95: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_096",
+    "description": "Textbook Delivery Accumulation rule 96: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_097",
+    "description": "Textbook Delivery Accumulation rule 97: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_098",
+    "description": "Textbook Delivery Accumulation rule 98: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_099",
+    "description": "Textbook Delivery Accumulation rule 99: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_100",
+    "description": "Textbook Delivery Accumulation rule 100: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_101",
+    "description": "Textbook Delivery Accumulation rule 101: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_102",
+    "description": "Textbook Delivery Accumulation rule 102: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_103",
+    "description": "Textbook Delivery Accumulation rule 103: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_104",
+    "description": "Textbook Delivery Accumulation rule 104: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_105",
+    "description": "Textbook Delivery Accumulation rule 105: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_106",
+    "description": "Textbook Delivery Accumulation rule 106: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_107",
+    "description": "Textbook Delivery Accumulation rule 107: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_108",
+    "description": "Textbook Delivery Accumulation rule 108: High delivery percentage with stable VIX.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "delivery_pct",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      },
+      {
+        "feature": "vix_close",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_109",
+    "description": "Textbook Volatility Expansion rule 109: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_110",
+    "description": "Textbook Volatility Expansion rule 110: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_111",
+    "description": "Textbook Volatility Expansion rule 111: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_112",
+    "description": "Textbook Volatility Expansion rule 112: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_113",
+    "description": "Textbook Volatility Expansion rule 113: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_114",
+    "description": "Textbook Volatility Expansion rule 114: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_115",
+    "description": "Textbook Volatility Expansion rule 115: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_116",
+    "description": "Textbook Volatility Expansion rule 116: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_117",
+    "description": "Textbook Volatility Expansion rule 117: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_118",
+    "description": "Textbook Volatility Expansion rule 118: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_119",
+    "description": "Textbook Volatility Expansion rule 119: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_120",
+    "description": "Textbook Volatility Expansion rule 120: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_121",
+    "description": "Textbook Volatility Expansion rule 121: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_122",
+    "description": "Textbook Volatility Expansion rule 122: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_123",
+    "description": "Textbook Volatility Expansion rule 123: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_124",
+    "description": "Textbook Volatility Expansion rule 124: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_125",
+    "description": "Textbook Volatility Expansion rule 125: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_126",
+    "description": "Textbook Volatility Expansion rule 126: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_127",
+    "description": "Textbook Volatility Expansion rule 127: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_128",
+    "description": "Textbook Volatility Expansion rule 128: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_129",
+    "description": "Textbook Volatility Expansion rule 129: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_130",
+    "description": "Textbook Volatility Expansion rule 130: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_131",
+    "description": "Textbook Volatility Expansion rule 131: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_132",
+    "description": "Textbook Volatility Expansion rule 132: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_133",
+    "description": "Textbook Volatility Expansion rule 133: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_134",
+    "description": "Textbook Volatility Expansion rule 134: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_135",
+    "description": "Textbook Volatility Expansion rule 135: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.2
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_136",
+    "description": "Textbook Volatility Expansion rule 136: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_137",
+    "description": "Textbook Volatility Expansion rule 137: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_138",
+    "description": "Textbook Volatility Expansion rule 138: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_139",
+    "description": "Textbook Volatility Expansion rule 139: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_140",
+    "description": "Textbook Volatility Expansion rule 140: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_141",
+    "description": "Textbook Volatility Expansion rule 141: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_142",
+    "description": "Textbook Volatility Expansion rule 142: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_143",
+    "description": "Textbook Volatility Expansion rule 143: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_144",
+    "description": "Textbook Volatility Expansion rule 144: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.8
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_145",
+    "description": "Textbook Volatility Expansion rule 145: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_146",
+    "description": "Textbook Volatility Expansion rule 146: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_147",
+    "description": "Textbook Volatility Expansion rule 147: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.5
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_148",
+    "description": "Textbook Volatility Expansion rule 148: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "volatility_5d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_149",
+    "description": "Textbook Volatility Expansion rule 149: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "vol_regime_expansion",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  },
+  {
+    "hypothesis_id": "H_TEXTBOOK_150",
+    "description": "Textbook Volatility Expansion rule 150: Low realized volatility before VIX breakout.",
+    "source": "TEXTBOOK",
+    "target_mode": "direction_3d",
+    "logical_op": "AND",
+    "prediction_signal": 1.0,
+    "clauses": [
+      {
+        "feature": "rv_5d",
+        "operator": "LESS_THAN",
+        "threshold_q1": 0.35
+      },
+      {
+        "feature": "vix_change_5d",
+        "operator": "GREATER_THAN",
+        "threshold_q1": 0.65
+      }
+    ]
+  }
+]
