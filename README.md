@@ -3,7 +3,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE)
 [![Python Version](https://img.shields.io/badge/python-3.12%2B-blue)](pyproject.toml)
 [![Hermetic Unit Tests](https://img.shields.io/badge/Unit%20Tests-48%20PASSED%20(Offline)-brightgreen)](#hermetic-unit-testing)
-[![Release Tag](https://img.shields.io/badge/Git%20Tag-v1.0--research--complete-blue)](https://github.com/h-j/dp-core-phase1-substrate-v3/releases/tag/v1.0-research-complete)
+[![Release Tag](https://img.shields.io/badge/Git%20Tag-v1.0--research--complete-blue)](https://github.com/h-j/dp-market-predictability-audit/releases/tag/v1.0-research-complete)
 
 > **Citable Empirical Research Repository**: A reproducible negative-results research artifact evaluating market predictability bounds (NIFTY, RELIANCE, TCS, NIFTY 100) and LLM-guided hypothesis reasoning value.
 
@@ -32,8 +32,8 @@ See the 5-minute technical overview in [RESEARCH_FINDINGS.md](RESEARCH_FINDINGS.
 
 ### Setup
 ```bash
-git clone https://github.com/h-j/dp-core-phase1-substrate-v3.git
-cd dp-core-phase1-substrate-v3
+git clone https://github.com/h-j/dp-market-predictability-audit.git
+cd dp-market-predictability-audit
 poetry install
 ```
 
@@ -106,7 +106,7 @@ poetry run pytest tests/
 ## 5. Repository Structure & Navigation Map
 
 ```text
-dp-core-phase1-substrate-v3/
+dp-market-predictability-audit/
 ├── README.md                              # Repository overview & execution guide
 ├── RESEARCH_FINDINGS.md                   # 5-minute technical overview of all 7 tracks
 ├── LICENSE                                # MIT Open Source License
@@ -133,13 +133,13 @@ dp-core-phase1-substrate-v3/
 If referencing this repository or its negative empirical results in quantitative research:
 
 ```bibtex
-@misc{dp_core_substrate_2026,
+@misc{dp_market_predictability_audit_2026,
   author = {DP-Core Research Team},
-  title = {DP-Core Reflective Cognition Substrate: Empirical Research Program},
+  title = {DP-Core Reflective Cognition Substrate: Empirical Market Predictability Audit},
   year = {2026},
   publisher = {GitHub},
   journal = {GitHub repository},
-  howpublished = {\url{https://github.com/h-j/dp-core-phase1-substrate-v3}},
+  howpublished = {\url{https://github.com/h-j/dp-market-predictability-audit}},
   tag = {v1.0-research-complete}
 }
 ```
