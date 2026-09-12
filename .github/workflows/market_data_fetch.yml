@@ -1,0 +1,37 @@
+name: market-data-fetch
+# One-click data collection: runs on GitHub's servers (unrestricted network),
+# commits results into docs/Market files/. Trigger manually from the Actions
+# tab ("Run workflow"), or uncomment the schedule for daily top-ups.
+
+on:
+  workflow_dispatch:
+  # schedule:
+  #   - cron: "30 13 * * 1-5"    # 19:00 IST weekdays, after NSE EOD files publish
+
+permissions:
+  contents: write
+
+jobs:
+  fetch:
+    runs-on: ubuntu-latest
+    timeout-minutes: 340
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install deps
+        run: pip install pandas requests
+
+      - name: Run fetcher
+        run: python scripts/actions_fetch.py
+
+      - name: Commit results
+        run: |
+          git config user.name  "market-data-bot"
+          git config user.email "actions@users.noreply.github.com"
+          git add "docs/Market files" || true
+          git commit -m "market-data-fetch: automated update" || echo "nothing new"
+          git push
