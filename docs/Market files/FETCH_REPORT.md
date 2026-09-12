@@ -1,38 +1,7 @@
-# Fetch report — 2026-09-12 09:24 UTC
+# Fetch report v2 — 2026-09-12 10:47 UTC
 
-- futures UDiFF patch: 541 days fetched, 29 missed -> [2024, 2025, 2026]
-- pledge window 2019-10-01 failed: ReadTimeout
-- pledge window 2019-12-30 failed: ReadTimeout
-- pledge window 2020-03-29 failed: ReadTimeout
-- pledge window 2020-06-27 failed: ReadTimeout
-- pledge window 2020-09-25 failed: ReadTimeout
-- pledge window 2020-12-24 failed: ReadTimeout
-- pledge window 2021-03-24 failed: ReadTimeout
-- pledge window 2021-06-22 failed: ReadTimeout
-- pledge window 2021-09-20 failed: ReadTimeout
-- pledge window 2021-12-19 failed: ReadTimeout
-- pledge window 2022-03-19 failed: ReadTimeout
-- pledge window 2022-06-17 failed: ReadTimeout
-- pledge window 2022-09-15 failed: ReadTimeout
-- pledge window 2022-12-14 failed: ReadTimeout
-- pledge window 2023-03-14 failed: ReadTimeout
-- pledge window 2023-06-12 failed: ReadTimeout
-- pledge window 2023-09-10 failed: ReadTimeout
-- pledge window 2023-12-09 failed: ReadTimeout
-- pledge window 2024-03-08 failed: ReadTimeout
-- pledge window 2024-06-06 failed: ReadTimeout
-- pledge window 2024-09-04 failed: ReadTimeout
-- pledge window 2024-12-03 failed: ReadTimeout
-- pledge window 2025-03-03 failed: ReadTimeout
-- pledge window 2025-06-01 failed: ReadTimeout
-- pledge window 2025-08-30 failed: ReadTimeout
-- pledge window 2025-11-28 failed: ReadTimeout
-- pledge window 2026-02-26 failed: ReadTimeout
-- pledge window 2026-05-27 failed: ReadTimeout
-- pledge window 2026-08-25 failed: ReadTimeout
-- pledge: 0 new windows this run; 0 windows on disk (90-day chunks since Oct 2019)
-- surveillance: asm_current saved
-- surveillance: gsm_current saved
-- surveillance archive sweep (REG_IND pattern): 0 hits, 1161 misses — pattern may be wrong; hits>0 means F3 archives EXIST
-- slb failed (ReadTimeout)
-- lockups: 5/5 year pages saved (HTML; tables may be JS-loaded — Claude will check if data is embedded; if not, manual export remains)
+- futures: 10 days fetched/topped-up
+- pledge NSE v2: 1 windows saved, 84 failed
+- rbi_mmo: 0 monthly index pages saved (prid links inside; Claude parses indices, next run fetches the per-day pages it lists)
+- slb: HTTP 404
+- surveillance archive alt-patterns: 0 hits (3 sample dates x 2 patterns) — public dated archives likely absent; F3 heads to NE unless manual route found
