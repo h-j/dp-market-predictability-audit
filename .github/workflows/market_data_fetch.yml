@@ -5,8 +5,8 @@ name: market-data-fetch
 
 on:
   workflow_dispatch:
-  # schedule:
-  #   - cron: "30 13 * * 1-5"    # 19:00 IST weekdays, after NSE EOD files publish
+  schedule:
+    - cron: "30 13 * * 1-5"    # 19:00 IST weekdays, after NSE EOD files publish
 
 permissions:
   contents: write
