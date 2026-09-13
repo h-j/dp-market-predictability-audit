@@ -49,3 +49,6 @@ scratch_prompt_*.txt
 .env
 .vscode/
 .idea/
+
+# Market data cache
+docs/Market files/rbi_mmo/raw_pages/
