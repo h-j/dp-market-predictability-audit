@@ -1,4 +1,4 @@
-# Fetch report v4 (maintenance) — 2026-10-29 19:05 UTC
+# Fetch report v4 (maintenance) — 2026-10-30 18:42 UTC
 
 - futures top-up: 7 days merged
 - pledge top-up: rolling 45d window saved (124 records)
